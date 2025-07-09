@@ -1,0 +1,243 @@
+/* استایل عمومی برای کانتینر */
+.container {
+  /* Instead of fixed, let it be relative so content can scroll */
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  background: url(../../assets/login.png) no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+
+/* جعبه اصلی */
+/* استفاده از justify-content: space-between برای توزیع اجزا در بالا و پایین باکس */
+.box {
+  background-color: rgba(255, 255, 255, 0.772);
+  padding: 40px;
+  margin-bottom: 100px; /* Reserve space at bottom for FooterMenu */
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  animation: fadeIn 0.5s ease-out;
+}
+
+
+/* لوگو */
+.logoImage {
+  width: 60px;
+  height: auto;
+}
+
+/* پیام خوش‌آمدگویی */
+.welcome {
+  font-size: 18px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  color: #023047;
+}
+
+/* نام برند */
+.brand {
+  color: #023047;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* پیام راهنما */
+.instruction {
+  font-size: 16px;
+  color: #023047;
+  margin-bottom: 25px;
+}
+
+/* فیلد ورودی */
+.input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+
+  font-weight: 600;
+  text-align: center;
+  direction: ltr;
+
+
+}
+
+.input:focus {
+  border-color: #40e0d0;
+  outline: none;
+}
+
+/* دکمه‌های اصلی */
+.button {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+
+  font-weight: 600;
+  transition: background 0.3s ease;
+
+  cursor: pointer;
+  margin-bottom: 15px;
+
+}
+
+.button:hover {
+  background-color: #40e0d0;
+}
+
+.button:disabled {
+  background-color: #c0c0c0;
+  cursor: not-allowed;
+}
+
+/* دکمه ثانویه */
+.buttonSecondary {
+  background-color: #c0c0c0;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.buttonSecondary:hover {
+  background-color: #40e0d0;
+}
+
+/* پیام خطا */
+.error {
+  color: #023047;
+  background-color: #ffd700;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 25px;
+  text-align: right;
+}
+
+/* تایمر */
+.timer {
+  font-size: 17px;
+  color: #023047;
+  margin-top: 10px;
+}
+
+/* گزینه ویرایش شماره موبایل */
+.editPhone {
+  font-size: 14px;
+  color: #40e0d0;
+  cursor: pointer;
+  margin-bottom: 15px;
+  margin-top: 5px;
+}
+
+.editPhone:hover {
+  text-decoration: underline;
+}
+
+/* قوانین (جمله پذیرش شرایط) */
+.terms {
+  font-size: 12px;
+  color: #023047;
+  margin-top: auto;
+  padding-bottom: 0px; /* اضافه کردن فاصله اضافی در انتهای باکس */
+}
+
+/* لینک‌ها */
+.link {
+  color: #023047;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: #2980b9;
+}
+
+/* انیمیشن */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* مدیا کوئری‌ها برای نمایشگرهای مختلف */
+@media (max-width: 768px) {
+  .box {
+    padding: 30px;
+    max-width: 350px;
+  }
+
+  .welcome {
+    font-size: 16px;
+  }
+
+  .instruction {
+    font-size: 15px;
+  }
+
+  .input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .button,
+  .buttonSecondary {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .box {
+    padding: 20px;
+    padding-top: 45px;
+    max-width: 300px;
+  }
+
+  .logoImage {
+    width: 40px;
+  }
+
+  .welcome {
+    font-size: 14px;
+  }
+
+  .instruction {
+    font-size: 14px;
+  }
+
+  .input {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .button,
+  .buttonSecondary,
+  .editPhone {
+    font-size: 12px;
+    padding: 8px;
+  }
+}

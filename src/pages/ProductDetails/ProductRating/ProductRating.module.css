@@ -1,0 +1,118 @@
+/* ProductRating.module.css - Enhanced Responsive Version */
+
+.rateContainer {
+    width: 95%;
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: white;
+    border-radius: 20px;
+    border: rgba(128, 128, 128, 0.158) solid 1px;
+    margin: 10px auto;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+  
+  .rateContainer .rightPart {
+    width: 60%;
+    padding: 5px;
+  }
+  
+  .rateContainer .rightPart p {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    margin: 8px 0;
+    color: #333;
+    gap: 8px;
+  }
+  
+  .rateContainer .leftPart {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+  }
+  
+  .rateContainer .leftPart p {
+    font-size: 2.5rem;
+    color: #4d4d4d;
+    font-weight: bold;
+  }
+  
+  .rateContainer .rightPart .icon {
+    color: #ffd700;
+    font-size: 1.3rem;
+  }
+  
+  .progress {
+    width: 100%;
+    height: 8px;
+    border-radius: 10px;
+    margin-top: 5px;
+    direction: rtl;
+    background-color: rgba(128, 128, 128, 0.158);
+    overflow: hidden;
+  }
+  
+  .progress::-webkit-progress-bar {
+    background-color: transparent;
+  }
+  
+  .progress::-webkit-progress-value {
+    background-color: #4caf50;
+    border-radius: 10px;
+  }
+  
+  .progress::-moz-progress-bar {
+    background-color: #4caf50;
+    border-radius: 10px;
+  }
+  
+  /* Enhanced Responsive Styles */
+  @media (max-width: 768px) {
+    .rateContainer {
+      flex-direction: column;
+      align-items: center;
+      padding: 15px 10px;
+    }
+  
+    .rateContainer .rightPart,
+    .rateContainer .leftPart {
+      width: 100%;
+      padding: 5px 0;
+    }
+  
+    .rateContainer .leftPart {
+      margin-bottom: 15px;
+    }
+  
+    .rateContainer .leftPart p {
+      font-size: 2.2rem;
+    }
+  
+    .rateContainer .rightPart p {
+      font-size: 1rem;
+      justify-content: flex-end;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .rateContainer {
+      padding: 12px 8px;
+    }
+  
+    .rateContainer .rightPart p {
+      font-size: 0.9rem;
+      gap: 5px;
+    }
+  
+    .rateContainer .rightPart .icon {
+      font-size: 1.1rem;
+    }
+  
+    .progress {
+      height: 6px;
+    }
+  }

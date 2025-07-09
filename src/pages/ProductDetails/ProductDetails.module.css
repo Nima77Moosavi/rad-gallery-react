@@ -1,0 +1,299 @@
+.circle {
+  position: absolute;
+  left: -100px;
+  top: -300px;
+  width: 700px;
+  height: 700px;
+  background-color: rgba(128, 128, 128, 0.158);
+  border-radius: 50%;
+  z-index: 0;
+  margin-bottom: 100px;
+}
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 1000;
+}
+.sliderContainer {
+  position: relative;
+  width: 70%;
+  max-width: 600px;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 20px;
+  background-color: #f8f9fa;
+}
+
+
+.iconsContainer {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin: 0 auto;
+  margin-top: 10px;
+  justify-content: center;
+  background-color: white;
+  padding: 20px;
+  border:  rgba(128, 128, 128, 0.158) solid 1px;
+  border-radius: 20px;
+  
+}
+
+
+.rateContainer{
+  width: 95%;
+  display: flex;
+  flex-direction: row-reverse;
+  background-color: white;
+ border-radius: 20px;
+  border:  rgba(128, 128, 128, 0.158) solid 1px;
+  margin: 10px auto;
+}
+
+.container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 20px;
+}
+.tabContainer {
+  /* اضافه شود برای افقی چیدن */
+  overflow-x: auto; /* اجازه اسکرول افقی */
+  white-space: nowrap; /* جلوگیری از شکستن دکمه‌ها به خط بعد */
+  width: 100%; /* عرض کامل صفحه */
+  /* justify-content: flex-end;  */
+  text-align: right;
+  padding: 0 1rem; /* کمی فاصله از دو طرف */
+  direction: rtl; /* حفظ راست به چپ */
+  background-color: #f8f9fa;
+  position: sticky;
+  top: 60px;
+  z-index: 1000;
+  scroll-snap-type: x mandatory; /* اختیاری: اسکرول اسنپ برای بهتر چسبیدن تب‌ها */
+  border-radius: 20px;
+}
+
+
+
+.leftSidebar{
+  background-color: rgba(128, 128, 128, 0.158);
+  border-radius: 20px;
+  width: 26%;
+  height: max-content;
+  margin-left: 1%;
+  /* text-align: right; */
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+
+
+.rightContainer{
+  width: 70%;
+  border-radius: 20px;
+  background-color: #f8f9fa;
+  margin-right: 2%;
+}
+
+
+
+/* استایل پیغام موفقیت با ترکیب طوسی، دودی و سفید */
+.successToast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff; /* سفید */
+  color: #023047; /* دودی تیره */
+  padding: 15px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 10000;
+  animation: slideIn 0.5s, fadeOut 0.5s 2.5s forwards;
+  display: flex;
+  align-items: center;
+  max-width: 90%;
+  text-align: center;
+  border: 1px solid #e0e0e0; /* طوسی روشن */
+}
+
+.toastContent {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toastContent span {
+  font-size: 20px;
+  font-weight: bold;
+  color: #023047; /* آبی تیره برای آیکون (همان رنگ تم سایت) */
+}
+
+.toastContent p {
+  margin: 0;
+  font-weight: 500;
+  color: #023047;
+}
+
+/* انیمیشن‌ها */
+@keyframes slideIn {
+  from {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+  }
+}
+
+
+/* لپ‌تاپ و کوچکتر (max-width: 1200px) */
+@media (max-width: 1200px) {
+  .circle {
+    width: 600px;
+    height: 600px;
+    top: -250px;
+    left: -120px;
+  }
+}
+
+/* تبلت (max-width: 768px) */
+@media (max-width: 768px) {
+  .circle {
+    width: 550px;
+    height: 550px;
+    top: -250px;
+    left: -150px;
+  }
+  .sliderContainer {
+    width: 70%;
+    top: -180px;
+  }
+  
+  .descriptionContainer {
+    flex-direction: column;
+  }
+  .description {
+    width: 90%;
+  }
+  .attributesContainer {
+    width: 90%;
+    flex-direction: row;
+    padding: 0%;
+  }
+
+  .container {
+    width: 100%;
+    margin-right: 0;
+    padding-right: 10px;
+  }
+}
+
+/* موبایل (max-width: 480px) */
+@media (max-width: 480px) {
+  .pageContent {
+    margin-top: 80px;
+  }
+/* .container{
+  margin-bottom: 40px;
+} */
+  .circle {
+    width: 400px;
+    height: 400px;
+    top: -180px;
+    left: -180px;
+  }
+  .sliderContainer {
+    width: 90%;
+    /* top: -100px; */
+  }
+  .descriptionContainer {
+    position: relative;
+    top: 0px;
+  }
+  .descriptionContainer {
+    flex-direction: column;
+  }
+  .description {
+    width: 90%;
+  }
+  .attributesContainer {
+    width: 90%;
+  }
+  .actions {
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    top: 100px;
+  }
+  .selectInput,
+  .numberInput {
+    height: 40px;
+  }
+  .reviewsWrapper {
+    overflow-x: auto; /* امکان اسکرول افقی در موبایل */
+    -webkit-overflow-scrolling: touch;
+  }
+  .reviewCard {
+    flex: 0 0 50%; /* نمایش 2 کارت در هر ردیف */
+    min-width: 50%;
+  }
+  .container {
+    width: 100%;
+    flex-direction: column;
+    margin-right: 0;
+    padding-right: 10px;
+    gap: 20px;
+  }
+  .rightContainer{
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+    /* top: -80px; */
+  }
+  .leftSidebar{
+    width: 90%;
+    position: relative;
+    margin: 20px auto;
+    /* top: -80px; */
+  }
+  
+  .successToast {
+    top: 10px;
+    padding: 12px 20px;
+    font-size: 14px;
+    width: 70%;
+    box-sizing: border-box;
+  }
+  
+  .toastContent span {
+    font-size: 18px;
+  }
+  .toastContent p {
+    font-size: 14px;
+    margin: 0 auto;
+  }
+}

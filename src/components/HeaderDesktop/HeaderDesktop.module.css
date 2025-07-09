@@ -1,0 +1,324 @@
+/* HeaderDesktop.module.css */
+
+/* ───────────────────────────────────────────────────────
+   Base Header Styles
+   ─────────────────────────────────────────────────────── */
+.header {
+  width: 100%;
+  height: max-content;
+  padding: 10px 20px;
+  position: relative;
+  overflow: visible;
+  margin-bottom: 0;
+  z-index: 100;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: flex-end;
+  z-index: 100;
+}
+
+.menu {
+  width: 300px;
+  height: 100%;
+  padding: 2rem;
+  animation: slideIn 0.3s ease-out;
+  direction: ltr;
+  text-align: center;
+  background-color: #fff;
+}
+
+.menu a {
+  text-decoration: none;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 20;
+  flex-wrap: wrap;
+}
+
+.logoContainer {
+  width: 240px;
+  height: auto;
+}
+
+.logo {
+  width: 100%;
+}
+
+/* ───────────────────────────────────────────────────────
+   Icons & Buttons
+   ─────────────────────────────────────────────────────── */
+.icons {
+  display: flex;
+  gap: 20px;
+  order: 1;
+  font-size: 28px;
+  color: #023047 !important;
+  margin-left: 100px;
+  margin-top: 10px;
+  cursor: pointer;
+  align-items: center;
+  position: relative;
+  z-index: 30;
+}
+.cartIcon{
+  color: #023047 !important;
+}
+.loginButton {
+  order: 2;
+  color: #023047;
+  margin-left: 10px;
+  margin-top: -10px;
+}
+
+.loginButton a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.loginButton button {
+  font-size: 20px;
+  padding: 8px 16px;
+  background-color: #fff;
+  color: #023047;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.loginButton a {
+  pointer-events: auto;
+}
+
+/* ───────────────────────────────────────────────────────
+   Search Container & Box
+   ─────────────────────────────────────────────────────── */
+.searchContainer {
+  order: 3;
+  flex-grow: 1;
+  margin: 0 20px;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 10;
+}
+
+.searchBox {
+  width: 70%;
+  position: relative;
+}
+
+.searchBox input {
+  width: 100%;
+  height: 40px;
+  padding: 0 40px 0 10px;
+  border: 1px solid #023047;
+  border-radius: 50px;
+  text-align: right;
+  direction: rtl;
+  font-size: 18px;
+  margin-top: -30px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 10px;
+  top: 52%;
+  transform: translateY(-50%);
+  color: #023047;
+  font-size: 24px;
+  pointer-events: none;
+}
+
+/* ───────────────────────────────────────────────────────
+   Autocomplete Suggestions Dropdown
+   ─────────────────────────────────────────────────────── */
+.suggestionsList {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  left: auto;
+  width: 70%; /* match searchBox width */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  z-index: 10;
+  direction: rtl;
+}
+
+.suggestionItem {
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+}
+
+.suggestionItem:last-child {
+  border-bottom: none;
+}
+
+.suggestionItem:hover {
+  background-color: #f9f9f9;
+}
+
+.suggestionTitle {
+  font-weight: 500;
+  color: #023047;
+  margin-bottom: 4px;
+}
+
+.suggestionMeta {
+  font-size: 14px;
+  color: #777;
+}
+
+/* ───────────────────────────────────────────────────────
+   Hamburger Menu
+   ─────────────────────────────────────────────────────── */
+.hamburgerMenu {
+  order: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+}
+
+.hamburgerMenu span {
+  font-size: 50px;
+  cursor: pointer;
+  color: #023047;
+  margin-top: 18px;
+}
+
+/* ───────────────────────────────────────────────────────
+   Menu List Items
+   ─────────────────────────────────────────────────────── */
+.menu li {
+  font-size: 22px;
+  width: 100%;
+  padding: 5px 28px;
+  color: #023047;
+  border-bottom: 1px solid #023047;
+  margin: 5px 0;
+  text-align: right;
+  list-style: none;
+}
+
+.menu li:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* ───────────────────────────────────────────────────────
+   Responsive Media Queries
+   ─────────────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .icons {
+    margin-left: 50px;
+  }
+  .searchBox {
+    width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    min-height: 300px;
+    padding: 10px;
+  }
+  .icons {
+    margin-left: 20px;
+    font-size: 24px;
+  }
+  .loginButton {
+    margin-top: -15px;
+  }
+  .loginButton button {
+    font-size: 18px;
+  }
+  .searchContainer {
+    width: 30%;
+    margin: 10px 0;
+  }
+  .searchBox {
+    width: 90%;
+  }
+  .searchBox input {
+    font-size: 16px;
+  }
+  .searchIcon {
+    font-size: 20px;
+  }
+  .hamburgerMenu span {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    min-height: 250px;
+  }
+  .container {
+    flex-direction: row;
+    align-items: center;
+  }
+  .icons {
+    font-size: 20px;
+  }
+  .loginButton button {
+    font-size: 16px;
+    height: max-content;
+    border: #023047 solid 1px;
+    padding: 0 10px;
+    margin-top: 12px;
+  }
+  .searchContainer {
+    width: 80%;
+    margin: 10px 0;
+  }
+  .searchBox {
+    width: 100%;
+  }
+  .searchBox input {
+    font-size: 14px;
+  }
+  .searchIcon {
+    font-size: 18px;
+  }
+  .hamburgerMenu span {
+    font-size: 30px;
+  }
+}

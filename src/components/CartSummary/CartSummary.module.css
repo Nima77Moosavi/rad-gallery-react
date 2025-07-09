@@ -1,0 +1,18 @@
+.tabs {
+  display: flex;
+  gap: 10px;
+}
+
+.tabs button {
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.tabs button:hover {
+  background-color: #3498db;
+  color: white;
+}

@@ -1,0 +1,83 @@
+/* PriceBox.module.css */
+.priceContainer {
+  background-color: white;
+  width: 95%;
+  border-radius: 20px;
+  margin: 10px auto;
+  padding: 1rem;
+  text-align: center;
+  direction: rtl;
+  /* تغییرات ریسپانسیو */
+  max-width: 500px; /* محدودیت عرض برای صفحه‌های بزرگ */
+}
+
+.priceContainer p {
+  color: #023047;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 8px 0;
+  /* تغییرات ریسپانسیو */
+  font-size: clamp(14px, 3.5vw, 16px); /* فونت ریسپانسیو */
+  gap: 6px;
+}
+
+.priceContainer .icon {
+  color: #023047;
+  vertical-align: bottom;
+  /* تغییرات ریسپانسیو */
+  font-size: clamp(1rem, 3.5vw, 1.2rem); /* آیکون ریسپانسیو */
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.inventory,
+.inventory .icon {
+  color: rgb(220 38 38);
+}
+
+.price {
+  width: auto;
+  background-color: #ffffff;
+  color: #023047;
+  border: 0.5px solid rgb(109, 224, 240);
+  padding: 0.5rem 1.5rem;
+  /* تغییرات ریسپانسیو */
+  font-size: clamp(18px, 4.5vw, 22px); /* قیمت ریسپانسیو */
+  border-radius: 10px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.addToCart {
+  background-color: #ffd700;
+  color: #023047;
+  border: none;
+  padding: 1rem 1.5rem;
+  /* تغییرات ریسپانسیو */
+  font-size: clamp(16px, 4.5vw, 20px); /* دکمه ریسپانسیو */
+  font-weight: 500;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: auto;
+  margin: 10px 0;
+  /* تغییرات ریسپانسیو */
+  min-width: 150px; /* حداقل عرض برای دکمه */
+}
+
+.addToCart:hover {
+  background-color: #023047;
+  color: #ffd700;
+}
+
+/* مدیا کوئری برای موبایل */
+@media (max-width: 480px) {
+  .priceContainer {
+    padding: 0.8rem;
+  }
+  .price, .addToCart {
+    padding: 0.7rem 1.2rem;
+  }
+}

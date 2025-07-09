@@ -1,0 +1,39 @@
+.adminLayoutContainer {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #f4f4f4;
+  padding: 20px;
+  text-align: center;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebarLink {
+  display: block;
+  margin: 10px 0;
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+}
+
+.sidebarLink:hover {
+  color: #4caf50;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+  overflow-y: auto;
+}

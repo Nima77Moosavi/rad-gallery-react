@@ -1,0 +1,187 @@
+/* General Styles */
+.circle {
+  position: absolute;
+  left: -100px;
+  top: -300px;
+  width: 700px;
+  height: 700px;
+  background-color: rgba(128, 128, 128, 0.158);
+  border-radius: 50%;
+  z-index: -100;
+  margin-bottom: 100px;
+}
+
+
+
+.title {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 50px;
+  color: #2c3e50;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transform: translateX(50%);
+  width: 100px;
+  height: 4px;
+  background: #40e0d0;
+  border-radius: 2px;
+}
+
+.container {
+  display: flex;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Desktop Product Area */
+.productContainer {
+  flex: 3;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Desktop Sidebar for filters - Improved Style */
+.sidebarContainer {
+  flex: 1;
+  max-width: 280px;
+  margin-left: 20px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  background-color: white;
+  direction: rtl;
+}
+
+.sidebarInner {
+  display: flex;
+  flex-direction: column;
+}
+
+.collections,
+.sort {
+  margin-bottom: 30px;
+}
+
+.collectionsTitle,
+.sortTitle {
+  font-size: 20px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
+  color: #333;
+  font-weight: 600;
+}
+
+.collectionFilter,
+.sortOption {
+  cursor: pointer;
+  margin: 10px 0;
+  padding: 8px 12px;
+  color: #555;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.collectionFilter:hover,
+.sortOption:hover {
+  background-color: #f8f8f8;
+  color: #023047;
+}
+
+.collectionFilter.active,
+.sortOption.active {
+  background-color: #023047;
+  color: white;
+}
+
+.loading,
+.error,
+.empty {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    padding: 10px;
+  }
+  .content {
+    margin-top: 60px;
+  }
+  /* Hide desktop sidebar on mobile */
+  .sidebarContainer {
+    display: none;
+  }
+
+  .productContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  /* Show mobile filter dropdown */
+  .filterDropdownMobile {
+    display: block;
+    margin: 10px;
+    text-align: center;
+  }
+
+  .filterToggleButton {
+    background-color: #023047;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .dropdownFilters {
+    background-color: #f6f6f6;
+    margin-top: 10px;
+    padding: 15px;
+    border-radius: 5px;
+  }
+
+  .collectionsTitle,
+  .sortTitle {
+    font-size: 18px;
+  }
+
+  .collectionFilter,
+  .sortOption {
+    font-size: 16px;
+    margin: 6px 0;
+  }
+  
+  .circle {
+    width: 400px;
+    height: 400px;
+    top: -180px;
+    left: -180px;
+  }
+}
+
+/* Hide mobile filter button on desktop */
+@media (min-width: 481px) {
+  .filterDropdownMobile {
+    display: none !important;
+  }
+}

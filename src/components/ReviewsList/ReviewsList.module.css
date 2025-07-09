@@ -1,0 +1,124 @@
+/* ReviewsList.module.css */
+
+/* Container Styles */
+.reviews {
+  direction: rtl;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  background-color: white;
+  border-radius: 12px;
+  padding: 30px;
+  min-height: 60vh;
+}
+
+/* Title Styles - Consistent with other components */
+.reviews h3 {
+  color: #023047;
+  font-size: 28px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.reviews h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  height: 3px;
+  background-color: #40e0d0;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+/* List Styles */
+.reviews ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.reviews li {
+  color: #023047;
+  font-size: 20px;
+  direction: rtl;
+  padding: 25px;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  transition: all 0.3s;
+  background-color: #f9f9f9;
+  position: relative;
+}
+
+.reviews li:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #40e0d0;
+  background-color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Review Content */
+.reviews li strong {
+  color: #023047;
+  font-weight: 600;
+}
+
+.reviews li br {
+  margin-bottom: 12px;
+  display: block;
+  content: '';
+}
+
+/* Empty State (if you add it later) */
+.emptyReviews {
+  text-align: center;
+  padding: 50px;
+  color: #666;
+  font-size: 18px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .reviews {
+    padding: 20px;
+  }
+  
+  .reviews h3 {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+  
+  .reviews li {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .reviews h3 {
+    font-size: 22px;
+  }
+  
+  .reviews h3::after {
+    width: 80px;
+  }
+  
+  .reviews li {
+    font-size: 15px;
+    padding: 15px;
+  }
+  
+  .emptyReviews {
+    font-size: 16px;
+    padding: 30px;
+  }
+}

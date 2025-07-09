@@ -1,0 +1,141 @@
+/* Sidebar for User Panel (Desktop Style) */
+.sidebarNav {
+  width: 250px;           /* Fixed width on desktop */
+  flex-shrink: 0;         /* Prevent the sidebar from shrinking */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  direction: rtl;         /* Right-to-left content */
+  text-align: right;
+  background-color: #fff;
+  border-left: 2px solid rgba(2, 48, 71, 0.41); /* Subtle left border */
+  box-sizing: border-box;
+}
+.sidebarNav a {
+  color: #023047;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+/* User Information Box */
+.userInfo {
+  background-color: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  width: 100%; /* Take full width of sidebar */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(2, 48, 71, 0.41);
+}
+
+/* Username styling */
+.username {
+  font-size: 16px;
+  color: #023047;
+  padding-right: 15px;
+}
+
+/* Edit Button styling */
+.editButton {
+  background-color: #40e0d0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.editButton:hover {
+  background-color: #096cad;
+}
+
+/* Menu Container (for Links) */
+.menuContainer {
+  background-color: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  width: 100%;
+  border: 1px solid rgba(2, 48, 71, 0.41);
+}
+
+/* Menu items container */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Link Styles */
+.link {
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 25px !important;
+  cursor: pointer;
+  text-align: right;
+  transition: all 0.3s ease;
+  color: #023047;
+  text-decoration: none;
+}
+
+.link:hover {
+  background-color: var(--primary-color);
+  width: 90%;
+  color: white;
+  border-radius: 9px;
+}
+
+/* Active Link Style (similar to hover) */
+.sidebarNav .active {
+  background-color: var(--primary-color);
+  width: 90%;
+  color: #fff;
+  border-radius: 9px;
+  text-decoration: none;
+  padding-right: 10px;
+}
+.active {
+  background-color: var(--primary-color);
+  width: 90%;
+  color: #fff;
+  border-radius: 9px;
+  font-weight: bold;
+  text-decoration: none;
+  padding-right: 10px;
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 768px) {
+  .sidebarNav {
+    width: 100%;
+    padding: 15px;
+    gap: 15px;
+    /* Replace the left border with a top border for mobile */
+    border-left: none;
+    border-top: 2px solid rgba(2, 48, 71, 0.41);
+  }
+
+  .userInfo,
+  .menuContainer {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .editButton {
+    margin-top: 25px;
+    padding-bottom: 10px;
+  }
+
+  .username {
+    font-size: 14px;
+  }
+
+  .link {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+}

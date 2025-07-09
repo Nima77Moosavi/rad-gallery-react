@@ -1,0 +1,135 @@
+.dashboardContainer {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebarLink {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.sidebarLink:hover {
+  background-color: #555;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.logoutButton {
+  padding: 10px 20px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.logoutButton:hover {
+  background-color: #d32f2f;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2,
+h3 {
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+
+.createCollectionLink {
+  margin: 10px 0;
+}
+
+.createCollectionLink a,
+.createProductLink a {
+  color: #4caf50;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.createCollectionLink a:hover,
+.createProductLink a:hover {
+  text-decoration: underline;
+}
+
+.collectionList {
+  margin-top: 20px;
+}
+
+.collectionItem {
+  list-style-type: none;
+  margin: 10px 0;
+}
+
+.collectionButton {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.collectionButton:hover {
+  background-color: #45a049;
+}
+
+.productsSection {
+  margin-top: 30px;
+}
+
+.productList {
+  margin-top: 20px;
+  padding: 0;
+}
+
+.productItem {
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.productItem h4 {
+  font-size: 1.2rem;
+}
+
+.productItem p {
+  color: #555;
+}
+
+.editLink {
+  color: #2196f3;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.editLink:hover {
+  text-decoration: underline;
+}

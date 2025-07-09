@@ -1,0 +1,63 @@
+/* FooterMenu.module.css */
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  direction: rtl;
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  justify-content: center;
+  max-height: 80px;
+}
+
+.footerul {
+  background-color: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  min-width: 80%;
+  padding: 0;
+  margin: 0;
+}
+
+.footerul li {
+  background-color: inherit;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+/* Style the link so that the icon is above the text */
+.footerLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #023047;
+  font-size: 11px;
+  padding: 8px; /* Added padding to better see the background change */
+  transition: background-color 0.3s ease;
+}
+
+.footerLink svg {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.footerLink span {
+  margin-top: 4px;
+}
+
+/* Active Link style */
+.active {
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 8px;
+}

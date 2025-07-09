@@ -1,0 +1,102 @@
+.highlightsWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.highlightsContainer {
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 16px 0;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+.highlights {
+  display: inline-flex;
+  gap: 5px;
+  padding: 0 0px;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Hide scrollbar */
+.highlightsContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.highlightsContainer {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollButton {
+  background: rgba(255, 255, 255, 0.8);
+  color: #023047;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  position: absolute;
+  display: none; /* Hide by default */
+}
+
+.scrollButton:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+.scrollButton.left {
+  left: 10px;
+}
+
+.scrollButton.right {
+  right: 10px;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .scrollButton {
+    display: flex; /* Show buttons on tablets and desktops */
+  }
+  
+  .highlights {
+    gap: 10px; /* Increase gap on larger screens */
+    padding: 0 0px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .highlights {
+    gap: 25px; /* Further increase gap on desktops */
+    padding: 0 32px;
+  }
+  
+  .scrollButton {
+    width: 50px;
+    height: 50px;
+    font-size: 42px;
+  }
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 480px) {
+  .highlights {
+    gap: 5px;
+    padding: 0px 0px;
+    margin: 0%;
+  }
+  
+  .highlightsContainer {
+    scroll-snap-type: x proximity; /* Less strict snapping on mobile */
+  }
+}

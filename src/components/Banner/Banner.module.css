@@ -1,0 +1,41 @@
+.container{
+  /* position: absolute; */
+  width: 100%;
+  margin: 0;
+  display: flex;
+  z-index: 1;
+}
+
+.dastImg{
+  width: 600px;
+  height: 350px;
+  object-fit: cover;
+  padding-left: -200px;
+  z-index: 1;
+}
+
+.textImg{
+  width: 70%;
+  height: 200px;
+  object-fit: fill;
+  margin-right: 280px;
+  margin-top: 50px;
+}
+
+@media (max-width: 480px) {
+  .container{
+    margin-top: 70px;
+  }
+
+  .dastImg{
+    width: 200px;
+    height: 120px;
+  }
+
+  .textImg{
+    width: 70%;
+    height: 70px;
+    margin-right: 50px;
+    margin-top: 20px;
+  }
+}
