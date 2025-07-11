@@ -1,10 +1,10 @@
 :root {
-  --primary-color: #002147;    /* Luxurious deep blue */
-  --secondary-color: #FFD700;  /* Rich, luxurious gold */
-  --text-color: #333333;
-  --bg-color: #ffffff;
-  --primary-color-light: rgba(0, 33, 71, 0.3);
-  --primary-color-dark: rgba(0, 33, 71, 0.3);
+  --primary-color: #b98972;    
+  --secondary-color:#e7d5c9;  
+  --text-color: #5a4a42;
+  --bg-color: #f8f1e9;
+  --green-color: #499c7f;
+  --light-color: #f8f1e9;
 }
 
 body {

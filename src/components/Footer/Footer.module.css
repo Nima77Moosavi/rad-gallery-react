@@ -5,13 +5,13 @@
   align-items: center;
   padding-top: 1rem;
   padding-right: 10rem;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   flex-wrap: wrap;
   direction: rtl;
 }
 .title {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
+  background-color: var(--primary-color);
+  color: var(--light-color);
   font-size: 20px;
   /* font-weight: 300; */
   border-radius: 10px;
@@ -20,13 +20,13 @@
   margin-bottom: 8px;
 }
 p {
-  color: #fff;
+  color: var(--text-color);
   font-size: 18px;
-  font-weight: 200;
+  font-weight: 600;
   padding: 2px;
 }
 .icon {
-  color: #fff;
+  color: var(--text-color);
   font-size: 36px;
   margin: 0 5px;
   cursor: pointer;

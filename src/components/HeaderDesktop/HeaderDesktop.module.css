@@ -58,7 +58,7 @@
 }
 
 .logoContainer {
-  width: 240px;
+  width: 120px;
   height: auto;
 }
 
@@ -74,7 +74,7 @@
   gap: 20px;
   order: 1;
   font-size: 28px;
-  color: #023047 !important;
+  color: var(--text-color) !important;
   margin-left: 100px;
   margin-top: 10px;
   cursor: pointer;
@@ -83,11 +83,11 @@
   z-index: 30;
 }
 .cartIcon{
-  color: #023047 !important;
+  color: var(--green-color) !important;
 }
 .loginButton {
   order: 2;
-  color: #023047;
+  color: var(--text-color);
   margin-left: 10px;
   margin-top: -10px;
 }
@@ -100,8 +100,8 @@
 .loginButton button {
   font-size: 20px;
   padding: 8px 16px;
-  background-color: #fff;
-  color: #023047;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
   border-radius: 10px;
   border: none;
   cursor: pointer;
@@ -138,7 +138,7 @@
   width: 100%;
   height: 40px;
   padding: 0 40px 0 10px;
-  border: 1px solid #023047;
+  border: 1px solid var(--green-color);
   border-radius: 50px;
   text-align: right;
   direction: rtl;
@@ -151,7 +151,7 @@
   left: 10px;
   top: 52%;
   transform: translateY(-50%);
-  color: #023047;
+  color: var(--green-color);
   font-size: 24px;
   pointer-events: none;
 }
@@ -218,7 +218,7 @@
 .hamburgerMenu span {
   font-size: 50px;
   cursor: pointer;
-  color: #023047;
+  color: var(--green-color);
   margin-top: 18px;
 }
 

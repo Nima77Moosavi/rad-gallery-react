@@ -14,7 +14,7 @@ import { PiArticleBold } from "react-icons/pi";
 import { FavoritesContext } from "../../context/FavoritesContext";
 import { IoBagOutline } from "react-icons/io5";
 import { GoGift } from "react-icons/go";
-import image1 from "../../assets/banner11.png";
+import image1 from "../../assets/7.png";
 
 const HeaderDesktop = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
