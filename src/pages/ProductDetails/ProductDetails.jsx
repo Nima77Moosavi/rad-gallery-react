@@ -140,7 +140,7 @@ const ProductDetails = () => {
   if (loading) {
     return (
       <div className={styles.loaderContainer}>
-        <MoonLoader color="#023047" />
+        <MoonLoader color="#499c7f" />
       </div>
     );
   }
@@ -164,8 +164,7 @@ const ProductDetails = () => {
       )}
 
       <div className={styles.pageContent}>
-        {/* Decorative circle */}
-        <div className={styles.circle}></div>
+ 
 
         {/* Product Image Slider */}
         {product.images?.length > 0 && <ImageSlider images={product.images} />}

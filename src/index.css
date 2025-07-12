@@ -17,17 +17,17 @@ body {
 
 
 @font-face {
-  font-family: 'Yekan';
-  src: local('Yekan'), url(./fonts/Yekan.woff2) format('truetype');
+  font-family: 'Mj_Faraz';
+  src: local('Mj_Faraz'), url(./fonts/Mj_Faraz.ttf) format('truetype');
   /* Change font    */
 }
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Yekan", sans-serif;
+  font-family: "Mj_Faraz", sans-serif;
   -webkit-font-feature-settings: "numr";
     font-feature-settings: "numr";
     font-variant-numeric: arabic-indic; /* استاندارد جدیدتر */
-  /* font-weight: 600; */
+  font-weight: 600;
 }

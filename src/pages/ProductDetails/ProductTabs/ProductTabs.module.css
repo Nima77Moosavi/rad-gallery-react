@@ -3,7 +3,7 @@
 .rightContainer {
     width: 70%;
     border-radius: 20px;
-    background-color: #f8f9fa;
+    background-color: var(--light-color);
     margin-right: 2%;
   }
   
@@ -14,7 +14,7 @@
     text-align: right;
     padding: 0 1rem;
     direction: rtl;
-    background-color: #f8f9fa;
+    background-color: var(--light-color);
     position: sticky;
     top: 60px;
     z-index: 1000;
@@ -26,7 +26,8 @@
     width: max-content;
     flex: 0 0 auto;
     scroll-snap-align: start;
-    color: rgb(98, 102, 109);
+    color: var(--text-color
+    );
     background: none;
     border: none;
     padding: 0.8rem 2.5rem;
@@ -126,8 +127,8 @@
   
   .showMoreButton {
     width: max-content;
-    background-color: #023047;
-    color: white;
+    background-color: var(--green-color);
+  color: var(--light-color);
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 5px;

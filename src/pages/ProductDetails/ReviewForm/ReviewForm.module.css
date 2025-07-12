@@ -88,8 +88,8 @@
 }
 
 .compactButton {
-  background-color: #023047;
-  color: white;
+  background-color: var(--green-color);
+  color: var(--light-color);
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 5px;
@@ -99,7 +99,8 @@
 }
 
 .compactButton:hover {
-  background-color: #023047d9;
+  background-color: var(--green-color);
+  color: var(--light-color);
 }
 
 .compactButton:disabled {

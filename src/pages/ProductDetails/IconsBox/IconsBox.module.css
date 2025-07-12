@@ -15,7 +15,7 @@
   
   .iconsContainer .icon {
     font-size: 45px;
-    color: #023047;
+    color: var(--green-color);
     cursor: pointer;
     border: #33333360 solid 1px;
     border-radius: 5px;

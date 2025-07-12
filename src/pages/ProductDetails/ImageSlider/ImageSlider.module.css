@@ -5,7 +5,7 @@
     margin:40px auto;
     overflow: hidden;
     border-radius: 20px;
-    background-color: #f8f9fa;
+    background-color: var(--light-color);
   }
   
   .sliderImage {
@@ -22,8 +22,8 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: #888;
-    color: white;
+    background-color: var(--green-color);
+  color: var(--light-color);
     border: none;
     font-size: 28px;
     cursor: pointer;

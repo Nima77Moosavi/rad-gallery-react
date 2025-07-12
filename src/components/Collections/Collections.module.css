@@ -8,8 +8,8 @@
 
 /* Section title */
 .sectionTitle {
-  font-size: 28px;
-  color: #023047;
+  font-size: 32px;
+  color: var(--text-color);
   margin-bottom: 20px;
 }
 

@@ -61,7 +61,7 @@
   }
   
   .progress::-webkit-progress-value {
-    background-color: #4caf50;
+    background-color: var(--green-color);
     border-radius: 10px;
   }
   

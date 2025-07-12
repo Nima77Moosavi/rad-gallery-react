@@ -12,7 +12,7 @@
 }
 
 .priceContainer p {
-  color: #023047;
+  color: var(--text-color);
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
@@ -24,7 +24,7 @@
 }
 
 .priceContainer .icon {
-  color: #023047;
+  color: var(--primary-color);
   vertical-align: bottom;
   /* تغییرات ریسپانسیو */
   font-size: clamp(1rem, 3.5vw, 1.2rem); /* آیکون ریسپانسیو */
@@ -40,23 +40,23 @@
 .price {
   width: auto;
   background-color: #ffffff;
-  color: #023047;
-  border: 0.5px solid rgb(109, 224, 240);
+  color: var(--text-color);
+  border: 0.5px solid var(--green-color);
   padding: 0.5rem 1.5rem;
   /* تغییرات ریسپانسیو */
-  font-size: clamp(18px, 4.5vw, 22px); /* قیمت ریسپانسیو */
+  font-size: 24px; /* قیمت ریسپانسیو */
   border-radius: 10px;
   margin: 10px 0;
   cursor: pointer;
 }
 
 .addToCart {
-  background-color: #ffd700;
-  color: #023047;
+  background-color: var(--green-color);
+  color: var(--light-color);
   border: none;
   padding: 1rem 1.5rem;
   /* تغییرات ریسپانسیو */
-  font-size: clamp(16px, 4.5vw, 20px); /* دکمه ریسپانسیو */
+  font-size:24px; /* دکمه ریسپانسیو */
   font-weight: 500;
   border-radius: 10px;
   cursor: pointer;
@@ -68,8 +68,8 @@
 }
 
 .addToCart:hover {
-  background-color: #023047;
-  color: #ffd700;
+  background-color: var(--green-color);
+ 
 }
 
 /* مدیا کوئری برای موبایل */
