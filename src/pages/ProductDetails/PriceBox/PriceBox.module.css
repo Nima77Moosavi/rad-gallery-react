@@ -1,83 +1,180 @@
-/* PriceBox.module.css */
-.priceContainer {
-  background-color: white;
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #1e40af;
+  --success-color: #16a34a;
+  --light-gray: #f3f4f6;
+  --medium-gray: #e5e7eb;
+  --dark-gray: #6b7280;
+  --text-color: #374151;
+  --border-color: #d1d5db;
+  --hover-color: #f9fafb;
+  --selected-color: #f0f0f0;
+}
+
+.priceCard {
+  background: #ffffff;
   width: 95%;
-  border-radius: 20px;
-  margin: 10px auto;
-  padding: 1rem;
-  text-align: center;
+  max-width: 420px;
+  border-radius: 14px;
+  margin: 20px auto;
+  padding: 1.8rem;
   direction: rtl;
-  /* تغییرات ریسپانسیو */
-  max-width: 500px; /* محدودیت عرض برای صفحه‌های بزرگ */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  font-family: 'Yekan', 'Segoe UI', Tahoma, sans-serif;
+  border: 1px solid var(--medium-gray);
 }
 
-.priceContainer p {
-  color: var(--text-color);
+.selectorGroup {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.selectorLabel {
   display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 8px 0;
-  /* تغییرات ریسپانسیو */
-  font-size: clamp(14px, 3.5vw, 16px); /* فونت ریسپانسیو */
-  gap: 6px;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 
-.priceContainer .icon {
-  color: var(--primary-color);
-  vertical-align: bottom;
-  /* تغییرات ریسپانسیو */
-  font-size: clamp(1rem, 3.5vw, 1.2rem); /* آیکون ریسپانسیو */
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-.inventory,
-.inventory .icon {
-  color: rgb(220 38 38);
-}
-
-.price {
-  width: auto;
-  background-color: #ffffff;
+.selectorTitle {
+  font-size: 0.92rem;
   color: var(--text-color);
-  border: 0.5px solid var(--green-color);
-  padding: 0.5rem 1.5rem;
-  /* تغییرات ریسپانسیو */
-  font-size: 24px; /* قیمت ریسپانسیو */
+  font-weight: 600;
+  padding-right: 0.6rem;
+}
+
+.selector {
+  width: 100%;
+  padding: 0.9rem 1.2rem 0.9rem 3rem;
+  border: 1px solid var(--border-color);
   border-radius: 10px;
-  margin: 10px 0;
+  font-size: 0.96rem;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: var(--light-gray);
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: left 1rem center;
+  background-size: 1.2rem;
+  text-align: right;
+  direction: rtl;
+  color: var(--text-color);
   cursor: pointer;
 }
 
-.addToCart {
+.dropdownOption {
+  background-color: white !important;
+  color: var(--text-color) !important;
+  padding-right: 15px !important;
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+.selector option:checked,
+.selector option:focus {
+  background-color: var(--selected-color) !important;
+  color: var(--text-color) !important;
+}
+
+/* استایل‌های مرورگرهای مختلف */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+ 
+  .selector option {
+    background-color: white !important;
+    color: var(--text-color) !important;
+  }
+}
+
+@-moz-document url-prefix() {
+  .selector {
+    color: var(--text-color);
+    background-color: var(--light-gray);
+  }
+  .selector option {
+    background-color: white !important;
+    color: var(--text-color) !important;
+  }
+}
+
+.infoSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.8rem 0;
+  padding: 1.2rem 0;
+  border-top: 1px dashed var(--medium-gray);
+  border-bottom: 1px dashed var(--medium-gray);
+}
+
+.inventoryBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background-color: rgba(22, 163, 74, 0.08);
+  padding: 0.6rem 1rem;
+  border-radius: 50px;
+  color: var(--success-color);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.inventoryIcon {
+  font-size: 1.15rem;
+}
+
+.priceTag {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-color);
+  letter-spacing: -0.5px;
+}
+
+.ctaButton {
+  width: 100%;
+  padding: 1.1rem;
   background-color: var(--green-color);
   color: var(--light-color);
   border: none;
-  padding: 1rem 1.5rem;
-  /* تغییرات ریسپانسیو */
-  font-size:24px; /* دکمه ریسپانسیو */
-  font-weight: 500;
   border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s;
-  width: auto;
-  margin: 10px 0;
-  /* تغییرات ریسپانسیو */
-  min-width: 150px; /* حداقل عرض برای دکمه */
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.addToCart:hover {
+.ctaButton:hover {
   background-color: var(--green-color);
- 
+  color: var(--light-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(37, 99, 235, 0.2);
 }
 
-/* مدیا کوئری برای موبایل */
+.ctaButton:disabled {
+  background: var(--medium-gray);
+  color: var(--dark-gray);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
 @media (max-width: 480px) {
-  .priceContainer {
-    padding: 0.8rem;
+  .priceCard {
+    padding: 1.4rem;
+    border-radius: 12px;
   }
-  .price, .addToCart {
-    padding: 0.7rem 1.2rem;
+  
+  .priceTag {
+    font-size: 1.4rem;
+  }
+  
+  .ctaButton {
+    padding: 1rem;
+    font-size: 1.05rem;
+  }
+  
+  .selector {
+    padding: 0.8rem 1rem 0.8rem 2.8rem;
+    font-size: 0.94rem;
   }
 }
