@@ -117,7 +117,7 @@ const ProductDetails = () => {
     const fetchProduct = async () => {
       try {
         const response = await fetch(
-          `https://kimiatoranj-api.liara.run/api/store/products/${id}`
+          `https://rad-gallery-api.liara.run/api/store/products/${id}`
         );
         if (!response.ok) throw new Error("Network error");
 

@@ -11,14 +11,18 @@ const Collections = () => {
     const fetchCollections = async () => {
       try {
         const response = await fetch(
-          "https://kimiatoranj-api.liara.run/api/store/collections/"
+          "https://rad-gallery-api.liara.run/api/store/collections/"
         );
         if (!response.ok) {
           throw new Error("مشکل در دریافت اطلاعات");
         }
         const data = await response.json();
         if (Array.isArray(data)) {
-          setCollections(data);
+          // فقط کالکشن‌های والد را فیلتر می‌کنیم (parent: null)
+          const parentCollections = data.filter(
+            (collection) => collection.parent === null
+          );
+          setCollections(parentCollections);
         }
       } catch (err) {
         setError(err.message);
@@ -39,18 +43,6 @@ const Collections = () => {
     return <div className={styles.empty}>هیچ کالکشنی یافت نشد.</div>;
   }
 
-  // Calculate the number of rows ("3" rows for this example)
-  // If you want a responsive design, you might instead use CSS grid auto-fit containers.
-  const rows = 3;
-  // Split collections data into 3 equal parts (or close to equal)
-  const collectionsPerRow = Math.ceil(collections.length / rows);
-  const rowsData = Array.from({ length: rows }, (_, rowIndex) =>
-    collections.slice(
-      rowIndex * collectionsPerRow,
-      (rowIndex + 1) * collectionsPerRow
-    )
-  );
-
   return (
     <div className={styles.collections}>
       <h2 className={styles.sectionTitle}>دسته‌بندی محصولات</h2>
@@ -60,7 +52,12 @@ const Collections = () => {
             to={`/shop?collection=${encodeURIComponent(collection.title)}`}
             key={collection.id}
             className={styles.collectionCard}
-            style={{ backgroundImage: `url(${collection.image})` }}
+            style={{
+              backgroundImage: collection.image
+                ? `url(${collection.image})`
+                : "none",
+              backgroundColor: collection.image ? "transparent" : "#f5f5f5", // Fallback color
+            }}
           >
             <div className={styles.overlay}>
               <div className={styles.description}>
