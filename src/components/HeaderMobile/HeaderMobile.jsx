@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { IoMenu, IoSearch, IoClose } from "react-icons/io5";
 import styles from "./HeaderMobile.module.css";
 import Banner from "../Banner/Banner";
-import image1 from "../../assets/banner11.png";
+import image1 from "../../assets/7.png";
 
 const HeaderMobile = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,12 +26,12 @@ const HeaderMobile = () => {
   return (
     <header className={styles.headerMobile}>
       <div className={styles.logoContainer}>
-          <img src={image1} alt="کیمیاترنج" className={styles.logo} />
+          <img src={image1} alt="راد گالری" className={styles.logo} />
         </div>
       {/* Center: Search box */}
       <div className={styles.searchContainer}>
         <div className={styles.searchBox} dir="rtl">
-          <input type="text" placeholder="در کیمیاترنج جستجو کنید ..." />
+          <input type="text" placeholder="در رادگالری جستجو کنید ..." />
           <IoSearch className={styles.searchIcon} />
         </div>
       </div>
@@ -44,7 +44,7 @@ const HeaderMobile = () => {
             onClick={() => setIsMenuOpen(true)}
             aria-label="Navigation menu"
           >
-            <IoMenu size={56} color="#002147" />
+            <IoMenu size={45}  />
           </button>
         </div>
       )}
@@ -58,7 +58,7 @@ const HeaderMobile = () => {
               onClick={() => setIsMenuOpen(false)}
               aria-label="Close menu"
             >
-              <IoClose size={36} color="#023047" />
+              <IoClose size={26}  />
             </button>
             <ul className={styles.menuList}>
               <li className={styles.menuItem}>

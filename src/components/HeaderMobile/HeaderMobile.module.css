@@ -10,7 +10,7 @@
   z-index: 1000;
 }
 .logoContainer {
-  width: 120px;
+  width: 80px;
 }
 
 .logo {
@@ -31,7 +31,7 @@
   width: 100%;
   padding: 8px 10px;
   font-size: 12px;
-  border: 1px solid #023047;
+  border: 1px solid var(--green-color);
   border-radius: 25px;
 }
 
@@ -41,7 +41,7 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 20px;
-  color: #002147;
+  color: var(--green-color);
   pointer-events: none;
 }
 
@@ -62,6 +62,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--green-color);
 }
 
 .hamburgerButton:hover {
@@ -100,6 +101,7 @@
   align-self: flex-end;
   margin-bottom: 5px;
   transition: transform 0.3s ease;
+  color: var(--primary-color);
 }
 
 .closeButton:hover {
@@ -120,7 +122,7 @@
   text-align: center;
   border-radius: 0px;
   background-color: #fff;
-  color: var(--primary-color);
+  color: var(--text-color);
   box-shadow: none;
   font-size: 18px;
 }
