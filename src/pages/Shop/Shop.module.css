@@ -14,6 +14,7 @@
 
 .collectionItem {
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
   gap: 0.8rem;
   padding: 0.8rem 1rem;
@@ -40,17 +41,18 @@
   justify-content: center;
   width: 1.8rem;
   height: 1.8rem;
-  color: #495057;
+  color: var(--green-color);
   font-size: 1.2rem;
   transition: all 0.2s ease;
 }
 
 .collectionToggle:hover {
-  color: #0066cc;
+  color: var(--green-color);
 }
 
 .collectionName {
-  font-size: 1.1rem; /* بزرگتر کردن فونت */
+  font-size: 1.3rem; /* بزرگتر کردن فونت */
+  font-weight: 600;
   color: #212529;
   flex: 1;
   display: flex;
@@ -61,7 +63,7 @@
 }
 
 .collectionName.activeCollection {
-  color: #0066cc;
+  color: var(--green-color);
   font-weight: 600;
 }
 
@@ -69,7 +71,7 @@
   font-size: 0.85rem;
   color: #868e96;
   background-color: #e9ecef;
-  padding: 0.25rem 0.6rem;
+  padding: 0.25rem 0.5rem;
   border-radius: 50px;
 }
 
@@ -207,7 +209,41 @@
   font-size: 18px;
   margin-top: 20px;
 }
+.sortOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
 
+.sortButton {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: right;
+  transition: all 0.3s ease;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.sortButton:hover {
+  background-color: #e9ecef;
+  border-color: #adb5bd;
+}
+
+.activeSort {
+  background-color: var(--green-color);
+  color: white;
+}
+
+.activeSort:hover {
+  background-color: var(--green-color);
+}
 /* Mobile-specific styles */
 @media (max-width: 480px) {
   .container {
@@ -236,7 +272,7 @@
   }
 
   .filterToggleButton {
-    background-color: #023047;
+    background-color: var(--green-color);
     color: #fff;
     border: none;
     padding: 10px 15px;
@@ -271,6 +307,9 @@
     height: 400px;
     top: -180px;
     left: -180px;
+  }
+  .sortButton{
+    justify-content: flex-end;
   }
 }
 
