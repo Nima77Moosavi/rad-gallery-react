@@ -1,15 +1,4 @@
 /* Blog.module.css */
-.circle {
-  position: absolute;
-  left: -100px;
-  top: -300px;
-  width: 700px;
-  height: 700px;
-  background-color: rgba(128, 128, 128, 0.158);
-  border-radius: 50%;
-  z-index: 0;
-  margin-bottom: 100px;
-}
 
 .blogContainer {
   max-width: 1200px;
@@ -24,7 +13,7 @@
   text-align: center;
   font-size: 34px;
   margin-bottom: 50px;
-  color: #2c3e50;
+  color: var(--text-color);
   position: relative;
   padding-bottom: 15px;
 }
@@ -37,7 +26,7 @@
   transform: translateX(50%);
   width: 100px;
   height: 4px;
-  background: #40e0d0;
+  background: var(--green-color);
   border-radius: 2px;
 }
 
@@ -124,7 +113,7 @@
 .postTitle {
   font-size: 1.5rem;
   margin-bottom: 15px;
-  color: #2c3e50;
+  color: var(--text-color);
   position: relative;
   padding-bottom: 10px;
 }
@@ -136,13 +125,13 @@
   right: 0;
   width: 50px;
   height: 3px;
-  background: #40e0d0;
+  background: var(--green-color);
   border-radius: 2px;
 }
 
 .postContent {
   font-size: 1.1rem;
-  color: #555;
+  color: var(--text-color);
   line-height: 1.6;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -155,7 +144,7 @@
   display: flex;
   gap: 15px;
   margin-top: 15px;
-  color: #7f8c8d;
+  color: var(--text-color);
   font-size: 0.9rem;
 }
 
@@ -221,6 +210,7 @@
   }
 
   .postTitle {
+    color: var(--text-color);
     font-size: 1.6rem;
     padding-bottom: 8px;
   }

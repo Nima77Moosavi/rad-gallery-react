@@ -40,7 +40,7 @@ const Home = () => {
         <SpecialOffer />
         <SpecialProducts />
       </div>
-      <FeaturesLine />
+      {/* <FeaturesLine /> */}
       <Footer />
     </div>
   );

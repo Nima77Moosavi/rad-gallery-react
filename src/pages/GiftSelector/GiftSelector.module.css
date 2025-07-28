@@ -13,7 +13,7 @@
 .header {
   font-size: 28px;
   font-weight: bold;
-  color: #023047;
+  color: var(--text-color);
   margin-bottom: 30px;
 }
 
@@ -31,7 +31,8 @@
   gap: 10px;
   width: 80%;
   padding: 12px 20px;
-  border: 2px solid #023047;
+  border: 2px solid var(--green-color);
+  color: var(--text-color);
   border-radius: 8px;
   font-size: 20px;
   cursor: pointer;
@@ -39,18 +40,18 @@
 }
 
 .radioOption:hover {
-  background-color: #023047;
+  background-color: var(--green-color);
   color: #ffffff;
 }
 
 .radioOption input {
   /* Optionally hide the actual radio button if you want custom look, otherwise keep it */
   /* margin-right: 8px; */
-  accent-color: #023047; /* Modern browsers: set the color of radio */
+  accent-color: var(--green-color); /* Modern browsers: set the color of radio */
 }
 
 .submitButton {
-  background-color: #023047;
+  background-color: var(--green-color);
   color: #ffffff;
   border: none;
   padding: 12px 25px;
@@ -62,6 +63,3 @@
   width: 50%;
 }
 
-.submitButton:hover {
-  background-color: #01233d;
-}

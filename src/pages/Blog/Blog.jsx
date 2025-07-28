@@ -41,7 +41,6 @@ const Blog = () => {
 
   return (
     <>
-      <div className={styles.circle}></div>
       <Header />
       <div className={styles.blogContainer}>
         <h1 className={styles.title}>مقالات پربازدید</h1>
