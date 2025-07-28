@@ -12,7 +12,7 @@
 }
 
 .addressForm h3 {
-  color: #023047;
+  color: var(--text-color);
   font-size: 28px;
   margin-bottom: 30px;
   text-align: center;
@@ -28,7 +28,7 @@
   right: 0;
   width: 100px;
   height: 3px;
-  background-color: #40e0d0;
+  background-color: var(--green-color);
   right: 50%;
   transform: translateX(50%);
 }
@@ -53,7 +53,7 @@
 
 .formGroup label {
   /* font-weight: 500; */
-  color: #023047;
+  color: var(--text-color);
   font-size: 16px;
 }
 
@@ -71,7 +71,7 @@
 .formGroup input:focus,
 .formGroup textarea:focus {
   outline: none;
-  border-color: #40e0d0;
+  border-color: var(--green-color);
   box-shadow: 0 0 0 2px rgba(64, 224, 208, 0.2);
   background-color: #fff;
 }
@@ -87,8 +87,8 @@
 }
 
 .addressForm button {
-  background-color: #40e0d0;
-  color: #023047;
+  background-color: var(--green-color);
+  color: #fff;
   padding: 12px 30px;
   border: none;
   border-radius: 8px;
@@ -100,7 +100,6 @@
 }
 
 .addressForm button:hover {
-  background-color: #38b2a3;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }

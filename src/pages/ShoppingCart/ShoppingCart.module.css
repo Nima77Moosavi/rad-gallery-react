@@ -28,7 +28,7 @@
 
 /* Title Styles - Matching UserInfoForm */
 .cartTitle {
-  color: #023047;
+  color: var(--text-color);
   font-size: 30px;
   margin-bottom: 30px;
   text-align: center;
@@ -44,7 +44,7 @@
   right: 0;
   width: 100px;
   height: 3px;
-  background-color: #40e0d0;
+  background-color: var(--green-color);
   right: 50%;
   transform: translateX(50%);
 }
@@ -80,7 +80,7 @@
 
 .cartItem:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-color: #40e0d0;
+  border-color: var(--green-color);
   background-color: #fff;
 }
 
@@ -115,7 +115,7 @@
 
 .itemTitle {
   font-size: 18px;
-  color: #023047;
+  color: var(--text-color);
   margin: 0;
   font-weight: 600;
 }
@@ -132,11 +132,11 @@
   padding: 6px 12px;
   font-size: 16px;
   font-weight: bold;
-  color: #023047;
-  border: 1px solid rgba(64, 224, 208, 0.5);
+  color: #fff;
+  border:none;
   border-radius: 12px;
   margin: 10px 0 0 0;
-  background-color: rgba(64, 224, 208, 0.1);
+  background-color:var(--green-color);
 }
 
 /* Quantity Controls */
@@ -164,7 +164,7 @@
   padding: 5px 15px;
   font-size: 16px;
   background-color: white;
-  color: #023047;
+  color: var(--green-color);
 
 }
 
@@ -178,7 +178,7 @@
   cursor: pointer;
   background-color: #f9f9f9;
   transition: all 0.2s;
-  color: #023047;
+  color: var(--green-color);
   text-align: center;
   border-radius: 50%; /* تغییر یافته به دایره کامل */
   padding: 0; /* تغییر یافته */
@@ -189,12 +189,11 @@
 }
 
 .plusButton {
-  color: #40e0d0;
+  color: var(--green-color);
   background-color: inherit;
 }
 
 .plusButton:hover {
-  color: #38b2a3;
   background-color: rgba(64, 224, 208, 0.1);
 }
 
@@ -250,15 +249,15 @@
   gap: 15px;
   font-size: 20px;
   font-weight: bold;
-  color: #023047;
+  color: var(--green-color);
 }
 
 .totalPrice span:last-child {
-  color: #023047;
+  color: var(--green-color);
 }
 
 .checkoutButton {
-  background-color: var(--primary-color);
+  background-color: var(--green-color);
   color: #fff;
   padding: 12px 30px;
   border: none;
@@ -271,7 +270,6 @@
 }
 
 .checkoutButton:hover {
-  background-color: var(--primary-color);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }

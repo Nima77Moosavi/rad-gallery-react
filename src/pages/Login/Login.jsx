@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // اضافه شده
 import styles from "./Login.module.css";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/7.png";
 import { API_URL } from "../../config";
 import axios from "axios";
 import FooterMenu from "../../components/FooterMenu/FooterMenu";
@@ -112,7 +112,7 @@ const Login = () => {
         <p className={styles.welcome}>
           سلام به{" "}
           <span className={styles.brand} onClick={() => navigate("/")}>
-            کیمیا ترنج
+            راد گالری
           </span>{" "}
           خوش آمدید
         </p>
@@ -195,7 +195,7 @@ const Login = () => {
           <a href="/terms" className={styles.link}>
             شرایط و قوانین
           </a>{" "}
-          کیمیا ترنج است
+          راد گالری  است
         </p>
       </div>
       <FooterMenu />

@@ -7,7 +7,7 @@
     margin: 0 auto;
 }
 .ordersPage h2 {
-  color: #023047;
+  color: var(--text-color);
   font-size: 30px;
   margin-bottom: 30px;
   text-align: center;
@@ -22,7 +22,7 @@
     right: 0;
     width: 100px;
     height: 3px;
-    background-color: #40e0d0;
+    background-color: var(--green-color);
     right: 50%;
     transform: translateX(50%);
 }

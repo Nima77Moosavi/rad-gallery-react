@@ -15,7 +15,7 @@
 
 /* Title Styles - Consistent with other components */
 .reviews h3 {
-  color: #023047;
+  color: var(--text-color);
   font-size: 28px;
   margin-bottom: 30px;
   text-align: center;
@@ -31,7 +31,7 @@
   right: 0;
   width: 100px;
   height: 3px;
-  background-color: #40e0d0;
+  background-color: var(--green-color);
   right: 50%;
   transform: translateX(50%);
 }
@@ -47,7 +47,7 @@
 }
 
 .reviews li {
-  color: #023047;
+  color: var(--text-color);
   font-size: 20px;
   direction: rtl;
   padding: 25px;
@@ -60,14 +60,14 @@
 
 .reviews li:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-color: #40e0d0;
+  border-color: var(--green-color);
   background-color: #fff;
   transform: translateY(-2px);
 }
 
 /* Review Content */
 .reviews li strong {
-  color: #023047;
+  color: var(--text-color);
   font-weight: 600;
 }
 

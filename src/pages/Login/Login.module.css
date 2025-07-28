@@ -4,7 +4,7 @@
   position: relative;
   min-height: 100vh;
   width: 100vw;
-  background: url(../../assets/login.png) no-repeat center center/cover;
+  /* background: url(../../assets/login.png) no-repeat center center/cover; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,7 +19,7 @@
   padding: 40px;
   margin-bottom: 100px; /* Reserve space at bottom for FooterMenu */
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px var(--green-color);
   text-align: center;
   width: 100%;
   max-width: 400px;
@@ -33,7 +33,7 @@
 
 /* لوگو */
 .logoImage {
-  width: 60px;
+  width: 150px;
   height: auto;
 }
 
@@ -42,12 +42,12 @@
   font-size: 18px;
   margin-top: 25px;
   margin-bottom: 25px;
-  color: #023047;
+  color: #37474e;
 }
 
 /* نام برند */
 .brand {
-  color: #023047;
+  color: var(--primary-color);
   cursor: pointer;
   font-weight: bold;
 }
@@ -55,7 +55,7 @@
 /* پیام راهنما */
 .instruction {
   font-size: 16px;
-  color: #023047;
+  color: #414b50;
   margin-bottom: 25px;
 }
 
@@ -76,7 +76,7 @@
 }
 
 .input:focus {
-  border-color: #40e0d0;
+  border-color: var(--green-color);
   outline: none;
 }
 
@@ -84,7 +84,7 @@
 .button {
   width: 100%;
   padding: 12px;
-  background-color: var(--primary-color);
+  background-color: var(--green-color);
   color: white;
   border: none;
   border-radius: 8px;
@@ -99,7 +99,7 @@
 }
 
 .button:hover {
-  background-color: #40e0d0;
+  background-color:var(--green-color);
 }
 
 .button:disabled {
@@ -135,14 +135,14 @@
 /* تایمر */
 .timer {
   font-size: 17px;
-  color: #023047;
+  color: var(--text-color);
   margin-top: 10px;
 }
 
 /* گزینه ویرایش شماره موبایل */
 .editPhone {
   font-size: 14px;
-  color: #40e0d0;
+  color: var(--text-color);
   cursor: pointer;
   margin-bottom: 15px;
   margin-top: 5px;
@@ -155,14 +155,14 @@
 /* قوانین (جمله پذیرش شرایط) */
 .terms {
   font-size: 12px;
-  color: #023047;
+  color: var(--text-color);
   margin-top: auto;
   padding-bottom: 0px; /* اضافه کردن فاصله اضافی در انتهای باکس */
 }
 
 /* لینک‌ها */
 .link {
-  color: #023047;
+  color: var(--green-color);
   text-decoration: none;
 }
 

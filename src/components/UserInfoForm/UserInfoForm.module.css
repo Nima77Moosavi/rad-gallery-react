@@ -9,7 +9,7 @@
 }
 
 .title {
-  color: #023047;
+  color: var(--text-color);
   font-size: 30px;
   margin-bottom: 30px;
   text-align: center;
@@ -25,7 +25,7 @@
   right: 0;
   width: 100px;
   height: 3px;
-  background-color: #40e0d0;
+  background-color: var(--green-color);
   right: 50%;
   transform: translateX(50%);
 }
@@ -45,7 +45,7 @@
 
 .inputGroup label {
   /* font-weight: 500; */
-  color: #023047;
+  color: var(--text-color);
   font-size: 16px;
 }
 
@@ -68,7 +68,7 @@
 .inputGroup textarea:focus,
 .inputGroup select:focus {
   outline: none;
-  border-color: #40e0d0;
+  border-color: var(--green-color);
   box-shadow: 0 0 0 2px rgba(64, 224, 208, 0.2);
   background-color: #fff;
 }
@@ -139,16 +139,16 @@
 }
 
 .genderOption:hover {
-  border-color: #40e0d0;
+  border-color: var(--green-color);
 }
 
 .genderInput:checked + .genderOption {
-  border-color: #40e0d0;
+  border-color: var(--green-color);
   background-color: rgba(64, 224, 208, 0.1);
 }
 
 .genderIcon {
-  color: #023047;
+  color: var(--green-color);
   font-size: 24px;
 }
 
@@ -167,20 +167,20 @@
 }
 
 .submitButton {
-  background-color: #40e0d0;
-  color: #023047;
+  background-color: var(--green-color);
+  color: #fff;
   padding: 12px 30px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 500;
   width: min(200px, 100%);
 }
 
 .submitButton:hover {
-  background-color: #38b2a3;
+  background-color: var(--green-color);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }

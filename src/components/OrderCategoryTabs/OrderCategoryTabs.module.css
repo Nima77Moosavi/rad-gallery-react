@@ -27,7 +27,7 @@
 
 .tabs button.active {
   
-    background-color: #40e0d0;
-    color: #023047;
+    background-color: var(--green-color);
+    color: #fff;
   
 }

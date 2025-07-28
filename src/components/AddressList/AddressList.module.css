@@ -11,7 +11,7 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .addressList h2 {
-  color: #023047;
+  color: var(--text-color);
   font-size: 28px;
   margin-bottom: 30px;
   text-align: center;
@@ -27,7 +27,7 @@
   right: 0;
   width: 100px;
   height: 3px;
-  background-color: #40e0d0;
+  background-color: var(--green-color);
   right: 50%;
   transform: translateX(50%);
 }
@@ -45,7 +45,7 @@
 
 .loading {
   text-align: center;
-  color: #023047;
+  color: var(--text-color);
   padding: 2rem;
   font-size: 1.1rem;
   display: flex;
@@ -89,7 +89,7 @@
 }
 
 .addressItem:hover {
-  border-color: #a5f3fc;
+  border-color: var(--green-color);
   box-shadow: 0 4px 16px rgba(2, 132, 199, 0.08);
   background-color: #fff;
   transform: translateY(-3px);
@@ -102,7 +102,7 @@
   right: 0;
   width: 4px;
   height: 0;
-  background: linear-gradient(to bottom, #06b6d4, #3b82f6);
+  background: var(--green-color);
   transition: height 0.4s ease;
 }
 

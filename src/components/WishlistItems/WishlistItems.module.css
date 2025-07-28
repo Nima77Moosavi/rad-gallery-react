@@ -15,7 +15,7 @@
 
 /* Title Styles - Matching ShoppingCart */
 .wishlist h3 {
-  color: #023047;
+  color: var(--text-color);
   font-size: 28px;
   margin-bottom: 30px;
   text-align: center;
@@ -31,7 +31,7 @@
   right: 0;
   width: 100px;
   height: 3px;
-  background-color: #40e0d0;
+  background-color: var(--green-color);
   right: 50%;
   transform: translateX(50%);
 }
@@ -48,7 +48,7 @@
 
 .wishlist li {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   align-items: center;
   gap: 20px;
   padding: 20px;
@@ -61,7 +61,7 @@
 
 .wishlist li:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-color: #40e0d0;
+  border-color: var(--green-color);
   background-color: #fff;
 }
 
@@ -90,28 +90,27 @@
 .itemDetails {
   flex-grow: 1;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   justify-content: space-between;
   gap: 8px;
 }
 
 .itemName {
   font-size: 18px;
-  color: #023047;
+  color: var(--text-color);
   margin: 0;
   font-weight: 600;
 }
 
 .itemPrice {
   height: min-content;
-  font-size: 16px;
-  color: #023047;
+  font-size: 20px;
+  color:  var(--green-color);
   font-weight: bold;
-  padding: 5px 10px;
-  border: 1px solid rgba(64, 224, 208, 0.5);
+  padding: 2px 10px;
+  border: 1px solid var(--green-color);
   border-radius: 12px;
   width: max-content;
-  background-color: rgba(64, 224, 208, 0.1);
 }
 
 /* Delete Button */
@@ -137,20 +136,18 @@
 
 .addToCart {
   height: min-content;
-  font-size: 16px;
-  color: #023047;
-  font-weight: bold;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  color: #fff;
   padding: 5px 10px;
-  border: 1px solid rgba(64, 224, 208, 0.5);
   border-radius: 12px;
   width: max-content;
-  background-color: rgba(64, 224, 208, 0.1);
+  background-color: var(--green-color);
+  cursor: pointer;
 }
 
-.addToCart:hover {
-  background-color: #023047;
-  color: #ffd700;
-}
+
 
 /* Empty Message */
 .emptyMessage {
