@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Collections.module.css";
+import CollectionCardSkeleton from "./CollectionCard.Skeleton"; // ← new
 
 const Collections = () => {
   const [collections, setCollections] = useState([]);
@@ -45,19 +46,20 @@ const Collections = () => {
 
   return (
     <div className={styles.collections}>
-      <h2 className={styles.sectionTitle}>دسته‌بندی محصولات</h2>
-      <div className={styles.row}>
-        {collections.map((collection) => (
+    <h2 className={styles.sectionTitle}>دسته‌بندی محصولات</h2>
+    <div className={styles.row}>
+      {loading
+        ? Array.from({ length: 9 }).map((_, i) => (
+          <CollectionCardSkeleton key={i} />
+        ))
+        : collections.map((collection) => (
           <Link
-            to={`/shop?collection=${encodeURIComponent(collection.title)}`}
+            to={collection.landing_page_url || `/shop?collection=${encodeURIComponent(
+              collection.title
+            )}`}
             key={collection.id}
             className={styles.collectionCard}
-            style={{
-              backgroundImage: collection.image
-                ? `url(${collection.image})`
-                : "none",
-              backgroundColor: collection.image ? "transparent" : "#f5f5f5", // Fallback color
-            }}
+            style={{ backgroundImage: `url(${collection.image})` }}
           >
             <div className={styles.overlay}>
               <div className={styles.description}>
@@ -66,8 +68,8 @@ const Collections = () => {
             </div>
           </Link>
         ))}
-      </div>
     </div>
+  </div>
   );
 };
 
