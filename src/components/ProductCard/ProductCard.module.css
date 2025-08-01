@@ -67,6 +67,62 @@
     color: var(--primary-color);
 }
 
+/* استایل‌های اسکلتون */
+.skeleton {
+    background-color: #e0e0e0;
+    animation: pulse 1.5s infinite ease-in-out;
+    border-radius: 20px;
+  }
+  
+  .skeletonText {
+    background-color: #e0e0e0;
+    animation: pulse 1.5s infinite ease-in-out;
+    height: 20px;
+    width: 80%;
+    margin: 10px auto;
+    border-radius: 4px;
+  }
+  
+  .skeletonButton {
+    background-color: #e0e0e0;
+    animation: pulse 1.5s infinite ease-in-out;
+    height: 30px;
+    width: 90%;
+    margin: 0 auto 12px;
+    border-radius: 20px;
+  }
+  
+  @keyframes pulse {
+    0% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 0.6;
+    }
+  }
+  
+  /* تغییرات رسپانسیو برای اسکلتون */
+  @media (max-width: 768px) {
+    .skeletonText {
+      height: 16px;
+    }
+    .skeletonButton {
+      height: 25px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .skeletonText {
+      height: 14px;
+    }
+    .skeletonButton {
+      height: 20px;
+    }
+  }
+
 /* Responsive styling for tablet-sized screens */
 @media (max-width: 768px) {
     .card {

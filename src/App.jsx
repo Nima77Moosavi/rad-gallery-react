@@ -26,6 +26,8 @@ import CheckoutPage from "./pages/CheckoutPage/CheckoutPage.jsx";
 import Shop from "./pages/Shop/Shop.jsx";
 import GiftSelector from "./pages/GiftSelector/GiftSelector.jsx";
 import ScrollToTop from "./utils/ScrollToTop.jsx";
+import CollectionProducts from "./pages/CollectionProducts/CollectionProducts.jsx";
+import Collections from "./components/Collections/Collections.jsx";
 
 const App = () => {
   return (
@@ -43,6 +45,8 @@ const App = () => {
         <Route path="/bestsellersPage" element={<BestsellersPage />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/gift-selector" element={<GiftSelector />} />
+        <Route path="/collections/:collectionId" element={<CollectionProducts />} />
+        <Route path="/collections" element={<Collections />} />
         {/* Protected UserPanel Routes */}
         <Route
           path="/user-panel/*"
