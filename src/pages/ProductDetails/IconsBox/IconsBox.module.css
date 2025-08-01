@@ -1,0 +1,29 @@
+/* IconsBox.module.css */
+.iconsContainer {
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 0 auto;
+    margin-top: 10px;
+    justify-content: center;
+    background-color: white;
+    padding: 20px;
+    border: rgba(128, 128, 128, 0.158) solid 1px;
+    border-radius: 20px;
+  }
+  
+  .iconsContainer .icon {
+    font-size: 45px;
+    color: var(--green-color);
+    cursor: pointer;
+    border: #33333360 solid 1px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .iconsContainer .icon:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }

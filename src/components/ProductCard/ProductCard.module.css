@@ -1,0 +1,113 @@
+.card {
+    width: 200px;
+    background-color: white; /* Uses white from your global variable */
+    height: 320px;
+    border-radius: 20px;
+    /* border: 0.5px solid var(--primary-color); Luxurious gold border */
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+    box-shadow: 0 4px 12px var(--green-color);
+    margin-bottom: 20px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    transition: 0.5s ease;
+}
+
+.cardLink {
+    text-decoration: none;
+    color: inherit;
+}
+
+.img {
+    width: 96%;
+    height: 190px;
+    padding: 2%;
+    border-radius: 20px;
+    margin: 0 auto;
+    object-fit: cover;
+}
+
+.title {
+    height: 70px;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-color); /* Luxurious deep blue */
+    padding: 0;
+    vertical-align: middle;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.price {
+    width: 90%;
+    background-color: var(--green-color);
+    color: var(--light-color); /* Blue background for the price button */
+    border-radius: 20px;
+    border: none;
+    padding: 0.5px 10px;
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+    direction: rtl;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.price:hover {
+    background-color: var(--secondary-color); /* Gold on hover */
+    color: var(--primary-color);
+}
+
+/* Responsive styling for tablet-sized screens */
+@media (max-width: 768px) {
+    .card {
+        width: 150px;
+        height: max-content;
+    }
+    .img {
+        width: 80%;
+        height: 60%;
+    }
+    .title {
+        font-size: 16px;
+    }
+    .price {
+        font-size: 18px;
+    }
+}
+
+/* Responsive styling for mobile screens */
+@media (max-width: 480px) {
+    .card {
+        width: 110px;
+        height: 220px;
+        border-radius: 10px;
+    }
+    .img {
+        width: 98%;
+        height: 120px;
+        border-radius: 10px;
+    }
+    .title {
+        height: 50px;
+        font-size: 14px;
+        margin-bottom: 1px;
+    }
+    .price {
+        width: 98%;
+        font-size: 12px;
+        font-weight: lighter;
+        letter-spacing: 1px;
+        padding: 3px 1px;
+        border-radius: 5px;
+    }
+}

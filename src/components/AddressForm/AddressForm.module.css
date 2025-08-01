@@ -1,0 +1,147 @@
+/* AddressForm.module.css */
+
+.addressForm {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  direction: rtl;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.addressForm h3 {
+  color: var(--text-color);
+  font-size: 28px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.addressForm h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  height: 3px;
+  background-color: var(--green-color);
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.error {
+  color: #ff4757;
+  background-color: rgba(255, 71, 87, 0.1);
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  border: 1px solid rgba(255, 71, 87, 0.3);
+  font-size: 14px;
+  text-align: center;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  /* font-weight: 500; */
+  color: var(--text-color);
+  font-size: 16px;
+}
+
+.formGroup input,
+.formGroup textarea {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s;
+  background-color: #f9f9f9;
+  width: 100%;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: var(--green-color);
+  box-shadow: 0 0 0 2px rgba(64, 224, 208, 0.2);
+  background-color: #fff;
+}
+
+.formGroup input:hover,
+.formGroup textarea:hover {
+  border-color: #aaa;
+}
+
+.formGroup textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.addressForm button {
+  background-color: var(--green-color);
+  color: #fff;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 20px;
+  font-weight: 600;
+  width: min(200px, 100%);
+}
+
+.addressForm button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.addressForm button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .addressForm {
+    padding: 20px;
+  }
+  
+  .addressForm h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .formGroup {
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .addressForm h3 {
+    font-size: 22px;
+  }
+  
+  .addressForm h3::after {
+    width: 80px;
+  }
+  
+  .formGroup input,
+  .formGroup textarea {
+    padding: 10px 12px;
+  }
+  
+  .addressForm button {
+    padding: 10px 20px;
+  }
+}

@@ -1,0 +1,28 @@
+.ordersPage{
+    background-color: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    max-width: 800px;
+    min-height: 100vh;
+    margin: 0 auto;
+}
+.ordersPage h2 {
+  color: var(--text-color);
+  font-size: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  /* font-weight: 600; */
+  position: relative;
+  padding: 20px;
+}
+.ordersPage h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100px;
+    height: 3px;
+    background-color: var(--green-color);
+    right: 50%;
+    transform: translateX(50%);
+}

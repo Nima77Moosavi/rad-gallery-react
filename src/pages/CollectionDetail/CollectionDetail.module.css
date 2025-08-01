@@ -1,0 +1,173 @@
+.circle {
+  position: absolute;
+  left: -100px;
+  top: -300px;
+  width: 700px;
+  height: 700px;
+  background-color: rgba(128, 128, 128, 0.158);
+  border-radius: 50%;
+  z-index: 0;
+  margin-bottom: 100px;
+}
+.title {
+  text-align: center;
+  color: #023047;
+  font-size: 24px;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+}
+.productContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  justify-items: center;
+  margin: 20px auto;
+  width: 70%;
+  gap: 20px;
+  z-index: 2;
+}
+.sidebarContainer {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  gap: 50px;
+}
+.collections {
+  padding: 0 40px;
+  text-align: right;
+}
+.collectionsTitle,
+.sortTitle {
+  width: max-content;
+  justify-self: center;
+  background-color: #ffed00;
+  color: #023047;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: 100;
+}
+.collections p {
+  font-size: 20px;
+  padding: 10px 0;
+  cursor: pointer;
+}
+.collections p:hover,
+.sort p:hover {
+  transform: translateX(-5px);
+  transition: 0.2s ease;
+}
+.sort {
+  width: 80%;
+  background-color: #ffed00;
+  border-radius: 20px;
+  padding: 20px 10px;
+  align-self: center;
+}
+.sort p {
+  padding: 10px 0;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* لپ‌تاپ و کوچکتر (max-width: 1200px) */
+@media (max-width: 1200px) {
+  .circle {
+    width: 600px;
+    height: 600px;
+    top: -250px;
+    left: -120px;
+  }
+}
+
+/* تبلت (max-width: 768px) */
+@media (max-width: 768px) {
+  .circle {
+    width: 550px;
+    height: 550px;
+    top: -250px;
+    left: -150px;
+  }
+  .title {
+    position: relative;
+    top: -200px;
+  }
+  .container {
+    position: relative;
+    top: -200px;
+  }
+  .collections {
+    padding: 0 10px;
+  }
+  .collectionsTitle,
+  .sortTitle {
+    font-size: 18px;
+  }
+  .collections p,
+  .sort p {
+    font-size: 16px;
+    padding: 10px 0;
+    cursor: pointer;
+  }
+  .sort {
+    width: 100%;
+    padding: 5px 0%;
+  }
+}
+
+/* موبایل (max-width: 480px) */
+@media (max-width: 480px) {
+  .circle {
+    width: 400px;
+    height: 400px;
+    top: -180px;
+    left: -180px;
+  }
+  .title {
+    position: relative;
+    top: 60px;
+    font-size: 20px;
+  }
+  .container {
+    position: relative;
+    top: 50px;
+  }
+  .productContainer {
+    width: 70%;
+    justify-content: space-around;
+    gap: 0;
+    margin-bottom: 15%;
+  }
+  .sidebarContainer {
+    padding: 0%;
+    padding-right: 5px;
+    width: 27%;
+  }
+  .collections {
+    padding: 0 1px;
+  }
+  .collectionsTitle,
+  .sortTitle {
+    font-size: 12px;
+    padding: 3px 3px;
+  }
+  .collections p,
+  .sort p {
+    font-size: 12px;
+    padding: 5px 2px;
+    cursor: pointer;
+  }
+  .sort {
+    width: 100%;
+    padding: 5px 0%;
+  }
+  .sort p {
+    font-size: 12px;
+  }
+}

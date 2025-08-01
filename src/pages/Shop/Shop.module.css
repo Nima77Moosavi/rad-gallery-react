@@ -1,0 +1,321 @@
+/* General Styles */
+/* استایل‌های اختصاصی لیست دسته‌بندی‌ها */
+.collectionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  direction: rtl; /* راست‌چین کردن کل لیست */
+}
+
+.collectionWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.collectionItem {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  background-color: #f8f9fa; /* رنگ پس زمینه */
+  margin: 0.2rem 0;
+}
+
+.collectionItem:hover {
+  background-color: #e9ecef; /* رنگ هنگام هاور */
+  transform: translateX(-5px);
+}
+
+.collectionItem.subCollection {
+  padding-right: 2rem; /* فاصله برای زیردسته‌ها */
+  background-color: #f1f3f5;
+}
+
+.collectionToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  color: var(--green-color);
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+}
+
+.collectionToggle:hover {
+  color: var(--green-color);
+}
+
+.collectionName {
+  font-size: 1.3rem; /* بزرگتر کردن فونت */
+  font-weight: 600;
+  color: #212529;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.collectionName.activeCollection {
+  color: var(--green-color);
+  font-weight: 600;
+}
+
+.collectionCount {
+  font-size: 0.85rem;
+  color: #868e96;
+  background-color: #e9ecef;
+  padding: 0.25rem 0.5rem;
+  border-radius: 50px;
+}
+
+.subCollections {
+  margin-right: 1rem; /* تغییر جهت برای راست‌چین */
+  border-right: 2px dashed #dee2e6; /* خط چین برای زیردسته‌ها */
+  padding-right: 1rem;
+  animation: fadeIn 0.3s ease;
+  direction: rtl;
+}
+
+/* انیمیشن */
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* استایل برای موبایل */
+@media (max-width: 768px) {
+  .collectionItem {
+    padding: 0.8rem;
+  }
+  
+  .collectionName {
+    font-size: 1rem;
+  }
+  
+  .collectionItem.subCollection {
+    padding-right: 1.5rem;
+  }
+}
+
+.title {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 50px;
+  color: #454a4e;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transform: translateX(50%);
+  width: 100px;
+  height: 4px;
+  background: var(--green-color);
+  border-radius: 2px;
+}
+
+.container {
+  display: flex;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Desktop Product Area */
+.productContainer {
+  flex: 3;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Desktop Sidebar for filters - Improved Style */
+.sidebarContainer {
+  flex: 1;
+  max-width: 280px;
+  margin-left: 20px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  background-color: white;
+  direction: rtl;
+}
+
+.sidebarInner {
+  display: flex;
+  flex-direction: column;
+}
+
+.collections,
+.sort {
+  margin-bottom: 30px;
+}
+
+.collectionsTitle,
+.sortTitle {
+  font-size: 20px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
+  color: #333;
+  font-weight: 600;
+}
+
+.collectionFilter,
+.sortOption {
+  cursor: pointer;
+  margin: 10px 0;
+  padding: 8px 12px;
+  color: #555;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.collectionFilter:hover,
+.sortOption:hover {
+  background-color: #f8f8f8;
+  color: #023047;
+}
+
+.collectionFilter.active,
+.sortOption.active {
+  background-color: #023047;
+  color: white;
+}
+
+.loading,
+.error,
+.empty {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20px;
+}
+.sortOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.sortButton {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: right;
+  transition: all 0.3s ease;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.sortButton:hover {
+  background-color: #e9ecef;
+  border-color: #adb5bd;
+}
+
+.activeSort {
+  background-color: var(--green-color);
+  color: white;
+}
+
+.activeSort:hover {
+  background-color: var(--green-color);
+}
+/* Mobile-specific styles */
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    padding: 10px;
+  }
+  .content {
+    margin-top: 60px;
+  }
+  /* Hide desktop sidebar on mobile */
+  .sidebarContainer {
+    display: none;
+  }
+
+  .productContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  /* Show mobile filter dropdown */
+  .filterDropdownMobile {
+    display: block;
+    margin: 10px;
+    text-align: center;
+  }
+
+  .filterToggleButton {
+    background-color: var(--green-color);
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .dropdownFilters {
+    background-color: #f6f6f6;
+    margin-top: 10px;
+    padding: 15px;
+    border-radius: 5px;
+  }
+
+  .collectionsTitle,
+  .sortTitle {
+    font-size: 18px;
+  }
+
+  .collectionFilter,
+  .sortOption {
+    font-size: 16px;
+    margin: 6px 0;
+  }
+  
+  .circle {
+    width: 400px;
+    height: 400px;
+    top: -180px;
+    left: -180px;
+  }
+  .sortButton{
+    justify-content: flex-end;
+  }
+}
+
+/* Hide mobile filter button on desktop */
+@media (min-width: 481px) {
+  .filterDropdownMobile {
+    display: none !important;
+  }
+}

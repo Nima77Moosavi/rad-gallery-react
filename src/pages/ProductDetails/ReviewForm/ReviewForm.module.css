@@ -1,0 +1,161 @@
+/* ReviewForm.module.css */
+
+.compactContainer {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  width: 95%;
+  margin: 10px auto;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e0e0e0;
+  direction: rtl;
+}
+
+.compactTitle {
+  color: #023047;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: right;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #3333333a;
+}
+
+.compactTitle .icons {
+  color: #333333d7;
+  font-size: 1.2rem;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.compactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.compactRating {
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+.compactStar {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #e2e8f0;
+  padding: 0 3px;
+  transition: all 0.2s ease;
+}
+
+.compactStar:hover {
+  transform: scale(1.1);
+}
+
+.compactFilled {
+  color: #ffd700;
+}
+
+.compactTextarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 120px;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  background-color: #ffffff;
+  direction: rtl;
+  text-align: right;
+}
+
+.compactTextarea:focus {
+  outline: none;
+  border-color: #63b3ed;
+  box-shadow: 0 0 0 2px rgba(99, 179, 237, 0.2);
+}
+
+.compactFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.compactButton {
+  background-color: var(--green-color);
+  color: var(--light-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+}
+
+.compactButton:hover {
+  background-color: var(--green-color);
+  color: var(--light-color);
+}
+
+.compactButton:disabled {
+  background-color: #a0aec0;
+  cursor: not-allowed;
+}
+
+.compactError {
+  color: #e53e3e;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-align: right;
+  flex-grow: 1;
+  padding-right: 10px;
+}
+
+.compactSuccess {
+  color: #38a169;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .compactContainer {
+    width: 90%;
+    margin-right: 5%;
+    margin-left: 5%;
+  }
+  
+  .compactTitle {
+    font-size: 1.1rem;
+  }
+  
+  .compactStar {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .compactContainer {
+    width: 95%;
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+    padding: 15px;
+  }
+  
+  .compactTextarea {
+    min-height: 100px;
+  }
+  
+  .compactButton {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}

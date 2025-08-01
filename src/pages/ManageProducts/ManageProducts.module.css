@@ -1,0 +1,33 @@
+.manageProductsContainer {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .createLink {
+    display: block;
+    margin: 20px 0;
+    font-size: 16px;
+    color: #4caf50;
+  }
+  
+  .productList {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .productItem {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .editLink {
+    color: #2196f3;
+    text-decoration: none;
+  }
+  
+  .editLink:hover {
+    text-decoration: underline;
+  }
+  

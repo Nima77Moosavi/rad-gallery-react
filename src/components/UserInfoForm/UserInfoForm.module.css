@@ -1,0 +1,221 @@
+.formContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  direction: rtl;
+}
+
+.title {
+  color: var(--text-color);
+  font-size: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  /* font-weight: 600; */
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  height: 3px;
+  background-color: var(--green-color);
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputGroup label {
+  /* font-weight: 500; */
+  color: var(--text-color);
+  font-size: 16px;
+}
+
+.required {
+  color: #ff4757;
+}
+
+.inputGroup input,
+.inputGroup textarea,
+.inputGroup select {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s;
+  background-color: #f9f9f9;
+}
+
+.inputGroup input:focus,
+.inputGroup textarea:focus,
+.inputGroup select:focus {
+  outline: none;
+  border-color: var(--green-color);
+  box-shadow: 0 0 0 2px rgba(64, 224, 208, 0.2);
+  background-color: #fff;
+}
+
+.inputGroup input:hover,
+.inputGroup select:hover {
+  border-color: #aaa;
+}
+
+.error {
+  border-color: #ff4757 !important;
+}
+
+.errorMessage {
+  color: #ff4757;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.dateFields {
+  display: flex;
+  gap: 10px;
+}
+
+.dateSelect {
+  flex: 1;
+  min-width: 0;
+}
+
+.selectField {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: left 15px center;
+  background-size: 16px;
+  padding-right: 15px !important;
+}
+
+.genderGroup {
+  grid-column: span 2;
+}
+
+.genderFields {
+  display: flex;
+  gap: 20px;
+  margin-top: 5px;
+}
+
+.genderLabel {
+  cursor: pointer;
+}
+
+.genderInput {
+  position: absolute;
+  opacity: 0;
+}
+
+.genderOption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: all 0.3s;
+  background-color: #f9f9f9;
+}
+
+.genderOption:hover {
+  border-color: var(--green-color);
+}
+
+.genderInput:checked + .genderOption {
+  border-color: var(--green-color);
+  background-color: rgba(64, 224, 208, 0.1);
+}
+
+.genderIcon {
+  color: var(--green-color);
+  font-size: 24px;
+}
+
+.addressField {
+  margin-bottom: 25px;
+}
+
+.addressTextarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.submitButton {
+  background-color: var(--green-color);
+  color: #fff;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 20px;
+  font-weight: 500;
+  width: min(200px, 100%);
+}
+
+.submitButton:hover {
+  background-color: var(--green-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .formContainer {
+    padding: 20px;
+  }
+  
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .genderGroup {
+    grid-column: span 1;
+  }
+  
+  .title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .submitButton {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .dateFields {
+    flex-direction: column;
+  }
+  
+  .genderFields {
+    flex-direction: column;
+    gap: 10px;
+  }
+} 

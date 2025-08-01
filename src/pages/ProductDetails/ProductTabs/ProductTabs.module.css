@@ -1,0 +1,175 @@
+/* ProductTabs.module.css - Exact copy of previous styles */
+
+.rightContainer {
+    width: 70%;
+    border-radius: 20px;
+    background-color: var(--light-color);
+    margin-right: 2%;
+  }
+  
+  .tabContainer {
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+    text-align: right;
+    padding: 0 1rem;
+    direction: rtl;
+    background-color: var(--light-color);
+    position: sticky;
+    top: 60px;
+    z-index: 1000;
+    scroll-snap-type: x mandatory;
+    border-radius: 20px;
+  }
+  
+  .tabContainer button {
+    width: max-content;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    color: var(--text-color
+    );
+    background: none;
+    border: none;
+    padding: 0.8rem 2.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 0%;
+    border-bottom: 1px solid #3333333a;
+    margin: 0;
+    white-space: nowrap;
+  }
+  
+  .tabContainer button .icons {
+    color: #333333d7;
+    font-size: 1.2rem;
+    margin-left: 5px;
+    vertical-align: middle;
+  }
+  
+  .tabContainer .active {
+    color: #023047;
+    border-bottom: #023047 solid 3px;
+  }
+  
+  .tabContainer button:hover {
+    background-color: unset;
+  }
+  
+  .specsSection,
+  .descriptionSection,
+  .dimensionsSection,
+  .maintenanceSection,
+  .reviewsContainer {
+    width: 90%;
+    text-align: right;
+    direction: rtl;
+    margin: 0 5%;
+    border-bottom: #3333333a solid 1px;
+  }
+  
+  .specsSection h2,
+  .descriptionSection h2,
+  .dimensionsSection h2, 
+  .maintenanceSection h2,
+  .reviewsContainer h2 {
+    font-size: 1.2rem;
+    margin: 1rem;
+    text-align: right;
+  }
+  
+  .specsSection h2 .icons,
+  .descriptionSection h2 .icons,
+  .dimensionsSection h2 .icons, 
+  .maintenanceSection h2 .icons,
+  .reviewsContainer h2 .icons {
+    color: #333333f1;
+    font-size: 1.2rem;
+    margin-left: 5px;
+    vertical-align: middle;
+  }
+  
+  .specsSection p,
+  .descriptionSection p,
+  .dimensionsSection p, 
+  .maintenanceSection p,
+  .reviewsContainer p {
+    color: #5c5c5c;
+    padding-right: 1rem;
+  }
+  
+  .dimensionsSection, 
+  .maintenanceSection {
+    min-height: 150px;
+  }
+  
+  .reviewsWrapper {
+    margin-top: 1rem;
+  }
+  
+  .reviewCard {
+    background-color: #ffffff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .reviewText {
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .reviewAuthor {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 0.5rem;
+  }
+  
+  .showMoreButton {
+    width: max-content;
+    background-color: var(--green-color);
+  color: var(--light-color);
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.3s;
+    margin-bottom: 15px;
+  }
+  
+  .showMoreButton:hover {
+    background-color: #023047d9;
+  }
+  
+  /* Responsive styles - exact copy */
+  @media (max-width: 768px) {
+    .container {
+      width: 100%;
+      margin-right: 0;
+      padding-right: 10px;
+    }
+    
+    .reviewCard {
+      flex: 0 0 33.3333%;
+      min-width: 33.3333%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .rightContainer {
+      width: 90%;
+      margin: 0 auto;
+      position: relative;
+      /* top: -80px; */
+    }
+    
+    .tabContainer button {
+      padding: 0.5rem 0.5rem;
+    }
+    
+    .reviewCard {
+      flex: 0 0 50%;
+      min-width: 50%;
+    }
+  }

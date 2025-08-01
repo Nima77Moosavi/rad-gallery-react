@@ -1,0 +1,57 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* padding: 2%; */
+  margin: 0%;
+}
+
+.content {
+  padding: 5px;
+  text-align: center;
+}
+.circle {
+  position: absolute;
+  left: -100px;
+  top: -300px;
+  width: 700px;
+  height: 700px;
+  background-color: rgba(128, 128, 128, 0.158);
+  /* background-color: var(--primary-color); */
+  border-radius: 50%;
+  z-index: 0;
+  margin-bottom: 100px;
+}
+/* لپ‌تاپ و کوچکتر (max-width: 1200px) */
+@media (max-width: 1200px) {
+  .circle {
+    width: 600px;
+    height: 600px;
+    top: -250px;
+    left: -120px;
+  }
+}
+
+/* تبلت (max-width: 768px) */
+@media (max-width: 768px) {
+  .circle {
+    width: 550px;
+    height: 550px;
+    top: -250px;
+    left: -150px;
+  }
+}
+
+/* موبایل (max-width: 480px) */
+@media (max-width: 480px) {
+  .circle {
+    width: 400px;
+    height: 400px;
+    top: -180px;
+    left: -180px;
+  }
+
+  .content {
+    margin-top: 10px;
+  }
+}

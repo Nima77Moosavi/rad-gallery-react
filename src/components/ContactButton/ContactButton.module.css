@@ -1,0 +1,90 @@
+/* ContactButton.module.css */
+
+/* Container for the entire sticky contact button */
+.contactContainer {
+  position: fixed;
+  bottom: 90px;
+  left: 20px; /* Changed from right: 20px to left: 20px */
+  z-index: 1000;
+  border-radius: 50%;
+}
+
+/* Main button that toggles the contact options */
+.contactMainButton {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
+  font-size: 16px;
+}
+
+.contactMainButton:active {
+  transform: scale(0.95);
+}
+
+/* Option buttons – initially hidden at the same position as the main button */
+.contactOption {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0; /* Changed from right: 0 to left: 0 */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* When the container is open, reveal the options */
+.open .contactOption {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Position the buttons in a 90° arc (a quarter circle) above and to the right */
+
+/* Icon 1 (Telegram) → Angle: 270° (directly upward): dx = 0, dy = –80px */
+.option1 {
+  transform: translate(0, 0);
+}
+.open .option1 {
+  transform: translate(0, -80px);
+}
+
+/* Icon 2 (WhatsApp) → Angle: 300°: dx ≈ 40px, dy ≈ -70px */
+.option2 {
+  transform: translate(0, 0);
+}
+.open .option2 {
+  transform: translate(40px, -70px);
+}
+
+/* Icon 3 (Phone) → Angle: 330°: dx ≈ 70px, dy ≈ -40px */
+.option3 {
+  transform: translate(0, 0);
+}
+.open .option3 {
+  transform: translate(70px, -40px);
+}
+
+/* Icon 4 (Email) → Angle: 0° (to the right): dx = 80px, dy = 0 */
+.option4 {
+  transform: translate(0, 0);
+}
+.open .option4 {
+  transform: translate(80px, 0);
+}

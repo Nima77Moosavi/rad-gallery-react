@@ -1,0 +1,80 @@
+/* Collections.module.css */
+
+/* Container */
+.collections {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Section title */
+.sectionTitle {
+  font-size: 32px;
+  color: var(--text-color);
+  margin-bottom: 20px;
+}
+
+/* One flex‐row that wraps, with constant 15px gap */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* ——— DESKTOP: 6 cards per row ——— */
+.collectionCard {
+  position: relative;
+  width: calc((100% - 5 * 15px) / 6);
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+.collectionCard:hover {
+  transform: scale(1.03);
+}
+
+/* Overlay & text */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--primary-color-dark);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.description {
+  position: absolute;
+  bottom: 0px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px;
+  text-align: center;
+}
+
+/* ——— TABLET: 4 cards per row ——— */
+@media (max-width: 1024px) {
+  .collectionCard {
+    width: calc((100% - 3 * 15px) / 4);
+    height: 180px;
+  }
+}
+
+/* ——— MOBILE: 3 cards per row ——— */
+@media (max-width: 768px) {
+  .collectionCard {
+    width: calc((100% - 2 * 15px) / 3);
+    height: 160px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+}

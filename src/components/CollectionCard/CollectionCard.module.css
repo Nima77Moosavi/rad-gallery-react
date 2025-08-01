@@ -1,0 +1,101 @@
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card {
+  position: relative;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 0.5px solid rgba(128, 128, 128, 0.291);
+  transition: transform 0.2s ease-in-out;
+  width: 200px; /* پایه اصلی */
+  height: max-content;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.imageContainer {
+  width: 100%;
+  height: 70%;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.title {
+  position: absolute;
+  bottom: 10px;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #023047;
+  text-align: center;
+}
+
+.date {
+  display: block;
+  padding: 0 12px 12px;
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+}
+
+/* ==== ریسپانسیو برای تبلت و موبایل ==== */
+
+@media (max-width: 768px) {
+  .card {
+    width: 160px;
+  }
+
+  .imageContainer {
+    height: 160px;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+
+  .date {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 100px; /* عرض کارت برای موبایل */
+    /* max-width: 250px; */
+    height: min-content; /* ارتفاع کارت */
+    margin: auto;
+   
+  }
+
+  .imageContainer {
+    width: 100%;
+    height: 100px;
+    margin: 0;
+  }
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .title {
+    font-size: 14px;
+    /* font-weight: 100; */
+    padding: 0%;
+  }
+
+  .date {
+    font-size: 10px;
+  }
+}

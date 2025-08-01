@@ -1,0 +1,112 @@
+.sliderContainer {
+    position: relative;
+    width: 70%;
+    max-width: 600px;
+    margin:40px auto;
+    overflow: hidden;
+    border-radius: 20px;
+    background-color: var(--light-color);
+  }
+  
+  .sliderImage {
+    width: 100%;
+    height: 500px;
+    display: block;
+    object-fit: contain;
+  }
+  
+  .prevButton,
+  .nextButton {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--green-color);
+  color: var(--light-color);
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 2;
+    transition: background-color 0.3s ease;
+  }
+  
+  .prevButton:hover,
+  .nextButton:hover {
+    background-color: rgba(2, 48, 71, 0.8);
+  }
+  
+  .prevButton {
+    right: 10px;
+  }
+  
+  .nextButton {
+    left: 10px;
+  }
+  
+  .thumbnailContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  
+  .thumbnail {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: border 0.3s ease;
+  }
+  
+  .thumbnail:hover {
+    border: 2px solid #888;
+  }
+  
+  .activeThumbnail {
+    border: 2px solid #000;
+  }
+  
+  /* استایل‌های رسپانسیو */
+  @media (max-width: 768px) {
+    .sliderContainer {
+      width: 70%;
+    }
+    
+    .prevButton,
+    .nextButton {
+      width: 25px;
+      height: 25px;
+      font-size: 20px;
+    }
+    
+    .prevButton {
+      right: 2px;
+    }
+  
+    .nextButton {
+      left: 2px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .sliderContainer {
+      width: 90%;
+    }
+    
+    .prevButton,
+    .nextButton {
+      width: 20px;
+      height: 20px;
+      font-size: 18px;
+    }
+    
+    .sliderImage {
+      width: 85%;
+      margin: 0 auto;
+    }
+  }

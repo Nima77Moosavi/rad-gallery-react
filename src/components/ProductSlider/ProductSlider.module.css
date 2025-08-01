@@ -1,0 +1,43 @@
+.productSlider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px; /* Adjust as needed */
+  margin: 0 auto;
+}
+
+.sliderContent {
+  display: flex;
+  gap: 8px; /* Reduced gap between cards */
+  width: 100%;
+  overflow: hidden;
+  padding: 0 8px; /* Optional: Add padding to prevent cards from touching edges */
+}
+
+.productCard {
+  flex: 0 0 calc(20% - 8px); /* Fixed size for each card */
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.dotsContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin: 0 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.activeDot {
+  background-color: #333;
+}

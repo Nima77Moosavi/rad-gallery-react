@@ -1,0 +1,188 @@
+/* AddressList.module.css */
+
+.addressList {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2.5rem;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+  direction: rtl;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.addressList h2 {
+  color: var(--text-color);
+  font-size: 28px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.addressList h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  height: 3px;
+  background-color: var(--green-color);
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.emptyMessage {
+  text-align: center;
+  color: #6b7280;
+  font-size: 1.1rem;
+  padding: 3rem 2rem;
+  background-color: #f8fafc;
+  border-radius: 12px;
+  margin: 1rem 0;
+  border: 1px dashed #e2e8f0;
+}
+
+.loading {
+  text-align: center;
+  color: var(--text-color);
+  padding: 2rem;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.error {
+  color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.08);
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  font-size: 0.95rem;
+  text-align: center;
+  backdrop-filter: blur(2px);
+}
+
+.addressList ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.addressItem {
+  padding: 0.5rem;
+  border: 1px solid #f1f5f9;
+  border-radius: 14px;
+  background-color: #f8fafc;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.addressItem:hover {
+  border-color: var(--green-color);
+  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.08);
+  background-color: #fff;
+  transform: translateY(-3px);
+}
+
+.addressItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 0;
+  background: var(--green-color);
+  transition: height 0.4s ease;
+}
+
+.addressItem:hover::before {
+  height: 100%;
+}
+
+.addressItem p {
+  margin: 0.8rem 0;
+  color: #1e293b;
+  font-size: 1rem;
+  line-height: 0.5;
+  position: relative;
+  z-index: 1;
+}
+
+.addressItem strong {
+  font-weight: 600;
+  color: #0f172a;
+  margin-left: 0.5rem;
+}
+
+/* Delete Button */
+.deleteButton {
+  width: max-content;
+  height: auto;
+  color: #ff4757;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deleteButton:hover {
+  color: #d32f2f;
+  background-color: rgba(255, 71, 87, 0.1);
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .addressList {
+    padding: 1.5rem;
+    margin: 1rem auto;
+  }
+  
+  .addressItem {
+    padding: 1.5rem;
+  }
+  
+  .deleteButton {
+    position: static;
+    margin-top: 1.5rem;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .addressList {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+  
+  .addressItem p {
+    font-size: 0.95rem;
+  }
+  
+  .addressItem {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+  
+  .emptyMessage {
+    padding: 2rem 1rem;
+    font-size: 1rem;
+  }
+}
