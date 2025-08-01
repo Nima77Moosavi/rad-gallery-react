@@ -1,0 +1,142 @@
+.container {
+   
+    margin: 0 auto;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    color: var(--text-color);
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    margin-bottom: 10px;
+  }
+  
+  .description {
+    font-size: 1rem;
+    color: var(--text-color);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  
+
+  
+  .filters {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    direction: rtl;
+  }
+  
+  .filterGroup {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+  }
+  
+  .filterGroup label {
+    font-weight: 600;
+    font-size: 25px;
+    color: var(--text-color);
+  }
+  
+  .select {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid var(--green-color);
+    background: white;
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--text-color);
+  }
+  
+  .productsGrid {
+    width: 90%;
+    display: flex;
+    justify-content: first baseline;
+    gap: 3%;
+    flex-wrap: wrap;
+    margin: 40px auto;
+    direction: rtl;
+  }
+  
+  .empty {
+    text-align: center;
+    padding: 50px;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    direction: rtl;
+  }
+  
+  .errorContainer {
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .error {
+    color: #d32f2f;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .loadingContainer {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .loading {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  .subCollections {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+  }
+  
+  .subCollections h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    direction: rtl;
+    color: var(--text-color);
+  }
+  
+  .subCollectionList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    direction: rtl;
+  }
+  
+  .subCollectionButton {
+    min-width: 100px;
+    padding: 8px 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+  }
+  
+  .subCollectionButton:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .subCollectionButton.active {
+    background-color: var(--green-color);
+    color: white;
+    border:none;
+  }

@@ -46,30 +46,28 @@ const Collections = () => {
 
   return (
     <div className={styles.collections}>
-    <h2 className={styles.sectionTitle}>دسته‌بندی محصولات</h2>
-    <div className={styles.row}>
-      {loading
-        ? Array.from({ length: 9 }).map((_, i) => (
-          <CollectionCardSkeleton key={i} />
-        ))
-        : collections.map((collection) => (
-          <Link
-            to={collection.landing_page_url || `/shop?collection=${encodeURIComponent(
-              collection.title
-            )}`}
-            key={collection.id}
-            className={styles.collectionCard}
-            style={{ backgroundImage: `url(${collection.image})` }}
-          >
-            <div className={styles.overlay}>
-              <div className={styles.description}>
-                {collection.description || collection.title}
-              </div>
-            </div>
-          </Link>
-        ))}
+      <h2 className={styles.sectionTitle}>دسته‌بندی محصولات</h2>
+      <div className={styles.row}>
+        {loading
+          ? Array.from({ length: 9 }).map((_, i) => (
+              <CollectionCardSkeleton key={i} />
+            ))
+          : collections.map((collection) => (
+              <Link
+                to={`/collections/${collection.id}`}
+                key={collection.id}
+                className={styles.collectionCard}
+                style={{ backgroundImage: `url(${collection.image})` }}
+              >
+                <div className={styles.overlay}>
+                  <div className={styles.description}>
+                    {collection.description || collection.title}
+                  </div>
+                </div>
+              </Link>
+            ))}
+      </div>
     </div>
-  </div>
   );
 };
 
