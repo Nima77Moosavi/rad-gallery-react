@@ -3,9 +3,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import styles from "./BannerSlider.module.css";
 
-import banner1 from "../../assets/banner11.jpg";
-import banner2 from "../../assets/banner23.jpg";
-import banner3 from "../../assets/banner33.jpg";
+import banner1 from "../../assets/banner88.png";
+import banner2 from "../../assets/banner99.png";
+import banner3 from "../../assets/banner66.png";
 import patternImg from "../../assets/forground-banner.png";
 
 const BannerSlider = () => {
@@ -63,13 +63,13 @@ const BannerSlider = () => {
   return (
     <div className={styles.bannerWrapper}>
       {/* Decorative pattern on the left */}
-      <div className={styles.patternContainer}>
+      {/* <div className={styles.patternContainer}>
         <img
           src={patternImg}
           alt="صنایع‌دستی"
           className={styles.patternImage}
         />
-      </div>
+      </div> */}
 
       {/* Slider window */}
       <div className={styles.sliderWindow}>
