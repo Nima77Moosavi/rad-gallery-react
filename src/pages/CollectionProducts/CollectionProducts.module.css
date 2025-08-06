@@ -1,153 +1,248 @@
 .container {
-   
-    margin: 0 auto;
+  margin: 0 auto;
+  padding: 0 0px;
+  width: 100%;
+  /* max-width: 1200px; */
+  box-sizing: border-box;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+  color: var(--text-color);
+  padding: 0 15px;
+}
+
+.title {
+  font-size: 2.3rem;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transform: translateX(50%);
+  width: 100px;
+  height: 4px;
+  background: var(--green-color);
+  border-radius: 2px;
+}
+
+.description {
+  font-size: 1rem;
+  color: var(--text-color);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  direction: rtl;
+  justify-content: center;
+}
+
+.filterGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filterGroup label {
+  font-weight: 600;
+  font-size: 25px;
+  color: var(--text-color);
+}
+
+.select {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid var(--green-color);
+  background: white;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--text-color);
+  min-width: 150px;
+}
+
+.productsGrid {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 3%;
+  flex-wrap: wrap;
+  margin: 40px auto;
+  direction: rtl;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+.empty {
+  text-align: center;
+  padding: 50px;
+  font-size: 1.2rem;
+  color: var(--text-color);
+  direction: rtl;
+  width: 100%;
+}
+
+.errorContainer {
+  text-align: center;
+  padding: 50px;
+  width: 100%;
+}
+
+.error {
+  color: #d32f2f;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.loadingContainer {
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+}
+
+.loading {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.subCollections {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.subCollections h3 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  direction: rtl;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.subCollectionList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  direction: rtl;
+  justify-content: center;
+}
+
+.subCollectionButton {
+  min-width: 100px;
+  padding: 8px 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.subCollectionButton:hover {
+  background-color: #f0f0f0;
+}
+
+.subCollectionButton.active {
+  background-color: var(--green-color);
+  color: white;
+  border: none;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .productsGrid {
+      gap: 2%;
   }
-  
-  .header {
-    text-align: center;
-    margin-bottom: 30px;
-    position: relative;
-    color: var(--text-color);
-  }
-  
+}
+
+@media (max-width: 768px) {
   .title {
-    font-size: 2.3rem;
-    color: var(--text-color);
-    margin-bottom: 10px;
-  }
-  .title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 50%;
-    transform: translateX(50%);
-    width: 100px;
-    height: 4px;
-    background: var(--green-color);
-    border-radius: 2px;
+      font-size: 2rem;
   }
   
   .description {
-    font-size: 1rem;
-    color: var(--text-color);
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  
-
-  
-  .filters {
-    display: flex;
-    gap: 30px;
-    margin-bottom: 20px;
-    padding: 15px;
-    background: #f9f9f9;
-    border-radius: 8px;
-    direction: rtl;
+      font-size: 0.9rem;
   }
   
   .filterGroup {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 20px;
+      font-size: 18px;
   }
   
   .filterGroup label {
-    font-weight: 600;
-    font-size: 25px;
-    color: var(--text-color);
+      font-size: 20px;
   }
   
   .select {
-    padding: 8px 12px;
-    border-radius: 5px;
-    border: 1px solid var(--green-color);
-    background: white;
-    cursor: pointer;
-    font-size: 18px;
-    color: var(--text-color);
-  }
-  
-  .productsGrid {
-    width: 90%;
-    display: flex;
-    justify-content: first baseline;
-    gap: 3%;
-    flex-wrap: wrap;
-    margin: 40px auto;
-    direction: rtl;
-  }
-  
-  .empty {
-    text-align: center;
-    padding: 50px;
-    font-size: 1.2rem;
-    color: var(--text-color);
-    direction: rtl;
-  }
-  
-  .errorContainer {
-    text-align: center;
-    padding: 50px;
-  }
-  
-  .error {
-    color: #d32f2f;
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-  }
-  
-  .loadingContainer {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .loading {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-  }
-  .subCollections {
-    margin: 20px 0;
-    padding: 15px;
-    background-color: var(--secondary-color);
-    border-radius: 8px;
-  }
-  
-  .subCollections h3 {
-    margin-bottom: 10px;
-    font-size: 1.5rem;
-    direction: rtl;
-    color: var(--text-color);
-  }
-  
-  .subCollectionList {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    direction: rtl;
+      font-size: 16px;
+      min-width: 120px;
   }
   
   .subCollectionButton {
-    min-width: 100px;
-    padding: 8px 15px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: var(--text-color);
+      font-size: 1.2rem;
+      min-width: 80px;
+      padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container{
+    margin-top: 60px;
+  }
+  .title {
+      font-size: 1.8rem;
   }
   
-  .subCollectionButton:hover {
-    background-color: #f0f0f0;
+  .filters {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
   }
   
-  .subCollectionButton.active {
-    background-color: var(--green-color);
-    color: white;
-    border:none;
+  .filterGroup {
+      flex-direction: column;
+      align-items: center;
   }
+  
+  .productsGrid {
+      gap: 15px;
+      justify-content: center;
+  }
+  
+  .subCollectionButton {
+      font-size: 1rem;
+      min-width: 70px;
+      padding: 5px 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .title {
+      font-size: 1.5rem;
+  }
+  
+  .subCollectionButton {
+      font-size: 0.9rem;
+      min-width: 60px;
+  }
+}
