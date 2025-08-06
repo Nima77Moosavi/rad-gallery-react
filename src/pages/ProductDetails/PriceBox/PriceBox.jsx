@@ -1,26 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BsBoxSeam } from "react-icons/bs";
 import styles from "./PriceBox.module.css";
 
-const PriceBox = () => {
-  // داده‌های نمونه
-  const price = "۲,۴۹۰,۰۰۰";
-  const inventoryText = "موجود در انبار - ارسال امروز";
-  const sizes = ["S", "M", "L", "XL", "XXL"];
-  const colors = ["مشکی", "سفید", "آبی", "نقره‌ای"];
-  
-  // حالت‌های انتخابی
-  const [selectedSize, setSelectedSize] = useState("");
-  const [selectedColor, setSelectedColor] = useState("");
-
-  const handleAddToCart = () => {
-    if (!selectedSize || !selectedColor) {
-      alert("لطفاً سایز و رنگ محصول را انتخاب کنید");
-      return;
-    }
-    alert(`محصول با مشخصات:\nسایز: ${selectedSize}\nرنگ: ${selectedColor}\nبه سبد خرید اضافه شد`);
-  };
-
+const PriceBox = ({
+  price,
+  inventoryText,
+  sizes,
+  colors,
+  selectedSize,
+  selectedColor,
+  onSizeChange,
+  onColorChange,
+  onAddToCart,
+  disabled
+}) => {
   return (
     <div className={styles.priceCard}>
       {/* بخش انتخاب سایز */}
@@ -31,15 +24,11 @@ const PriceBox = () => {
             id="size-select"
             className={styles.selector}
             value={selectedSize}
-            onChange={(e) => setSelectedSize(e.target.value)}
+            onChange={e => onSizeChange(e.target.value)}
           >
             <option value="">-- سایز را انتخاب کنید --</option>
-            {sizes.map((size) => (
-              <option 
-                key={size} 
-                value={size}
-                className={styles.dropdownOption}
-              >
+            {sizes.map(size => (
+              <option key={size} value={size} className={styles.dropdownOption}>
                 {size}
               </option>
             ))}
@@ -55,15 +44,11 @@ const PriceBox = () => {
             id="color-select"
             className={styles.selector}
             value={selectedColor}
-            onChange={(e) => setSelectedColor(e.target.value)}
+            onChange={e => onColorChange(e.target.value)}
           >
             <option value="">-- رنگ را انتخاب کنید --</option>
-            {colors.map((color) => (
-              <option 
-                key={color} 
-                value={color}
-                className={styles.dropdownOption}
-              >
+            {colors.map(color => (
+              <option key={color} value={color} className={styles.dropdownOption}>
                 {color}
               </option>
             ))}
@@ -81,10 +66,10 @@ const PriceBox = () => {
       </div>
 
       {/* دکمه افزودن به سبد خرید */}
-      <button 
+      <button
         className={styles.ctaButton}
-        onClick={handleAddToCart}
-        disabled={!selectedSize || !selectedColor}
+        onClick={onAddToCart}
+        disabled={disabled}
       >
         افزودن به سبد خرید
       </button>
