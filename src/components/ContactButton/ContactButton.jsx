@@ -6,6 +6,7 @@ import {
   FaPhoneAlt,
   FaInstagram,
 } from "react-icons/fa";
+import etaIcon from "../../assets/eta.png";
 import styles from "./ContactButton.module.css";
 
 const ContactButton = () => {
@@ -19,7 +20,7 @@ const ContactButton = () => {
       </button>
 
       <a
-        href="https://t.me/+989130095238"
+        href="https://t.me/+989174179802"
         target="_blank"
         rel="noopener noreferrer"
         className={`${styles.contactOption} ${styles.option1}`}
@@ -28,7 +29,7 @@ const ContactButton = () => {
       </a>
 
       <a
-        href="https://wa.me/989130095238"
+        href="https://wa.me/989174189802"
         target="_blank"
         rel="noopener noreferrer"
         className={`${styles.contactOption} ${styles.option2}`}
@@ -37,14 +38,14 @@ const ContactButton = () => {
       </a>
 
       <a
-        href="tel:989920784900"
+        href="tel:989174189802"
         className={`${styles.contactOption} ${styles.option3}`}
       >
         <FaPhoneAlt size={22} />
       </a>
 
       <a
-        href="https://instagram.com/kimia.toranj"
+        href="https://instagram.com/rad_gallery_"
         target="_blank"
         rel="noopener noreferrer"
         className={`${styles.contactOption} ${styles.option4}`}

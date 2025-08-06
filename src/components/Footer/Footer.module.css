@@ -1,5 +1,6 @@
 .container {
   width: 100%;
+  height: max-content;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,13 +22,13 @@
 }
 p {
   color: var(--text-color);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   padding: 2px;
 }
 .icon {
   color: var(--text-color);
-  font-size: 36px;
+  font-size: 30px;
   margin: 0 5px;
   cursor: pointer;
 }
@@ -40,18 +41,17 @@ p {
 .acricles,
 .socials {
   width: 50%;
-  height: 200px;
+  height:100px;
   text-align: right;
-  margin-bottom: 55px;
 }
 
 .acricles p {
   cursor: pointer;
 }
-.contactUs,
+/* .contactUs,
 .socials {
   height: 150px;
-}
+} */
 
 .enamadWrapper {
   margin-top: 24px;
