@@ -1,7 +1,8 @@
 // src/components/SpecialOffer/SpecialOffer.jsx
 import React from "react";
 import styles from "./SpecialOffer.module.css";
-import img from "../../assets/special.png";
+import img from "../../assets/banner2.jpeg";
+import img1 from "../../assets/banner23.jpeg";
 
 // Helper: replaces Latin digits with Persian ones
 const toPersianDigits = (str) =>
@@ -16,8 +17,12 @@ const SpecialOffer = () => {
 
   return (
     <div className={styles.container}>
+      <img src={img} alt="" className={styles.img}/>
+      <img src={img1} alt="" className={styles.img}/>
+      <img src={img} alt="" className={styles.img}/>
+
       {/* Right side */}
-      <div className={styles.rightDiv}>
+      {/* <div className={styles.rightDiv}>
         <h1 className={styles.title}>کاسه بشقاب لاله</h1>
         <p className={styles.description}>
           <span>کار فاخر و خاص
@@ -41,10 +46,10 @@ const SpecialOffer = () => {
             افزودن به سبد خرید
           </button>
         </div>
-      </div>
+      </div> */}
 
       {/* Left side */}
-      <div className={styles.leftDiv}>
+      {/* <div className={styles.leftDiv}>
         <img src={img} alt="" className={styles.img} />
         <div className={styles.attrContainer}>
           <div className={styles.attr1}>
@@ -55,7 +60,7 @@ const SpecialOffer = () => {
           </div>
           <div className={styles.attr3}>نقش و نگار زیبا</div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

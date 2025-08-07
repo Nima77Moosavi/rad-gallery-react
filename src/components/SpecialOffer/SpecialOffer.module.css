@@ -43,15 +43,8 @@
 }
 
 .img {
-  width: 55%;
-  height: auto;
-  max-height: 400px;
-  object-fit: cover;
-  border-radius: 8px;
-  z-index: 1;
-  position: relative;
-  right: -11%;
-  top: 0%;
+  width: 33%;
+ height: 200px;
 }
 
 .title {
