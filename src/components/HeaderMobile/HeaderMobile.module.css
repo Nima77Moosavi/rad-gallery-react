@@ -10,7 +10,8 @@
   z-index: 1000;
 }
 .logoContainer {
-  width: 80px;
+  width: 70px;
+  margin-top: 10px;
 }
 
 .logo {

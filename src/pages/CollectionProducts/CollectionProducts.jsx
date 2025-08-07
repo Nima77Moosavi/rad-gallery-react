@@ -6,18 +6,6 @@ import ProductCardSkeleton from "../../components/ProductCard/ProductCard.Skelet
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 
-// Temporary mapping of products to collections
-const PRODUCT_COLLECTION_MAP = {
-  1: 10, // شومیز حسنی -> شومیز
-  2: 10, // شومیز و سارافن مجلسی -> شومیز
-  3: 11, // مانتو ریحانه -> مانتو
-  4: 12, // عبای گندم -> عبا
-  5: 12, // عبای پریا -> عبا
-  6: 13, // پیراهن مجلسی -> مجلسی
-  7: 14, // مقنعه گلدوزی -> روسری
-  8: 10  // شومیز گلدوزی -> شومیز
-};
-
 const CollectionProducts = () => {
   const { collectionId } = useParams();
   const navigate = useNavigate();
@@ -62,36 +50,31 @@ const CollectionProducts = () => {
       setCollection(currentCollection);
       setDirectSubCollections(subs);
 
-      // 3. Fetch all products
-      const productsRes = await fetch(
-        `https://rad-gallery-api.liara.run/api/store/products/`
-      );
-      if (!productsRes.ok) throw new Error("Failed to fetch products");
-      
-      const productsData = await productsRes.json();
-      let productsArray = Array.isArray(productsData.results) 
-        ? productsData.results 
-        : Array.isArray(productsData) 
-          ? productsData 
-          : [];
-
-      // 4. Map products to collections using our temporary mapping
-      productsArray = productsArray.map(product => ({
-        ...product,
-        collection_id: PRODUCT_COLLECTION_MAP[product.id] || null
-      }));
-
-      // 5. Filter products that belong to this collection tree
+      // 3. Fetch products for this collection and its sub-collections
       const collectionTreeIds = [
         parseInt(collectionId),
         ...subs.map(sub => sub.id)
       ];
 
-      const filteredProducts = productsArray.filter(product => {
-        return collectionTreeIds.includes(parseInt(product.collection_id));
+      // Fetch products for each collection in parallel
+      const productPromises = collectionTreeIds.map(async (id) => {
+        const res = await fetch(
+          `https://rad-gallery-api.liara.run/api/store/products/?collection_id=${id}`
+        );
+        if (!res.ok) throw new Error(`Failed to fetch products for collection ${id}`);
+        const data = await res.json();
+        return Array.isArray(data.results) ? data.results : Array.isArray(data) ? data : [];
       });
 
-      setAllProducts(filteredProducts);
+      const productsArrays = await Promise.all(productPromises);
+      const mergedProducts = productsArrays.flat();
+
+      // Remove duplicates (in case a product is in multiple collections)
+      const uniqueProducts = mergedProducts.filter(
+        (product, index, self) => index === self.findIndex(p => p.id === product.id)
+      );
+
+      setAllProducts(uniqueProducts);
     } catch (err) {
       setError(err.message || "خطا در دریافت اطلاعات");
       console.error("Fetch error:", err);
@@ -112,7 +95,8 @@ const CollectionProducts = () => {
     // Apply subcollection filter
     if (selectedSubCollection) {
       result = result.filter(product => {
-        return parseInt(product.collection_id) === parseInt(selectedSubCollection);
+        const productCollectionId = product.collection_id || product.collection?.id || product.collection;
+        return productCollectionId && parseInt(productCollectionId) === parseInt(selectedSubCollection);
       });
     }
 
@@ -164,19 +148,6 @@ const CollectionProducts = () => {
     );
   }, []);
 
-  if (loading) {
-    return (
-      <div className={styles.loadingContainer}>
-        <div className={styles.loading}>در حال بارگذاری...</div>
-        <div className={styles.productsGrid}>
-          {Array.from({ length: 6 }).map((_, i) => (
-            <ProductCardSkeleton key={i} />
-          ))}
-        </div>
-      </div>
-    );
-  }
-
   if (error) {
     return (
       <div className={styles.errorContainer}>
@@ -190,7 +161,7 @@ const CollectionProducts = () => {
 
   return (
     <div className={styles.container}>
-        <Header/>
+      <Header />
       <div className={styles.header}>
         <h1 className={styles.title}>{collection?.title}</h1>
         {collection?.description && (
@@ -258,7 +229,13 @@ const CollectionProducts = () => {
         </div>
       </div>
 
-      {filteredProducts.length === 0 ? (
+      {loading ? (
+        <div className={styles.productsGrid}>
+          {Array.from({ length: 8 }).map((_, i) => (
+            <ProductCardSkeleton key={i} />
+          ))}
+        </div>
+      ) : filteredProducts.length === 0 ? (
         <div className={styles.empty}>
           {selectedSubCollection 
             ? "هیچ محصولی در این زیردسته یافت نشد." 
@@ -279,7 +256,7 @@ const CollectionProducts = () => {
           ))}
         </div>
       )}
-      <Footer/>
+      <Footer />
     </div>
   );
 };
