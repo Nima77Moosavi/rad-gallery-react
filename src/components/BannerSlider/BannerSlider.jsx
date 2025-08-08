@@ -1,50 +1,58 @@
 // src/components/BannerSlider/BannerSlider.jsx
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import styles from "./BannerSlider.module.css";
 
+// Import banner images
 import banner1 from "../../assets/banner88.png";
 import banner2 from "../../assets/banner99.png";
 import banner3 from "../../assets/banner66.png";
-import patternImg from "../../assets/forground-banner.png";
 
 const BannerSlider = () => {
-  // your "real" slides
+  // Original slides
   const realSlides = [banner1, banner2, banner3];
-
-  // build an infinite-loop track with clones at front/back
+  
+  // Create infinite loop by cloning first and last slides
   const slides = [
-    realSlides[realSlides.length - 1],
-    ...realSlides,
-    realSlides[0],
+    realSlides[realSlides.length - 1], // Clone of last slide
+    ...realSlides,                     // Original slides
+    realSlides[0],                     // Clone of first slide
   ];
 
-  const [idx, setIdx] = useState(1); // start on first real slide
+  const [currentIndex, setCurrentIndex] = useState(1); // Start at first real slide
   const [transitionEnabled, setTransitionEnabled] = useState(true);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const trackRef = useRef(null);
+  const autoPlayTimer = useRef(null);
 
-  // go forward one slide
-  const nextSlide = () => {
-    setIdx((prev) => prev + 1);
-  };
+  // Handle next slide
+  const nextSlide = useCallback(() => {
+    setCurrentIndex(prev => {
+      if (prev >= slides.length - 1) return prev; // Wait for transition end
+      return prev + 1;
+    });
+  }, [slides.length]);
 
-  // go backward one slide
-  const prevSlide = () => {
-    setIdx((prev) => prev - 1);
-  };
+  // Handle previous slide
+  const prevSlide = useCallback(() => {
+    setCurrentIndex(prev => {
+      if (prev <= 0) return prev; // Wait for transition end
+      return prev - 1;
+    });
+  }, []);
 
-  // when a transition ends, if we're on a clone, jump to its mirror without animating
-  const onTransitionEnd = () => {
-    if (idx === slides.length - 1) {
+  // Reset position when reaching cloned slides
+  const handleTransitionEnd = useCallback(() => {
+    if (currentIndex >= slides.length - 1) {
       setTransitionEnabled(false);
-      setIdx(1);
-    } else if (idx === 0) {
+      setCurrentIndex(1); // Jump to first real slide
+    } else if (currentIndex <= 0) {
       setTransitionEnabled(false);
-      setIdx(slides.length - 2);
+      setCurrentIndex(slides.length - 2); // Jump to last real slide
     }
-  };
+  }, [currentIndex, slides.length]);
 
-  // re-enable transition immediately after a "snap"
+  // Re-enable transition after reset
   useEffect(() => {
     if (!transitionEnabled) {
       requestAnimationFrame(() => {
@@ -53,51 +61,93 @@ const BannerSlider = () => {
     }
   }, [transitionEnabled]);
 
-  // autoplay every 3 seconds
+  // Auto-play functionality
   useEffect(() => {
-    const timer = setInterval(nextSlide, 3000);
-    return () => clearInterval(timer);
-  }, [idx]); // add idx to dependencies to avoid stale closures
+    if (isAutoPlaying) {
+      autoPlayTimer.current = setInterval(() => {
+        nextSlide();
+      }, 3000);
+    } else {
+      clearInterval(autoPlayTimer.current);
+    }
+
+    return () => clearInterval(autoPlayTimer.current);
+  }, [isAutoPlaying, nextSlide]);
+
+  // Pause on hover
+  const handleMouseEnter = () => setIsAutoPlaying(false);
+  const handleMouseLeave = () => setIsAutoPlaying(true);
+
+  // Add keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [nextSlide, prevSlide]);
 
   return (
-    <div className={styles.bannerWrapper}>
-      {/* Slider window */}
+    <div 
+      className={styles.bannerWrapper}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className={styles.sliderWindow}>
-        {/* Prev/Next buttons */}
+        {/* Navigation buttons */}
         <button
           className={`${styles.navButton} ${styles.prevButton}`}
           onClick={prevSlide}
+          aria-label="Previous slide"
         >
           <GrFormPrevious />
         </button>
         <button
           className={`${styles.navButton} ${styles.nextButton}`}
           onClick={nextSlide}
+          aria-label="Next slide"
         >
           <GrFormNext />
         </button>
 
-        {/* The track */}
+        {/* Slides track */}
         <div className={styles.trackContainer}>
           <div
             ref={trackRef}
             className={styles.track}
             style={{
-              transform: `translateX(-${idx * 100}%)`,
-              transition: transitionEnabled ? "transform 0.5s ease" : "none",
+              transform: `translateX(-${currentIndex * 100}%)`,
+              transition: transitionEnabled ? 'transform 0.5s ease-in-out' : 'none',
             }}
-            onTransitionEnd={onTransitionEnd}
+            onTransitionEnd={handleTransitionEnd}
           >
-            {slides.map((src, i) => (
-              <div key={i} className={styles.slide}>
-                <img
-                  src={src}
-                  alt={`banner-${i}`}
+            {slides.map((slide, index) => (
+              <div key={index} className={styles.slide}>
+                <img 
+                  src={slide} 
+                  alt={`Banner ${index}`} 
                   className={styles.slideImage}
+                  loading="lazy"
                 />
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Pagination indicators */}
+        <div className={styles.pagination}>
+          {realSlides.map((_, index) => (
+            <button
+              key={index}
+              className={`${styles.paginationDot} ${
+                currentIndex === index + 1 ? styles.activeDot : ''
+              }`}
+              onClick={() => setCurrentIndex(index + 1)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
     </div>

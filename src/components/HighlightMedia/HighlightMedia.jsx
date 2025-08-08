@@ -21,7 +21,7 @@ const HighlightMedia = () => {
     const fetchHighlightMedia = async () => {
       try {
         const response = await fetch(
-          `https://kimiatoranj-api.liara.run/api/highlights/highlights/${id}/`
+          `https://rad-gallery-api.liara.run/api/highlights/highlights/${id}/`
         );
         if (!response.ok) throw new Error("Network response was not ok");
         const data = await response.json();
@@ -49,7 +49,7 @@ const HighlightMedia = () => {
     const fetchAllHighlightMedia = async () => {
       try {
         const response = await fetch(
-          `https://kimiatoranj-api.liara.run/api/highlights/highlights/`
+          `https://rad-gallery-api.liara.run/api/highlights/highlights/`
         );
         if (!response.ok) throw new Error("Network response was not ok");
         const data = await response.json();
@@ -112,7 +112,7 @@ const HighlightMedia = () => {
   if (loading) {
     return (
       <div className={styles.loadingContainer}>
-        <PuffLoader color="#ffed00" size={65} />
+        <PuffLoader color="#499c7f" size={65} />
       </div>
     );
   }

@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import { MdTrendingUp } from "react-icons/md";
 import { GrFormPrevious, GrFormNext } from "react-icons/gr";
 import ProductCard from "../ProductCard/ProductCard";
+import ProductCardSkeleton from "../ProductCard/ProductCard.Skeleton"; // import اسکلتون
 import styles from "./Bestsellers.module.css";
 
 const Bestsellers = () => {
   const [products, setProducts] = useState([]);
-  const [loading,  setLoading ] = useState(true);
-  const [error,    setError   ] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const sliderRef = useRef(null);
 
   useEffect(() => {
@@ -29,7 +30,6 @@ const Bestsellers = () => {
     fetchProducts();
   }, []);
 
-  // scroll exactly one card + gap
   const slide = (dir) => {
     const wrapper = sliderRef.current;
     if (!wrapper) return;
@@ -38,7 +38,7 @@ const Bestsellers = () => {
     if (!first) return;
 
     const itemW = first.getBoundingClientRect().width;
-    const gap   = parseFloat(getComputedStyle(slider).gap) || 0;
+    const gap = parseFloat(getComputedStyle(slider).gap) || 0;
 
     wrapper.scrollBy({
       left: (itemW + gap) * dir,
@@ -46,8 +46,7 @@ const Bestsellers = () => {
     });
   };
 
-  if (loading) return <div className={styles.loading}>در حال بارگذاری…</div>;
-  if (error)   return <div className={styles.error}>خطا: {error}</div>;
+  if (error) return <div className={styles.error}>خطا: {error}</div>;
 
   return (
     <div className={styles.bestsellersContainer}>
@@ -81,11 +80,21 @@ const Bestsellers = () => {
       {/* SLIDER */}
       <div className={styles.sliderWrapper} ref={sliderRef}>
         <div className={styles.slider}>
-          {products.map((product) => (
-            <div key={product.id} className={styles.slideItem}>
-              <ProductCard product={product} />
-            </div>
-          ))}
+          {loading
+            ? // نمایش اسکلتون‌ها در حالت لودینگ
+              Array(5)
+                .fill(0)
+                .map((_, index) => (
+                  <div key={index} className={styles.slideItem}>
+                    <ProductCardSkeleton />
+                  </div>
+                ))
+            : // نمایش محصولات واقعی پس از لودینگ
+              products.map((product) => (
+                <div key={product.id} className={styles.slideItem}>
+                  <ProductCard product={product} />
+                </div>
+              ))}
         </div>
       </div>
     </div>

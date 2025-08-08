@@ -1,6 +1,6 @@
 .container {
   direction: rtl;
-  margin: 20px;
+  margin: 50px 20px;
   position: relative;
   display: flex;
   flex-direction: row;

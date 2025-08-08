@@ -11,7 +11,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border: 0.5px solid rgba(128, 128, 128, 0.291);
   transition: transform 0.2s ease-in-out;
-  width: 200px; /* پایه اصلی */
+  width: 200px;
   height: max-content;
 }
 
@@ -49,53 +49,109 @@
   text-align: center;
 }
 
-/* ==== ریسپانسیو برای تبلت و موبایل ==== */
+/* ===== Skeleton Styles ===== */
+.skeletonCard {
+  position: relative;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 0.5px solid rgba(128, 128, 128, 0.291);
+  width: 200px;
+  height: max-content;
+}
 
+.skeletonImage {
+  width: 100%;
+  height: 140px; /* 70% of 200px */
+  background-color: #f0f0f0;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeletonTitle {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 20px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
+
+.skeletonDate {
+  display: block;
+  width: 60%;
+  height: 12px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  margin: 8px auto 12px;
+}
+
+.skeletonShimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0)
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ==== Responsive Styles ==== */
 @media (max-width: 768px) {
-  .card {
+  .card, .skeletonCard {
     width: 160px;
   }
 
-  .imageContainer {
-    height: 160px;
+  .imageContainer, .skeletonImage {
+    height: 112px; /* 70% of 160px */
   }
 
-  .title {
+  .title, .skeletonTitle {
     font-size: 14px;
+    height: 18px;
   }
 
-  .date {
+  .date, .skeletonDate {
     font-size: 11px;
+    height: 11px;
   }
 }
 
 @media (max-width: 480px) {
-  .card {
-    width: 100px; /* عرض کارت برای موبایل */
-    /* max-width: 250px; */
-    height: min-content; /* ارتفاع کارت */
-    margin: auto;
-   
+  .card, .skeletonCard {
+    width: 100px;
   }
 
-  .imageContainer {
-    width: 100%;
+  .imageContainer, .skeletonImage {
     height: 100px;
-    margin: 0;
-  }
-  .image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
   }
 
-  .title {
-    font-size: 14px;
-    /* font-weight: 100; */
-    padding: 0%;
+  .title, .skeletonTitle {
+    font-size: 12px;
+    height: 16px;
+    bottom: 5px;
   }
 
-  .date {
+  .date, .skeletonDate {
     font-size: 10px;
+    height: 10px;
+    margin-bottom: 8px;
   }
 }

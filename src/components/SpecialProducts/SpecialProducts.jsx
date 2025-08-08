@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { MdLocalOffer } from "react-icons/md";
 import { GrFormPrevious, GrFormNext } from "react-icons/gr";
 import ProductCard from "../ProductCard/ProductCard";
+import ProductCardSkeleton from "../ProductCard/ProductCard.Skeleton"; // import اسکلتون
 import styles from "./SpecialProducts.module.css";
 
 const SpecialProducts = () => {
@@ -29,7 +30,6 @@ const SpecialProducts = () => {
     fetchProducts();
   }, []);
 
-  // scroll exactly one card + gap
   const slide = (dir) => {
     const wrapper = sliderRef.current;
     if (!wrapper) return;
@@ -46,7 +46,6 @@ const SpecialProducts = () => {
     });
   };
 
-  if (loading) return <div className={styles.loading}>در حال بارگذاری…</div>;
   if (error) return <div className={styles.error}>خطا: {error}</div>;
 
   return (
@@ -80,11 +79,21 @@ const SpecialProducts = () => {
           <GrFormPrevious />
         </button>
         <div className={styles.slider}>
-          {products.map((product) => (
-            <div key={product.id} className={styles.slideItem}>
-              <ProductCard product={product} />
-            </div>
-          ))}
+          {loading
+            ? // نمایش اسکلتون‌ها در حالت لودینگ
+              Array(5)
+                .fill(0)
+                .map((_, index) => (
+                  <div key={index} className={styles.slideItem}>
+                    <ProductCardSkeleton />
+                  </div>
+                ))
+            : // نمایش محصولات واقعی پس از لودینگ
+              products.map((product) => (
+                <div key={product.id} className={styles.slideItem}>
+                  <ProductCard product={product} />
+                </div>
+              ))}
         </div>
       </div>
     </div>
