@@ -18,8 +18,7 @@ body {
 
 @font-face {
   font-family: 'Mj_Faraz';
-  src: local('Mj_Faraz'), url(./fonts/Mj_Faraz.ttf) format('truetype');
-  /* Change font    */
+  src: url('/fonts/Mj_Faraz.ttf') format('truetype');
 }
 * {
   box-sizing: border-box;
