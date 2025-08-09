@@ -5,6 +5,8 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 import ProductCardSkeleton from "../../components/ProductCard/ProductCard.Skeleton";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import SubCollections from "./SubCollections";
+import Filters from "./Filters";
 
 const CollectionProducts = () => {
   const { collectionId } = useParams();
@@ -134,12 +136,12 @@ const CollectionProducts = () => {
     });
   }, [allProducts, selectedSubCollection, sortOption, priceRange]);
 
-  const handleSortChange = useCallback((e) => {
-    setSortOption(e.target.value);
+  const handleSortChange = useCallback((value) => {
+    setSortOption(value);
   }, []);
 
-  const handlePriceFilterChange = useCallback((e) => {
-    setPriceRange(e.target.value);
+  const handlePriceFilterChange = useCallback((value) => {
+    setPriceRange(value);
   }, []);
 
   const handleSubCollectionSelect = useCallback((subCollectionId) => {
@@ -169,65 +171,19 @@ const CollectionProducts = () => {
         )}
       </div>
 
-      {directSubCollections.length > 0 && (
-        <div className={styles.subCollections}>
-          <h3>زیردسته‌های {collection?.title}:</h3>
-          <div className={styles.subCollectionList}>
-            <button
-              className={`${styles.subCollectionButton} ${
-                !selectedSubCollection ? styles.active : ""
-              }`}
-              onClick={() => handleSubCollectionSelect(null)}
-            >
-              همه محصولات
-            </button>
-            {directSubCollections.map(sub => (
-              <button
-                key={sub.id}
-                className={`${styles.subCollectionButton} ${
-                  selectedSubCollection === sub.id ? styles.active : ""
-                }`}
-                onClick={() => handleSubCollectionSelect(sub.id)}
-              >
-                {sub.title}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
+      <SubCollections 
+        directSubCollections={directSubCollections}
+        selectedSubCollection={selectedSubCollection}
+        collectionTitle={collection?.title}
+        onSelectSubCollection={handleSubCollectionSelect}
+      />
 
-      <div className={styles.filters}>
-        <div className={styles.filterGroup}>
-          <label htmlFor="sort">مرتب‌سازی:</label>
-          <select
-            id="sort"
-            value={sortOption}
-            onChange={handleSortChange}
-            className={styles.select}
-          >
-            <option value="newest">جدیدترین</option>
-            <option value="oldest">قدیمی‌ترین</option>
-            <option value="price-high">گران‌ترین</option>
-            <option value="price-low">ارزان‌ترین</option>
-          </select>
-        </div>
-
-        <div className={styles.filterGroup}>
-          <label htmlFor="price">فیلتر قیمت:</label>
-          <select
-            id="price"
-            value={priceRange}
-            onChange={handlePriceFilterChange}
-            className={styles.select}
-          >
-            <option value="all">همه قیمت‌ها</option>
-            <option value="under-50">زیر 50 هزار تومان</option>
-            <option value="50-100">50 تا 100 هزار تومان</option>
-            <option value="100-200">100 تا 200 هزار تومان</option>
-            <option value="over-200">بالای 200 هزار تومان</option>
-          </select>
-        </div>
-      </div>
+      <Filters 
+        sortOption={sortOption}
+        priceRange={priceRange}
+        onSortChange={handleSortChange}
+        onPriceFilterChange={handlePriceFilterChange}
+      />
 
       {loading ? (
         <div className={styles.productsGrid}>
