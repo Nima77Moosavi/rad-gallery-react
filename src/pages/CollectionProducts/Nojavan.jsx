@@ -1,89 +1,57 @@
 import React, { useEffect, useState, useCallback, useMemo } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import styles from "./CollectionProducts.module.css";
+import { useNavigate } from "react-router-dom";
+import styles from "./nojavan.module.css";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import ProductCardSkeleton from "../../components/ProductCard/ProductCard.Skeleton";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import SubCollections from "./SubCollections";
 import Filters from "./Filters";
 
-const CollectionProducts = () => {
-  const { collectionId } = useParams();
+const NojavanProducts = () => {
+  const NOJAVAN_COLLECTION_ID = 123; // ID دسته‌بندی نوجوان را اینجا قرار دهید
   const navigate = useNavigate();
   const [collection, setCollection] = useState(null);
-  const [directSubCollections, setDirectSubCollections] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [sortOption, setSortOption] = useState("newest");
   const [priceRange, setPriceRange] = useState("all");
-  const [selectedSubCollection, setSelectedSubCollection] = useState(null);
 
   const fetchData = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
       
-      // 1. Fetch collections data
-      const collectionsRes = await fetch(
-        `https://rad-gallery-api.liara.run/api/store/collections/`
+      // دریافت اطلاعات دسته‌بندی نوجوان
+      const collectionRes = await fetch(
+        `https://rad-gallery-api.liara.run/api/store/collections/${NOJAVAN_COLLECTION_ID}/`
       );
-      if (!collectionsRes.ok) throw new Error("Failed to fetch collections");
+      if (!collectionRes.ok) throw new Error("خطا در دریافت اطلاعات دسته‌بندی نوجوان");
       
-      const collectionsData = await collectionsRes.json();
-      const collectionsArray = Array.isArray(collectionsData.results) 
-        ? collectionsData.results 
-        : Array.isArray(collectionsData) 
-          ? collectionsData 
+      const collectionData = await collectionRes.json();
+      setCollection(collectionData);
+
+      // دریافت محصولات نوجوان
+      const productsRes = await fetch(
+        `https://rad-gallery-api.liara.run/api/store/products/?collection_id=${NOJAVAN_COLLECTION_ID}`
+      );
+      if (!productsRes.ok) throw new Error("خطا در دریافت محصولات نوجوان");
+      
+      const productsData = await productsRes.json();
+      const productsArray = Array.isArray(productsData.results) 
+        ? productsData.results 
+        : Array.isArray(productsData) 
+          ? productsData 
           : [];
 
-      // 2. Find current collection and its sub-collections
-      const currentCollection = collectionsArray.find(
-        c => c.id === parseInt(collectionId)
-      );
-      if (!currentCollection) throw new Error("Collection not found");
-      
-      const subs = collectionsArray.filter(c => {
-        const parentId = c.parent?.id || c.parent;
-        return parentId === parseInt(collectionId);
-      });
-
-      setCollection(currentCollection);
-      setDirectSubCollections(subs);
-
-      // 3. Fetch products for this collection and its sub-collections
-      const collectionTreeIds = [
-        parseInt(collectionId),
-        ...subs.map(sub => sub.id)
-      ];
-
-      // Fetch products for each collection in parallel
-      const productPromises = collectionTreeIds.map(async (id) => {
-        const res = await fetch(
-          `https://rad-gallery-api.liara.run/api/store/products/?collection_id=${id}`
-        );
-        if (!res.ok) throw new Error(`Failed to fetch products for collection ${id}`);
-        const data = await res.json();
-        return Array.isArray(data.results) ? data.results : Array.isArray(data) ? data : [];
-      });
-
-      const productsArrays = await Promise.all(productPromises);
-      const mergedProducts = productsArrays.flat();
-
-      // Remove duplicates (in case a product is in multiple collections)
-      const uniqueProducts = mergedProducts.filter(
-        (product, index, self) => index === self.findIndex(p => p.id === product.id)
-      );
-
-      setAllProducts(uniqueProducts);
+      setAllProducts(productsArray);
     } catch (err) {
       setError(err.message || "خطا در دریافت اطلاعات");
-      console.error("Fetch error:", err);
+      console.error("خطای دریافت:", err);
     } finally {
       setLoading(false);
     }
-  }, [collectionId]);
+  }, []);
 
   useEffect(() => {
     fetchData();
@@ -94,15 +62,7 @@ const CollectionProducts = () => {
 
     let result = [...allProducts];
 
-    // Apply subcollection filter
-    if (selectedSubCollection) {
-      result = result.filter(product => {
-        const productCollectionId = product.collection_id || product.collection?.id || product.collection;
-        return productCollectionId && parseInt(productCollectionId) === parseInt(selectedSubCollection);
-      });
-    }
-
-    // Apply price filter
+    // فیلتر قیمت
     if (priceRange !== "all") {
       result = result.filter(product => {
         const price = product.variants?.[0]?.price 
@@ -119,7 +79,7 @@ const CollectionProducts = () => {
       });
     }
 
-    // Apply sorting
+    // مرتب‌سازی
     return result.sort((a, b) => {
       const dateA = new Date(a.created_at || 0);
       const dateB = new Date(b.created_at || 0);
@@ -134,7 +94,7 @@ const CollectionProducts = () => {
         default: return 0;
       }
     });
-  }, [allProducts, selectedSubCollection, sortOption, priceRange]);
+  }, [allProducts, sortOption, priceRange]);
 
   const handleSortChange = useCallback((value) => {
     setSortOption(value);
@@ -142,12 +102,6 @@ const CollectionProducts = () => {
 
   const handlePriceFilterChange = useCallback((value) => {
     setPriceRange(value);
-  }, []);
-
-  const handleSubCollectionSelect = useCallback((subCollectionId) => {
-    setSelectedSubCollection(prev => 
-      prev === subCollectionId ? null : subCollectionId
-    );
   }, []);
 
   if (error) {
@@ -165,18 +119,11 @@ const CollectionProducts = () => {
     <div className={styles.container}>
       <Header />
       <div className={styles.header}>
-        <h1 className={styles.title}>{collection?.title}</h1>
+        <h1 className={styles.title}>محصولات نوجوان</h1>
         {collection?.description && (
           <p className={styles.description}>{collection.description}</p>
         )}
       </div>
-
-      <SubCollections 
-        directSubCollections={directSubCollections}
-        selectedSubCollection={selectedSubCollection}
-        collectionTitle={collection?.title}
-        onSelectSubCollection={handleSubCollectionSelect}
-      />
 
       <Filters 
         sortOption={sortOption}
@@ -193,9 +140,7 @@ const CollectionProducts = () => {
         </div>
       ) : filteredProducts.length === 0 ? (
         <div className={styles.empty}>
-          {selectedSubCollection 
-            ? "هیچ محصولی در این زیردسته یافت نشد." 
-            : "هیچ محصولی در این دسته‌بندی یافت نشد."}
+          هیچ محصولی در دسته‌بندی نوجوان یافت نشد.
         </div>
       ) : (
         <div className={styles.productsGrid}>
@@ -217,4 +162,4 @@ const CollectionProducts = () => {
   );
 };
 
-export default React.memo(CollectionProducts);
+export default React.memo(NojavanProducts);
