@@ -24,16 +24,16 @@ const Header = () => {
       
       {/* کادر شبکه‌های اجتماعی */}
       <div className={styles.socialContainer}>
-        <a href="https://facebook.com" className={styles.socialLink}>
+        <a href="tel:989174189802" className={styles.socialLink}>
           <FaPhone className={styles.socialIcon} />
         </a>
-        <a href="https://twitter.com" className={styles.socialLink}>
+        <a href="https://wa.me/989174189802" className={styles.socialLink}>
           <FaWhatsapp className={styles.socialIcon} />
         </a>
-        <a href="https://instagram.com" className={styles.socialLink}>
+        <a href="https://instagram.com/rad_gallery_" className={styles.socialLink}>
           <FaInstagram className={styles.socialIcon} />
         </a>
-        <a href="https://linkedin.com" className={styles.socialLink}>
+        <a href="https://eitaa.com/radgallery" className={styles.socialLink} alt="ایتا">
           <FaTelegram className={styles.socialIcon} />
         </a>
       </div>
