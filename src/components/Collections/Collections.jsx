@@ -50,7 +50,11 @@ const Collections = () => {
         ) : (
           collections.map((collection) => (
             <Link
-              to={`/collections/${collection.id}`}
+            to={
+              collection.id === 3 ? '/nojavan' : 
+              collection.id === 1 ? '/bozorgsal' : 
+              `/collections/${collection.id}`
+            }
               key={collection.id}
               className={styles.collectionCard}
               style={{ backgroundImage: `url(${collection.image})` }}
