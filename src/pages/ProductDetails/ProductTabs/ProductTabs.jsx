@@ -103,13 +103,13 @@ const ProductTabs = ({
         >
           <MdOutlineDescription className={styles.icons} /> توضیحات
         </button>
-        <button
+        {/* <button
           onClick={() => scrollToSection(dimensionsRef, "dimensions")}
           className={activeTab === "dimensions" ? styles.active : ""}
           ref={activeTab === "dimensions" ? activeButtonRef : null}
         >
           <RiRulerLine className={styles.icons} /> ابعاد
-        </button>
+        </button> */}
         <button
           onClick={() => scrollToSection(maintenanceRef, "maintenance")}
           className={activeTab === "maintenance" ? styles.active : ""}
@@ -139,12 +139,12 @@ const ProductTabs = ({
           </h2>
           <p>{product.description}</p>
         </div>
-        <div ref={dimensionsRef} className={styles.dimensionsSection}>
+        {/* <div ref={dimensionsRef} className={styles.dimensionsSection}>
           <h2>
             <RiRulerLine className={styles.icons} /> ابعاد
           </h2>
           <p>ابعاد محصول اینجا نمایش داده می‌شود.</p>
-        </div>
+        </div> */}
         <div ref={maintenanceRef} className={styles.maintenanceSection}>
           <h2>
             <BsQuestionSquare className={styles.icons} /> شرایط نگهداری
