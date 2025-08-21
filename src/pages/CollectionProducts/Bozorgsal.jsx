@@ -8,8 +8,8 @@ import Footer from "../../components/Footer/Footer";
 import SubCollections from "./SubCollections";
 import Filters from "./Filters";
 
-const Nojavan = () => {
-  const collectionId = 3; // ID ثابت برای پوشاک نوجوان
+const Bozorgsal = () => {
+  const collectionId = 1; // ID ثابت برای پوشاک بزرگسال
   const navigate = useNavigate();
   const [collection, setCollection] = useState(null);
   const [directSubCollections, setDirectSubCollections] = useState([]);
@@ -25,7 +25,6 @@ const Nojavan = () => {
       setLoading(true);
       setError(null);
       
-      // 1. Fetch collections data
       const collectionsRes = await fetch(
         `https://rad-gallery-api.liara.run/api/store/collections/`
       );
@@ -38,7 +37,6 @@ const Nojavan = () => {
           ? collectionsData 
           : [];
 
-      // 2. Find current collection and its sub-collections
       const currentCollection = collectionsArray.find(
         c => c.id === collectionId
       );
@@ -52,14 +50,12 @@ const Nojavan = () => {
       setCollection(currentCollection);
       setDirectSubCollections(subs);
 
-      // 3. Fetch products ONLY for the selected sub-collection if one is selected
-      // Otherwise fetch for main collection and all sub-collections
-      const collectionIdsToFetch = selectedSubCollection 
-        ? [parseInt(selectedSubCollection)]
-        : [collectionId, ...subs.map(sub => sub.id)];
+      const collectionTreeIds = [
+        collectionId,
+        ...subs.map(sub => sub.id)
+      ];
 
-      // Fetch products for each collection in parallel
-      const productPromises = collectionIdsToFetch.map(async (id) => {
+      const productPromises = collectionTreeIds.map(async (id) => {
         const res = await fetch(
           `https://rad-gallery-api.liara.run/api/store/products/?collection_id=${id}`
         );
@@ -70,8 +66,6 @@ const Nojavan = () => {
 
       const productsArrays = await Promise.all(productPromises);
       const mergedProducts = productsArrays.flat();
-
-      // Remove duplicates
       const uniqueProducts = mergedProducts.filter(
         (product, index, self) => index === self.findIndex(p => p.id === product.id)
       );
@@ -83,7 +77,7 @@ const Nojavan = () => {
     } finally {
       setLoading(false);
     }
-  }, [selectedSubCollection]);
+  }, []);
 
   useEffect(() => {
     fetchData();
@@ -94,7 +88,13 @@ const Nojavan = () => {
 
     let result = [...allProducts];
 
-    // Apply price filter
+    if (selectedSubCollection) {
+      result = result.filter(product => {
+        const productCollectionId = product.collection_id || product.collection?.id || product.collection;
+        return productCollectionId && parseInt(productCollectionId) === parseInt(selectedSubCollection);
+      });
+    }
+
     if (priceRange !== "all") {
       result = result.filter(product => {
         const price = product.variants?.[0]?.price 
@@ -111,7 +111,6 @@ const Nojavan = () => {
       });
     }
 
-    // Apply sorting
     return result.sort((a, b) => {
       const dateA = new Date(a.created_at || 0);
       const dateB = new Date(b.created_at || 0);
@@ -126,7 +125,7 @@ const Nojavan = () => {
         default: return 0;
       }
     });
-  }, [allProducts, sortOption, priceRange]);
+  }, [allProducts, selectedSubCollection, sortOption, priceRange]);
 
   const handleSortChange = useCallback((value) => {
     setSortOption(value);
@@ -157,7 +156,7 @@ const Nojavan = () => {
     <div className={styles.container}>
       <Header />
       <div className={styles.header}>
-        <h1 className={styles.title}>پوشاک نوجوان</h1>
+        <h1 className={styles.title}>پوشاک بزرگسال</h1>
         {collection?.description && (
           <p className={styles.description}>{collection.description}</p>
         )}
@@ -209,4 +208,4 @@ const Nojavan = () => {
   );
 };
 
-export default React.memo(Nojavan);
+export default React.memo(Bozorgsal);

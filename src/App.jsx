@@ -28,6 +28,8 @@ import GiftSelector from "./pages/GiftSelector/GiftSelector.jsx";
 import ScrollToTop from "./utils/ScrollToTop.jsx";
 import CollectionProducts from "./pages/CollectionProducts/CollectionProducts.jsx";
 import Collections from "./components/Collections/Collections.jsx";
+import Nojavan from "./pages/CollectionProducts/Nojavan.jsx";
+import Bozorgsal from "./pages/CollectionProducts/Bozorgsal.jsx";
 
 const App = () => {
   return (
@@ -47,6 +49,8 @@ const App = () => {
         <Route path="/gift-selector" element={<GiftSelector />} />
         <Route path="/collections/:collectionId" element={<CollectionProducts />} />
         <Route path="/collections" element={<Collections />} />
+        <Route path="/nojavan" element={<Nojavan />} />
+        <Route path="/bozorgsal" element={<Bozorgsal />} />
         {/* Protected UserPanel Routes */}
         <Route
           path="/user-panel/*"
