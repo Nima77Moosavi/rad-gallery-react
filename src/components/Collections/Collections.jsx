@@ -53,6 +53,8 @@ const Collections = () => {
             to={
               collection.id === 3 ? '/nojavan' : 
               collection.id === 1 ? '/bozorgsal' : 
+              collection.id === 6 ? '/madarkodak' : 
+              collection.id === 7 ? '/ebadat' : 
               `/collections/${collection.id}`
             }
               key={collection.id}
