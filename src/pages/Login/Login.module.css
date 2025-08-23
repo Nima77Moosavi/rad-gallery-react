@@ -23,7 +23,7 @@
   text-align: center;
   width: 100%;
   max-width: 400px;
-  min-height: 500px;
+  min-height: 480px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -33,13 +33,13 @@
 
 /* لوگو */
 .logoImage {
-  width: 150px;
+  width: 220px;
   height: auto;
 }
 
 /* پیام خوش‌آمدگویی */
 .welcome {
-  font-size: 18px;
+  font-size: 24px;
   margin-top: 25px;
   margin-bottom: 25px;
   color: #37474e;
@@ -54,7 +54,7 @@
 
 /* پیام راهنما */
 .instruction {
-  font-size: 16px;
+  font-size: 22px;
   color: #414b50;
   margin-bottom: 25px;
 }
@@ -154,7 +154,7 @@
 
 /* قوانین (جمله پذیرش شرایط) */
 .terms {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--text-color);
   margin-top: auto;
   padding-bottom: 0px; /* اضافه کردن فاصله اضافی در انتهای باکس */
