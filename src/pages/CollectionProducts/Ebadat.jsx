@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./CollectionProducts.module.css";
 import ProductCard from "../../components/ProductCard/ProductCard";
@@ -9,84 +9,96 @@ import SubCollections from "./SubCollections";
 import Filters from "./Filters";
 
 const Ebadat = () => {
-  const collectionId = 7; // ID ست عبادت
+  const collectionId = 7; // ID ثابت برای ست عبادت
   const navigate = useNavigate();
-  const [collections, setCollections] = useState([]);
-  const [products, setProducts] = useState([]);
+  const [collection, setCollection] = useState(null);
+  const [directSubCollections, setDirectSubCollections] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [sortOption, setSortOption] = useState("newest");
   const [priceRange, setPriceRange] = useState("all");
   const [selectedSubCollection, setSelectedSubCollection] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        
-        console.log("Fetching data for Ebadat collection...");
-        
-        // دریافت تمام دسته‌بندی‌ها
-        const collectionsRes = await fetch(
-          "https://rad-gallery-api.liara.run/api/store/collections/"
+  const fetchData = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      
+      // 1. Fetch collections data
+      const collectionsRes = await fetch(
+        `https://rad-gallery-api.liara.run/api/store/collections/`
+      );
+      if (!collectionsRes.ok) throw new Error("Failed to fetch collections");
+      
+      const collectionsData = await collectionsRes.json();
+      const collectionsArray = Array.isArray(collectionsData.results) 
+        ? collectionsData.results 
+        : Array.isArray(collectionsData) 
+          ? collectionsData 
+          : [];
+
+      // 2. Find current collection and its sub-collections
+      const currentCollection = collectionsArray.find(
+        c => c.id === collectionId
+      );
+      if (!currentCollection) throw new Error("Collection not found");
+      
+      const subs = collectionsArray.filter(c => {
+        const parentId = c.parent?.id || c.parent;
+        return parentId === collectionId;
+      });
+
+      setCollection(currentCollection);
+      setDirectSubCollections(subs);
+
+      // 3. Fetch products ONLY for the selected sub-collection if one is selected
+      // Otherwise fetch for main collection and all sub-collections
+      const collectionIdsToFetch = selectedSubCollection 
+        ? [parseInt(selectedSubCollection)]
+        : [collectionId, ...subs.map(sub => sub.id)];
+
+      // Fetch products for each collection in parallel
+      const productPromises = collectionIdsToFetch.map(async (id) => {
+        const res = await fetch(
+          `https://rad-gallery-api.liara.run/api/store/products/?collection_id=${id}`
         );
-        const collectionsData = await collectionsRes.json();
-        const allCollections = Array.isArray(collectionsData.results) 
-          ? collectionsData.results 
-          : Array.isArray(collectionsData) 
-            ? collectionsData 
-            : [];
+        if (!res.ok) throw new Error(`Failed to fetch products for collection ${id}`);
+        const data = await res.json();
+        return Array.isArray(data.results) ? data.results : Array.isArray(data) ? data : [];
+      });
 
-        // یافتن دسته اصلی و زیرمجموعه‌هایش
-        const mainCollection = allCollections.find(c => c.id === collectionId);
-        const subCollections = allCollections.filter(
-          c => (c.parent?.id || c.parent) === collectionId
-        );
+      const productsArrays = await Promise.all(productPromises);
+      const mergedProducts = productsArrays.flat();
 
-        setCollections({
-          main: mainCollection,
-          subs: subCollections
-        });
+      // Remove duplicates
+      const uniqueProducts = mergedProducts.filter(
+        (product, index, self) => index === self.findIndex(p => p.id === product.id)
+      );
 
-        // دریافت محصولات بر اساس collection_id از API
-        const targetCollectionId = selectedSubCollection || collectionId;
-        const productsRes = await fetch(
-          `https://rad-gallery-api.liara.run/api/store/products/?collection_id=${targetCollectionId}`
-        );
-        
-        if (!productsRes.ok) {
-          throw new Error("خطا در دریافت محصولات");
-        }
-        
-        const productsData = await productsRes.json();
-        const fetchedProducts = Array.isArray(productsData.results) 
-          ? productsData.results 
-          : Array.isArray(productsData) 
-            ? productsData 
-            : [];
-
-        console.log(`Products for collection ${targetCollectionId}:`, fetchedProducts);
-        setProducts(fetchedProducts);
-        
-      } catch (err) {
-        setError(err.message || "خطا در دریافت اطلاعات");
-        console.error("Error:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
+      setAllProducts(uniqueProducts);
+    } catch (err) {
+      setError(err.message || "خطا در دریافت اطلاعات");
+      console.error("Fetch error:", err);
+    } finally {
+      setLoading(false);
+    }
   }, [selectedSubCollection]);
 
-  const filteredProducts = useMemo(() => {
-    let result = [...products];
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
-    // فیلتر قیمت
+  const filteredProducts = useMemo(() => {
+    if (!Array.isArray(allProducts)) return [];
+
+    let result = [...allProducts];
+
+    // Apply price filter
     if (priceRange !== "all") {
       result = result.filter(product => {
         const price = product.variants?.[0]?.price 
-          ? parseInt(product.variants[0].price) 
+          ? Number(product.variants[0].price) 
           : 0;
         
         switch (priceRange) {
@@ -99,12 +111,12 @@ const Ebadat = () => {
       });
     }
 
-    // مرتب‌سازی
+    // Apply sorting
     return result.sort((a, b) => {
       const dateA = new Date(a.created_at || 0);
       const dateB = new Date(b.created_at || 0);
-      const priceA = a.variants?.[0]?.price ? parseInt(a.variants[0].price) : 0;
-      const priceB = b.variants?.[0]?.price ? parseInt(b.variants[0].price) : 0;
+      const priceA = a.variants?.[0]?.price ? Number(a.variants[0].price) : 0;
+      const priceB = b.variants?.[0]?.price ? Number(b.variants[0].price) : 0;
 
       switch (sortOption) {
         case "newest": return dateB - dateA;
@@ -114,9 +126,21 @@ const Ebadat = () => {
         default: return 0;
       }
     });
-  }, [products, sortOption, priceRange]);
+  }, [allProducts, sortOption, priceRange]);
 
-  console.log("Rendering with products:", products);
+  const handleSortChange = useCallback((value) => {
+    setSortOption(value);
+  }, []);
+
+  const handlePriceFilterChange = useCallback((value) => {
+    setPriceRange(value);
+  }, []);
+
+  const handleSubCollectionSelect = useCallback((subCollectionId) => {
+    setSelectedSubCollection(prev => 
+      prev === subCollectionId ? null : subCollectionId
+    );
+  }, []);
 
   if (error) {
     return (
@@ -132,25 +156,25 @@ const Ebadat = () => {
   return (
     <div className={styles.container}>
       <Header />
-      
       <div className={styles.header}>
         <h1 className={styles.title}>ست عبادت</h1>
-        {collections.main?.description && (
-          <p className={styles.description}>{collections.main.description}</p>
+        {collection?.description && (
+          <p className={styles.description}>{collection.description}</p>
         )}
       </div>
 
-      <SubCollections
-        directSubCollections={collections.subs}
+      <SubCollections 
+        directSubCollections={directSubCollections}
         selectedSubCollection={selectedSubCollection}
-        onSelectSubCollection={setSelectedSubCollection}
+        collectionTitle={collection?.title}
+        onSelectSubCollection={handleSubCollectionSelect}
       />
 
-      <Filters
+      <Filters 
         sortOption={sortOption}
         priceRange={priceRange}
-        onSortChange={setSortOption}
-        onPriceFilterChange={setPriceRange}
+        onSortChange={handleSortChange}
+        onPriceFilterChange={handlePriceFilterChange}
       />
 
       {loading ? (
@@ -161,26 +185,25 @@ const Ebadat = () => {
         </div>
       ) : filteredProducts.length === 0 ? (
         <div className={styles.empty}>
-          {selectedSubCollection
-            ? "هیچ محصولی در این زیردسته یافت نشد"
-            : "هیچ محصولی در این دسته‌بندی یافت نشد"}
+          {selectedSubCollection 
+            ? "هیچ محصولی در این زیردسته یافت نشد." 
+            : "هیچ محصولی در این دسته‌بندی یافت نشد."}
         </div>
       ) : (
         <div className={styles.productsGrid}>
           {filteredProducts.map(product => (
-            <ProductCard
-              key={product.id}
+            <ProductCard 
+              key={product.id} 
               product={{
                 ...product,
                 price: product.variants?.[0]?.price || "0",
                 image: product.images?.[0]?.image || ""
-              }}
+              }} 
               onClick={() => navigate(`/product/${product.id}`)}
             />
           ))}
         </div>
       )}
-      
       <Footer />
     </div>
   );
