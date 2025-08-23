@@ -32,6 +32,7 @@ import Nojavan from "./pages/CollectionProducts/Nojavan.jsx";
 import Bozorgsal from "./pages/CollectionProducts/Bozorgsal.jsx";
 import MadarKodak from "./pages/CollectionProducts/MadarKodak.jsx";
 import Ebadat from "./pages/CollectionProducts/Ebadat.jsx";
+import KifKafsh from "./pages/CollectionProducts/KifKafsh.jsx";
 
 const App = () => {
   return (
@@ -55,6 +56,7 @@ const App = () => {
         <Route path="/bozorgsal" element={<Bozorgsal />} />
         <Route path="/madarkodak" element={<MadarKodak />} />
         <Route path="/ebadat" element={<Ebadat />} />
+        <Route path="/kifkafsh" element={<KifKafsh />} />
         {/* Protected UserPanel Routes */}
         <Route
           path="/user-panel/*"
