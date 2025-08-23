@@ -24,6 +24,8 @@ const Ebadat = () => {
       try {
         setLoading(true);
         
+        console.log("Fetching data for Ebadat collection...");
+        
         // دریافت تمام دسته‌بندی‌ها
         const collectionsRes = await fetch(
           "https://rad-gallery-api.liara.run/api/store/collections/"
@@ -35,41 +37,36 @@ const Ebadat = () => {
             ? collectionsData 
             : [];
 
-        // دریافت تمام محصولات
-        const productsRes = await fetch(
-          "https://rad-gallery-api.liara.run/api/store/products/"
-        );
-        const productsData = await productsRes.json();
-        const allProducts = Array.isArray(productsData.results) 
-          ? productsData.results 
-          : Array.isArray(productsData) 
-            ? productsData 
-            : [];
-
         // یافتن دسته اصلی و زیرمجموعه‌هایش
         const mainCollection = allCollections.find(c => c.id === collectionId);
         const subCollections = allCollections.filter(
           c => (c.parent?.id || c.parent) === collectionId
         );
 
-        // فیلتر کردن محصولات بر اساس دسته انتخاب شده
-        const filteredProducts = allProducts.filter(product => {
-          const productCollectionId = product.collection?.id || product.collection_id || product.collection;
-          
-          if (selectedSubCollection) {
-            return parseInt(productCollectionId) === parseInt(selectedSubCollection);
-          } else {
-            return [collectionId, ...subCollections.map(sc => sc.id)].includes(
-              parseInt(productCollectionId)
-            );
-          }
-        });
-
         setCollections({
           main: mainCollection,
           subs: subCollections
         });
-        setProducts(filteredProducts);
+
+        // دریافت محصولات بر اساس collection_id از API
+        const targetCollectionId = selectedSubCollection || collectionId;
+        const productsRes = await fetch(
+          `https://rad-gallery-api.liara.run/api/store/products/?collection_id=${targetCollectionId}`
+        );
+        
+        if (!productsRes.ok) {
+          throw new Error("خطا در دریافت محصولات");
+        }
+        
+        const productsData = await productsRes.json();
+        const fetchedProducts = Array.isArray(productsData.results) 
+          ? productsData.results 
+          : Array.isArray(productsData) 
+            ? productsData 
+            : [];
+
+        console.log(`Products for collection ${targetCollectionId}:`, fetchedProducts);
+        setProducts(fetchedProducts);
         
       } catch (err) {
         setError(err.message || "خطا در دریافت اطلاعات");
@@ -118,6 +115,8 @@ const Ebadat = () => {
       }
     });
   }, [products, sortOption, priceRange]);
+
+  console.log("Rendering with products:", products);
 
   if (error) {
     return (
