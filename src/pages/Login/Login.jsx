@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // اضافه شده
 import styles from "./Login.module.css";
-import logo from "../../assets/7.png";
+import logo from "../../assets/zlogo.png";
 import { API_URL } from "../../config";
 import axios from "axios";
 import FooterMenu from "../../components/FooterMenu/FooterMenu";

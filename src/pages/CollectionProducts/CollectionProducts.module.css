@@ -214,6 +214,7 @@
   .title {
       font-size: 1.8rem;
       margin-top: 20px;
+      padding-bottom: 10px;
   }
   
   .filters {

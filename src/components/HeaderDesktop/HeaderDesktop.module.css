@@ -98,7 +98,7 @@
 }
 
 .loginButton button {
-  font-size: 20px;
+  font-size: 24px;
   padding: 8px 16px;
   background-color: var(--secondary-color);
   color: var(--text-color);
