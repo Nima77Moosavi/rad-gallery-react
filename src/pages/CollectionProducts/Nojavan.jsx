@@ -9,7 +9,7 @@ import SubCollections from "./SubCollections";
 import Filters from "./Filters";
 
 const Nojavan = () => {
-  const collectionId = 3; // ID ثابت برای پوشاک نوجوان
+  const collectionId = 3;
   const navigate = useNavigate();
   const [collection, setCollection] = useState(null);
   const [directSubCollections, setDirectSubCollections] = useState([]);
@@ -25,7 +25,6 @@ const Nojavan = () => {
       setLoading(true);
       setError(null);
       
-      // 1. Fetch collections data
       const collectionsRes = await fetch(
         `https://rad-gallery-api.liara.run/api/store/collections/`
       );
@@ -38,7 +37,6 @@ const Nojavan = () => {
           ? collectionsData 
           : [];
 
-      // 2. Find current collection and its sub-collections
       const currentCollection = collectionsArray.find(
         c => c.id === collectionId
       );
@@ -52,13 +50,10 @@ const Nojavan = () => {
       setCollection(currentCollection);
       setDirectSubCollections(subs);
 
-      // 3. Fetch products ONLY for the selected sub-collection if one is selected
-      // Otherwise fetch for main collection and all sub-collections
       const collectionIdsToFetch = selectedSubCollection 
         ? [parseInt(selectedSubCollection)]
         : [collectionId, ...subs.map(sub => sub.id)];
 
-      // Fetch products for each collection in parallel
       const productPromises = collectionIdsToFetch.map(async (id) => {
         const res = await fetch(
           `https://rad-gallery-api.liara.run/api/store/products/?collection_id=${id}`
@@ -71,7 +66,6 @@ const Nojavan = () => {
       const productsArrays = await Promise.all(productPromises);
       const mergedProducts = productsArrays.flat();
 
-      // Remove duplicates
       const uniqueProducts = mergedProducts.filter(
         (product, index, self) => index === self.findIndex(p => p.id === product.id)
       );
@@ -94,7 +88,6 @@ const Nojavan = () => {
 
     let result = [...allProducts];
 
-    // Apply price filter
     if (priceRange !== "all") {
       result = result.filter(product => {
         const price = product.variants?.[0]?.price 
@@ -111,7 +104,6 @@ const Nojavan = () => {
       });
     }
 
-    // Apply sorting
     return result.sort((a, b) => {
       const dateA = new Date(a.created_at || 0);
       const dateB = new Date(b.created_at || 0);
@@ -204,6 +196,94 @@ const Nojavan = () => {
           ))}
         </div>
       )}
+      
+      {/* بخش جدید توضیحات SEO با طراحی فارسی و راست‌چین */}
+      <section className={styles.seoSection}>
+        <div className={styles.seoContainer}>
+          <div className={styles.seoHeader}>
+            <h2 className={styles.seoTitle}>جهان پوشاک نوجوان: سبک‌های مدرن و با حجاب</h2>
+            <div className={styles.seoDivider}></div>
+          </div>
+          
+          <div className={styles.seoContent}>
+            <div className={styles.seoCard}>
+              <div className={styles.seoText}>
+                <h3>تنوع بی‌نظیر در طراحی</h3>
+                <p>
+                  در دنیای پوشاک نوجوان، ما مجموعه‌ای بی‌نظیر از لباس‌های شیک و مدرن ارائه می‌دهیم که 
+                  هماهنگ با سلیقه نوجوانان امروزی و مطابق با ارزش‌های فرهنگی طراحی شده‌اند. 
+                  از تونیک‌های مجلسی تا لباس‌های روزمره، هر قطعه با دقت انتخاب شده تا 
+                  ترکیبی از مد، راحتی و حجاب را ارائه دهد.
+                </p>
+              </div>
+              <div className={styles.seoDecoration}>
+                <div className={styles.decoCircle}></div>
+                <div className={styles.decoLine}></div>
+              </div>
+            </div>
+            
+            <div className={styles.seoCard}>
+              <div className={styles.seoText}>
+                <h3>کیفیت و اصالت مواد اولیه</h3>
+                <p>
+                  کیفیت برای ما یک تعهد است. تمامی محصولات از پارچه‌های درجه یک و طبیعی 
+                  تهیه شده‌اند که نه تنها لطافت و راحتی بی‌نظیری دارند، 
+                  بلکه برای پوست حساس نوجوانان کاملاً مناسب هستند. 
+                  از پارچه‌های نخی و کتان گرفته تا انواع مرغوب دیگر، 
+                  همگی تضمین کننده کیفیت و رضایت هستند.
+                </p>
+              </div>
+              <div className={styles.seoDecoration}>
+                <div className={styles.decoSquare}></div>
+                <div className={styles.decoLine}></div>
+              </div>
+            </div>
+            
+            <div className={styles.seoCard}>
+              <div className={styles.seoText}>
+                <h3>مناسب برای هر مناسبت</h3>
+                <p>
+                  چه برای مدرسه، مهمانی، گردش با دوستان یا مناسبت‌های خانوادگی، 
+                  مجموعه پوشاک نوجوان ما پاسخگوی تمام نیازهای شماست. 
+                  طراحی‌های جوانپسند و رنگ‌های شاد و متنوع، 
+                  امکان بیان فردیت و سلیقه شخصی را فراهم می‌آورد.
+                </p>
+              </div>
+              <div className={styles.seoDecoration}>
+                <div className={styles.decoCircle}></div>
+                <div className={styles.decoLine}></div>
+              </div>
+            </div>
+            
+            <div className={styles.seoCard}>
+              <div className={styles.seoText}>
+                <h3>حجاب به سبک امروزی</h3>
+                <p>
+                  ما به حجاب به عنوان یک ارزش و یک انتخاب زیبا نگاه می‌کنیم. 
+                  طراحی‌های ما ثابت می‌کند که می‌توان هم محجبه بود و هم بسیار شیک و به‌روز. 
+                  پوشاک نوجوان ما این پیام را به نسل جدید منتقل می‌کند که حجاب نه تنها محدودیت نیست، 
+                  بلکه می‌تواند منبعی برای خلاقیت و بیان فردیت باشد.
+                </p>
+              </div>
+              <div className={styles.seoDecoration}>
+                <div className={styles.decoSquare}></div>
+                <div className={styles.decoLine}></div>
+              </div>
+            </div>
+            
+            <div className={styles.seoHighlight}>
+              <h3>چرا پوشاک نوجوان ما را انتخاب کنید؟</h3>
+              <ul>
+                <li>تنوع بی‌نظیر در طراحی و مدل‌ها</li>
+                <li>استفاده از بهترین مواد اولیه و پارچه‌های طبیعی</li>
+                <li>تطابق کامل با معیارهای حجاب اسلامی</li>
+                <li>قیمت‌های مناسب و کیفیت بی‌نظیر</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       <Footer />
     </div>
   );
