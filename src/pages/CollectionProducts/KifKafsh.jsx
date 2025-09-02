@@ -204,6 +204,98 @@ const KifKafsh = () => {
           ))}
         </div>
       )}
+      
+      {/* بخش جدید توضیحات SEO برای کیف و کفش */}
+      <section className={styles.seoSection}>
+        <div className={styles.seoContainer}>
+          <div className={styles.seoHeader}>
+            <h2 className={styles.seoTitle}>کیف و کفش: تکمیل کننده استایل شما</h2>
+            <div className={styles.seoDivider}></div>
+          </div>
+          
+          <div className={styles.seoContent}>
+            <div className={styles.seoCard}>
+              <div className={styles.seoText}>
+                <h3>تنوع بی‌نظیر در طراحی کیف و کفش</h3>
+                <p>
+                  در دنیای کیف و کفش، ما مجموعه‌ای کامل از محصولات شیک و کاربردی ارائه می‌دهیم که 
+                  مناسب برای تمام سلیقه‌ها و موقعیت‌های مختلف است. از کفش‌های راحت روزمره 
+                  تا کیف‌های مجلسی و اداری، هر محصول با دقت طراحی شده تا ترکیبی از 
+                  زیبایی، کیفیت و کارایی را ارائه دهد.
+                </p>
+              </div>
+              <div className={styles.seoDecoration}>
+                <div className={styles.decoCircle}></div>
+                <div className={styles.decoLine}></div>
+              </div>
+            </div>
+            
+            <div className={styles.seoCard}>
+              <div className={styles.seoText}>
+                <h3>کیفیت و دوام بی‌نظیر</h3>
+                <p>
+                  برای کیف و کفش، کیفیت و دوام از اهمیت ویژه‌ای برخوردار است. 
+                  تمامی محصولات ما از بهترین مواد اولیه و چرم‌های مرغوب تهیه شده‌اند که 
+                  نه تنها در برابر استفاده روزمره مقاوم هستند، بلکه با گذشت زمان 
+                  کیفیت اولیه خود را حفظ می‌کنند. از چرم طبیعی گرفته تا 
+                  پارچه‌های باکیفیت و پایدار، همگی تضمین کننده رضایت مشتری هستند.
+                </p>
+              </div>
+              <div className={styles.seoDecoration}>
+                <div className={styles.decoSquare}></div>
+                <div className={styles.decoLine}></div>
+              </div>
+            </div>
+            
+            <div className={styles.seoCard}>
+              <div className={styles.seoText}>
+                <h3>مناسب برای هر موقعیت و استایل</h3>
+                <p>
+                  چه برای محیط کار، مهمانی‌های رسمی، گردش‌های روزمره یا مناسبت‌های خاص، 
+                  مجموعه کیف و کفش ما پاسخگوی تمام نیازهای شماست. 
+                  طراحی‌های مدرن و کلاسیک، رنگ‌های متنوع و الگوهای به روز، 
+                  امکان انتخاب بر اساس سلیقه شخصی و سبک زندگی را فراهم می‌آورد.
+                </p>
+              </div>
+              <div className={styles.seoDecoration}>
+                <div className={styles.decoCircle}></div>
+                <div className={styles.decoLine}></div>
+              </div>
+            </div>
+            
+            <div className={styles.seoCard}>
+              <div className={styles.seoText}>
+                <h3>راحتی و کاربردی بودن</h3>
+                <p>
+                  ما به راحتی و کاربردی بودن محصولاتمان اهمیت ویژه‌ای می‌دهیم. 
+                  کفش‌های ما با کفی‌های ارگونومیک و کیف‌هایمان با طراحی‌های هوشمند 
+                  تهیه شده‌اند تا نه تنها زیبا باشند، بلکه استفاده از آنها در طول روز 
+                  کاملاً راحت و لذت‌بخش باشد. از بخش‌بندی‌های داخلی کیف‌ها تا 
+                  پشتیبانی‌های قوسی کفش‌ها، همه‌چیز برای تجربه‌ای بهتر طراحی شده است.
+                </p>
+              </div>
+              <div className={styles.seoDecoration}>
+                <div className={styles.decoSquare}></div>
+                <div className={styles.decoLine}></div>
+              </div>
+            </div>
+            
+            <div className={styles.seoHighlight}>
+              <h3>چرا کیف و کفش ما را انتخاب کنید؟</h3>
+              <ul>
+                <li>تنوع بی‌نظیر در طراحی و مدل‌های متنوع</li>
+                <li>استفاده از بهترین مواد اولیه و چرم‌های مرغوب</li>
+                <li>تطابق کامل با استانداردهای کیفیت و دوام</li>
+                <li>قیمت‌های مناسب با توجه به کیفیت بی‌نظیر محصولات</li>
+                <li>راحتی و کاربردی بودن در طراحی‌ها</li>
+                <li>مناسب برای تمام سنین و سلیقه‌ها</li>
+                <li>گارانتی کیفیت و خدمات پس از فروش</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       <Footer />
     </div>
   );
