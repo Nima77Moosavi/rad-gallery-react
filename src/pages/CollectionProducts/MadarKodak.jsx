@@ -182,6 +182,95 @@ const MadarKodak = () => {
         </div>
       )}
       
+      {/* بخش جدید توضیحات SEO برای ست مادر و کودک */}
+      <section className={styles.seoSection}>
+        <div className={styles.seoContainer}>
+          <div className={styles.seoHeader}>
+            <h2 className={styles.seoTitle}>ست مادر و کودک: هارمونی زیبایی و عشق</h2>
+            <div className={styles.seoDivider}></div>
+          </div>
+          
+          <div className={styles.seoContent}>
+            <div className={styles.seoCard}>
+              <div className={styles.seoText}>
+                <h3>هماهنگی بی‌نظیر در طراحی</h3>
+                <p>
+                  در دنیای ست‌های مادر و کودک، ما مجموعه‌ای منحصر به فرد از لباس‌های هماهنگ 
+                  و ست‌های جذاب ارائه می‌دهیم که نشان‌دهنده پیوند عمیق مادر و فرزند است. 
+                  از ست‌های مجلسی و مراسم خاص تا لباس‌های روزمره و راحت، هر طراحی با ظرافت 
+                  انتخاب شده تا زیبایی، هماهنگی و حجاب را در کنار هم ارائه دهد.
+                </p>
+              </div>
+              <div className={styles.seoDecoration}>
+                <div className={styles.decoCircle}></div>
+                <div className={styles.decoLine}></div>
+              </div>
+            </div>
+            
+            <div className={styles.seoCard}>
+              <div className={styles.seoText}>
+                <h3>مواد اولیه مناسب برای پوست حساس</h3>
+                <p>
+                  برای مادران و کودکان، کیفیت و ایمنی پارچه از اهمیت ویژه‌ای برخوردار است. 
+                  تمامی محصولات ما از بهترین پارچه‌های طبیعی و ضد حساسیت تهیه شده‌اند که 
+                  نه تنها برای پوست حساس کودکان کاملاً مناسب است، بلکه راحتی و نرمی بی‌نظیری 
+                  را برای مادران به ارمغان می‌آورد. از پارچه‌های نخی و پنبه‌ای مرغوب گرفته تا 
+                  انواع لطیف و نرم، همگی تضمین کننده سلامت و رضایت شما هستند.
+                </p>
+              </div>
+              <div className={styles.seoDecoration}>
+                <div className={styles.decoSquare}></div>
+                <div className={styles.decoLine}></div>
+              </div>
+            </div>
+            
+            <div className={styles.seoCard}>
+              <div className={styles.seoText}>
+                <h3>مناسب برای تمام مناسبت‌ها</h3>
+                <p>
+                  چه برای مهمانی‌های خانوادگی، عکس‌های یادگاری، مراسم خاص یا استفاده روزمره، 
+                  مجموعه ست‌های مادر و کودک ما پاسخگوی تمام نیازهای شماست. 
+                  طراحی‌های متنوع، رنگ‌های شاد و هماهنگ و الگوهای جذاب، 
+                  امکان ایجاد خاطرات زیبا و به یاد ماندنی را فراهم می‌آورد.
+                </p>
+              </div>
+              <div className={styles.seoDecoration}>
+                <div className={styles.decoCircle}></div>
+                <div className={styles.decoLine}></div>
+              </div>
+            </div>
+            
+            <div className={styles.seoCard}>
+              <div className={styles.seoText}>
+                <h3>حجاب و زیبایی برای تمام اعضای خانواده</h3>
+                <p>
+                  ما به حجاب به عنوان ارزشی خانوادگی نگاه می‌کنیم. 
+                  طراحی‌های ما ثابت می‌کند که می‌توان هم محجبه بود و هم بسیار شیک و جذاب. 
+                  ست‌های مادر و کودک ما این پیام را منتقل می‌کنند که حجاب نه تنها محدودیت نیست، 
+                  بلکه می‌تواند نماد زیبایی، اصالت و همبستگی خانوادگی باشد.
+                </p>
+              </div>
+              <div className={styles.seoDecoration}>
+                <div className={styles.decoSquare}></div>
+                <div className={styles.decoLine}></div>
+              </div>
+            </div>
+            
+            <div className={styles.seoHighlight}>
+              <h3>چرا ست‌های مادر و کودک ما را انتخاب کنید؟</h3>
+              <ul>
+                <li>تنوع بی‌نظیر در طراحی و مدل‌های هماهنگ</li>
+                <li>استفاده از بهترین مواد اولیه طبیعی و مناسب پوست حساس</li>
+                <li>تطابق کامل با معیارهای حجاب اسلامی و پوشش ایرانی</li>
+                <li>قیمت‌های مناسب با توجه به کیفیت و دوام محصولات</li>
+                <li>ایجاد خاطرات زیبا و به یاد ماندنی برای خانواده‌ها</li>
+                <li>مناسب برای تمام سنین کودکان از نوزاد تا خردسال</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       <Footer />
     </div>
   );

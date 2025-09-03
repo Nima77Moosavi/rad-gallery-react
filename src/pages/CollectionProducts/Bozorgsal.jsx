@@ -203,6 +203,94 @@ const Bozorgsal = () => {
           ))}
         </div>
       )}
+      
+      {/* بخش جدید توضیحات SEO برای پوشاک بزرگسال */}
+      <section className={styles.seoSection}>
+        <div className={styles.seoContainer}>
+          <div className={styles.seoHeader}>
+            <h2 className={styles.seoTitle}>پوشاک بزرگسال: ظرافت و اصالت در کنار هم</h2>
+            <div className={styles.seoDivider}></div>
+          </div>
+          
+          <div className={styles.seoContent}>
+            <div className={styles.seoCard}>
+              <div className={styles.seoText}>
+                <h3>تنوع بی‌نظیر در استایل و طراحی</h3>
+                <p>
+                  در دنیای پوشاک بزرگسال، ما مجموعه‌ای کامل از لباس‌های شیک، مدرن و کلاسیک ارائه می‌دهیم که 
+                  مناسب برای تمام سلیقه‌ها و موقعیت‌های مختلف است. از مانتوهای مجلسی و روزمره تا 
+                  پالتوهای زمستانی و لباس‌های اداری، هر محصول با دقت طراحی شده تا ترکیبی از 
+                  ظرافت، راحتی و حجاب را ارائه دهد.
+                </p>
+              </div>
+              <div className={styles.seoDecoration}>
+                <div className={styles.decoCircle}></div>
+                <div className={styles.decoLine}></div>
+              </div>
+            </div>
+            
+            <div className={styles.seoCard}>
+              <div className={styles.seoText}>
+                <h3>کیفیت و دوام بی‌نظیر</h3>
+                <p>
+                  برای بزرگسالان، کیفیت و دوام لباس از اهمیت ویژه‌ای برخوردار است. 
+                  تمامی محصولات ما از بهترین پارچه‌های طبیعی و مرغوب تهیه شده‌اند که 
+                  نه تنها در برابر شستشوهای مکرر مقاوم هستند، بلکه با گذشت زمان 
+                  کیفیت اولیه خود را حفظ می‌کنند. از پارچه‌های نخی و لینن گرفته تا 
+                  پشمی و کرپ‌های مرغوب، همگی تضمین کننده رضایت مشتری هستند.
+                </p>
+              </div>
+              <div className={styles.seoDecoration}>
+                <div className={styles.decoSquare}></div>
+                <div className={styles.decoLine}></div>
+              </div>
+            </div>
+            
+            <div className={styles.seoCard}>
+              <div className={styles.seoText}>
+                <h3>مناسب برای هر موقعیت و مناسبت</h3>
+                <p>
+                  چه برای محیط کار، مهمانی‌های رسمی، گردش‌های روزمره یا مناسبت‌های خاص، 
+                  مجموعه پوشاک بزرگسال ما پاسخگوی تمام نیازهای شماست. 
+                  طراحی‌های کلاسیک و مدرن، رنگ‌های متنوع و الگوهای به روز، 
+                  امکان انتخاب بر اساس سلیقه شخصی و موقعیت اجتماعی را فراهم می‌آورد.
+                </p>
+              </div>
+              <div className={styles.seoDecoration}>
+                <div className={styles.decoCircle}></div>
+                <div className={styles.decoLine}></div>
+              </div>
+            </div>
+            
+            <div className={styles.seoCard}>
+              <div className={styles.seoText}>
+                <h3>حجاب به سبکی مدرن و کلاسیک</h3>
+                <p>
+                  ما به حجاب به عنوان یک ارزش والا و یک انتخاب هوشمندانه نگاه می‌کنیم. 
+                  طراحی‌های ما ثابت می‌کند که می‌توان هم محجبه بود و هم بسیار شیک، ظرافت و به‌روز. 
+                  پوشاک بزرگسال ما این پیام را به جامعه منتقل می‌کند که حجاب نه تنها محدودیت نیست، 
+                  بلکه می‌تواند نمادی از شخصیت، وقار و ظرافت باشد.
+                </p>
+              </div>
+              <div className={styles.seoDecoration}>
+                <div className={styles.decoSquare}></div>
+                <div className={styles.decoLine}></div>
+              </div>
+            </div>
+            
+            <div className={styles.seoHighlight}>
+              <h3>چرا پوشاک بزرگسال ما را انتخاب کنید؟</h3>
+              <ul>
+                <li>تنوع بی‌نظیر در طراحی و مدل‌های مناسب برای تمام سنین</li>
+                <li>استفاده از بهترین مواد اولیه و پارچه‌های طبیعی و با دوام</li>
+                <li>تطابق کامل با معیارهای حجاب اسلامی و پوشش ایرانی</li>
+                <li>قیمت‌های مناسب با توجه به کیفیت بی‌نظیر محصولات</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       <Footer />
     </div>
   );

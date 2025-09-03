@@ -204,6 +204,115 @@ const Ebadat = () => {
           ))}
         </div>
       )}
+      
+      {/* بخش جدید توضیحات SEO برای ست عبادت */}
+      <section className={styles.seoSection}>
+        <div className={styles.seoContainer}>
+          <div className={styles.seoHeader}>
+            <h2 className={styles.seoTitle}>ست عبادت: وقار و زیبایی در پرستش</h2>
+            <div className={styles.seoDivider}></div>
+          </div>
+          
+          <div className={styles.seoContent}>
+            <div className={styles.seoCard}>
+              <div className={styles.seoText}>
+                <h3>تنوع در ست‌های عبادی</h3>
+                <p>
+                  در دنیای ست‌های عبادت، ما مجموعه‌ای کامل از لباس‌های مناسب برای مراسم مذهبی، 
+                  نماز و مناسک دینی ارائه می‌دهیم. از چادرهای مجلسی و ساده گرفته تا 
+                  مقنعه‌های زیبا و مانتوهای مناسب عبادت، هر محصول با دقت طراحی شده تا 
+                  وقار، زیبایی و حجاب را در کنار راحتی برای عبادت فراهم آورد.
+                </p>
+              </div>
+              <div className={styles.seoDecoration}>
+                <div className={styles.decoCircle}></div>
+                <div className={styles.decoLine}></div>
+              </div>
+            </div>
+            
+            <div className={styles.seoCard}>
+              <div className={styles.seoText}>
+                <h3>مواد اولیه مناسب برای عبادت</h3>
+                <p>
+                  برای ست‌های عبادت، راحتی و تنفس پذیری پارچه از اهمیت ویژه‌ای برخوردار است. 
+                  تمامی محصولات ما از بهترین پارچه‌های طبیعی و سبک تهیه شده‌اند که 
+                  نه تنها در طول عبادت احساس راحتی می‌دهند، بلکه برای استفاده طولانی مدت 
+                  کاملاً مناسب هستند. از پارچه‌های نخی و کتان گرفته تا انواع سبک و خنک، 
+                  همگی تضمین کننده آرامش و تمرکز در هنگام عبادت هستند.
+                </p>
+              </div>
+              <div className={styles.seoDecoration}>
+                <div className={styles.decoSquare}></div>
+                <div className={styles.decoLine}></div>
+              </div>
+            </div>
+            
+            <div className={styles.seoCard}>
+              <div className={styles.seoText}>
+                <h3>مناسب برای تمام مراسم مذهبی</h3>
+                <p>
+                  چه برای نمازهای روزانه، مراسم مذهبی، اعیاد مذهبی  یا مجالس قرآن، 
+                  مجموعه ست‌های عبادت ما پاسخگوی تمام نیازهای شماست. 
+                  طراحی‌های متنوع، رنگ‌های مناسب و الگوهای محجبه، 
+                  امکان انتخاب بر اساس سلیقه شخصی و نوع مراسم را فراهم می‌آورد.
+                </p>
+              </div>
+              <div className={styles.seoDecoration}>
+                <div className={styles.decoCircle}></div>
+                <div className={styles.decoLine}></div>
+              </div>
+            </div>
+            
+            <div className={styles.seoCard}>
+              <div className={styles.seoText}>
+                <h3>ست‌های ویژه جشن تکلیف</h3>
+                <p>
+                  ما به مناسبت فرخنده جشن تکلیف، مجموعه‌ای ویژه از ست‌های عبادت را 
+                  برای نوجوانان طراحی کرده‌ایم. این ست‌ها با توجه به حساسیت این دوران 
+                  و اهمیت ویژه‌ای که در زندگی مذهبی نوجوانان دارد، با دقت و ظرافت خاصی 
+                  تهیه شده‌اند. طراحی‌های جوانپسند، رنگ‌های شاد و متنوع و استفاده از 
+                  پارچه‌های مرغوب، این ست‌ها را به انتخاب ایده‌آلی برای جشن تکلیف تبدیل کرده است.
+                </p>
+              </div>
+              <div className={styles.seoDecoration}>
+                <div className={styles.decoSquare}></div>
+                <div className={styles.decoLine}></div>
+              </div>
+            </div>
+            
+            <div className={styles.seoCard}>
+              <div className={styles.seoText}>
+                <h3>اهمیت جشن تکلیف و انتخاب ست مناسب</h3>
+                <p>
+                  جشن تکلیف یکی از مهم‌ترین مراحل زندگی دینی هر فرد است که 
+                  نشان‌دهنده ورود به مرحله جدیدی از مسئولیت‌های دینی می‌باشد. 
+                  انتخاب ست عبادت مناسب برای این مراسم نه تنها به زیبایی و شکوه مراسم می‌افزاید، 
+                  بلکه می‌تواند به عنوان یادگاری ارزشمند برای سال‌های آینده حفظ شود. 
+                  ست‌های عبادت ما با درنظرگیری این اهمیت، طراحی و تولید شده‌اند.
+                </p>
+              </div>
+              <div className={styles.seoDecoration}>
+                <div className={styles.decoCircle}></div>
+                <div className={styles.decoLine}></div>
+              </div>
+            </div>
+            
+            <div className={styles.seoHighlight}>
+              <h3>چرا ست‌های عبادت ما را انتخاب کنید؟</h3>
+              <ul>
+                <li>تنوع بی‌نظیر در طراحی و مدل‌های مناسب عبادت</li>
+                <li>استفاده از بهترین مواد اولیه طبیعی و راحت</li>
+                <li>تطابق کامل با معیارهای حجاب اسلامی</li>
+                <li>قیمت‌های مناسب با توجه به کیفیت و دوام محصولات</li>
+                <li>ست‌های ویژه و زیبا برای جشن تکلیف</li>
+                <li>مناسب برای تمام سنین از نوجوان تا بزرگسال</li>
+                <li>پشتیبانی از تمام مراسم مذهبی و دینی</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       <Footer />
     </div>
   );
