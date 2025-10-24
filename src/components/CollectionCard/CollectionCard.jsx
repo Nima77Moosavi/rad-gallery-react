@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom"; // For navigation
-import styles from "./CollectionCard.module.css"; // Optional: Add styling
+import { Link } from "react-router-dom";
+import styles from "./CollectionCard.module.css";
 
 const CollectionCard = ({ collection }) => {
   return (
@@ -12,8 +12,17 @@ const CollectionCard = ({ collection }) => {
             alt={collection.title}
             className={styles.image}
           />
+          {/* Overlay تیره برای خوانایی بهتر متن */}
+          <div className={styles.darkOverlay}></div>
+          
+          {/* محتوای متنی روی overlay */}
+          <div className={styles.textContent}>
+            <h3 className={styles.title}>{collection.title}</h3>
+            {collection.date && (
+              <span className={styles.date}>{collection.date}</span>
+            )}
+          </div>
         </div>
-        <h3 className={styles.title}>{collection.title}</h3>
       </div>
     </Link>
   );

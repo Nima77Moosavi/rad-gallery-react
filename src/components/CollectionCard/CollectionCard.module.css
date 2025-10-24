@@ -1,27 +1,30 @@
 .cardLink {
   text-decoration: none;
   color: inherit;
+  display: block;
 }
 
 .card {
   position: relative;
   background: white;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border: 0.5px solid rgba(128, 128, 128, 0.291);
-  transition: transform 0.2s ease-in-out;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   width: 200px;
-  height: max-content;
+  height: 240px;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
 }
 
 .imageContainer {
   width: 100%;
-  height: 70%;
+  height: 100%;
+  position: relative;
   overflow: hidden;
 }
 
@@ -29,129 +32,162 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.title {
+.card:hover .image {
+  transform: scale(1.08);
+}
+
+/* Overlay تیره برای خوانایی بهتر */
+.darkOverlay {
   position: absolute;
-  bottom: 10px;
-  padding: 5px;
-  font-size: 16px;
-  font-weight: 700;
-  color: #023047;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  z-index: 1;
+}
+
+/* محتوای متنی */
+.textContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  z-index: 2;
   text-align: center;
+}
+
+/* عنوان بزرگ و سفید */
+.title {
+  font-size: 22px;
+  font-weight: 800;
+  color: white;
+  margin: 0 0 10px 0;
+  line-height: 1.3;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+  letter-spacing: 0.5px;
 }
 
 .date {
   display: block;
-  padding: 0 12px 12px;
-  font-size: 12px;
-  color: #666;
-  text-align: center;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
-/* ===== Skeleton Styles ===== */
+/* ===== Skeleton Loading ===== */
 .skeletonCard {
   position: relative;
   background: white;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border: 0.5px solid rgba(128, 128, 128, 0.291);
-  width: 200px;
-  height: max-content;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  width: 240px;
+  height: 280px;
 }
 
 .skeletonImage {
   width: 100%;
-  height: 140px; /* 70% of 200px */
-  background-color: #f0f0f0;
+  height: 100%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
   position: relative;
-  overflow: hidden;
+  animation: loading 1.5s infinite;
 }
 
-.skeletonTitle {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  height: 20px;
-  background-color: #f0f0f0;
-  border-radius: 4px;
-}
-
-.skeletonDate {
-  display: block;
-  width: 60%;
-  height: 12px;
-  background-color: #f0f0f0;
-  border-radius: 4px;
-  margin: 8px auto 12px;
-}
-
-.skeletonShimmer {
+.skeletonOverlay {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 0.7),
-    rgba(255, 255, 255, 0)
-  );
-  animation: shimmer 1.5s infinite;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
 }
 
-@keyframes shimmer {
+.skeletonTextContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  z-index: 2;
+  text-align: center;
+}
+
+.skeletonTitle {
+  width: 80%;
+  height: 26px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 6px;
+  margin: 0 auto 12px;
+  animation: loading 1.5s infinite;
+}
+
+.skeletonDate {
+  width: 60%;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 4px;
+  margin: 0 auto;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
   0% {
-    transform: translateX(-100%);
+    background-position: 200% 0;
   }
   100% {
-    transform: translateX(100%);
+    background-position: -200% 0;
   }
 }
 
 /* ==== Responsive Styles ==== */
 @media (max-width: 768px) {
   .card, .skeletonCard {
-    width: 160px;
+    width: 200px;
+    height: 240px;
   }
 
-  .imageContainer, .skeletonImage {
-    height: 112px; /* 70% of 160px */
+  .textContent, .skeletonTextContent {
+    padding: 16px;
   }
 
-  .title, .skeletonTitle {
-    font-size: 14px;
-    height: 18px;
+  .title {
+    font-size: 20px;
   }
 
-  .date, .skeletonDate {
-    font-size: 11px;
-    height: 11px;
+  .date {
+    font-size: 13px;
   }
 }
 
 @media (max-width: 480px) {
   .card, .skeletonCard {
-    width: 100px;
+    width: 160px;
+    height: 200px;
   }
 
-  .imageContainer, .skeletonImage {
-    height: 100px;
+  .textContent, .skeletonTextContent {
+    padding: 12px;
   }
 
-  .title, .skeletonTitle {
-    font-size: 12px;
-    height: 16px;
-    bottom: 5px;
-  }
-
-  .date, .skeletonDate {
-    font-size: 10px;
-    height: 10px;
+  .title {
+    font-size: 18px;
     margin-bottom: 8px;
+  }
+
+  .date {
+    font-size: 12px;
   }
 }
