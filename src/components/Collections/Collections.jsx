@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Collections.module.css";
-import CollectionCard from "../CollectionCard/CollectionCard"; // کامپوننت اصلی
+import CollectionCard from "../CollectionCard/CollectionCard";
 import CollectionCardSkeleton from "../CollectionCard/CollectionCard.Skeleton.jsx";
 
 const Collections = () => {

@@ -3,8 +3,19 @@ import { Link } from "react-router-dom";
 import styles from "./CollectionCard.module.css";
 
 const CollectionCard = ({ collection }) => {
+  const getCollectionLink = () => {
+    switch(collection.id) {
+      case 3: return '/nojavan';
+      case 1: return '/bozorgsal';
+      case 6: return '/madarkodak';
+      case 7: return '/ebadat';
+      case 4: return '/kifkafsh';
+      default: return `/collections/${collection.id}`;
+    }
+  };
+
   return (
-    <Link to={`/collection/${collection.id}`} className={styles.cardLink}>
+    <Link to={getCollectionLink()} className={styles.cardLink}>
       <div className={styles.card}>
         <div className={styles.imageContainer}>
           <img
