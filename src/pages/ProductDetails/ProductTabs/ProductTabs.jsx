@@ -131,13 +131,13 @@ const ProductTabs = ({
           <h2>
             <FaListUl className={styles.icons} /> مشخصات محصول
           </h2>
-          <p>مشخصات محصول اینجا نمایش داده می‌شود.</p>
+          <p>{product.title}</p>
         </div>
         <div ref={descriptionRef} className={styles.descriptionSection}>
           <h2>
             <MdOutlineDescription className={styles.icons} /> توضیحات
           </h2>
-          <p>{product.description}</p>
+          <p style={{whiteSpace: 'pre-line'}}>{product.description}</p>
         </div>
         {/* <div ref={dimensionsRef} className={styles.dimensionsSection}>
           <h2>

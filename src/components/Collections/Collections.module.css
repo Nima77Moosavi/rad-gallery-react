@@ -1,80 +1,74 @@
-/* Collections.module.css */
-
-/* Container */
 .collections {
-  padding: 20px;
-  text-align: center;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Section title */
 .sectionTitle {
-  font-size: 32px;
-  color: var(--text-color);
-  margin-bottom: 20px;
-}
-
-/* One flex‐row that wraps, with constant 15px gap */
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-/* ——— DESKTOP: 6 cards per row ——— */
-.collectionCard {
-  position: relative;
-  width: calc((100% - 5 * 15px) / 6);
-  height: 200px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-color: #fff;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: transform 0.3s ease;
-}
-.collectionCard:hover {
-  transform: scale(1.03);
-}
-
-/* Overlay & text */
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: var(--primary-color-dark);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.description {
-  position: absolute;
-  bottom: 0px;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 600;
-  padding: 10px;
   text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 40px;
+  position: relative;
 }
 
-/* ——— TABLET: 4 cards per row ——— */
-@media (max-width: 1024px) {
-  .collectionCard {
-    width: calc((100% - 3 * 15px) / 4);
-    height: 180px;
-  }
+
+
+.cardsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: center;
 }
 
-/* ——— MOBILE: 3 cards per row ——— */
+.error {
+  text-align: center;
+  color: #e63946;
+  font-size: 18px;
+  padding: 40px;
+  background: #ffeaea;
+  border-radius: 12px;
+  margin: 20px;
+}
+
+.empty {
+  text-align: center;
+  color: #666;
+  font-size: 18px;
+  padding: 40px;
+  grid-column: 1 / -1;
+}
+
+/* ==== Responsive Styles ==== */
 @media (max-width: 768px) {
-  .collectionCard {
-    width: calc((100% - 2 * 15px) / 3);
-    height: 160px;
+  .collections {
+    padding: 30px 15px;
   }
+  
+  .sectionTitle {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  
+  .cardsContainer {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+}
 
-  .description {
-    font-size: 14px;
+@media (max-width: 480px) {
+  .collections {
+    padding: 20px 10px;
+  }
+  
+  .sectionTitle {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+  
+  .cardsContainer {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
   }
 }

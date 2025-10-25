@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Collections.module.css";
+import CollectionCard from "../CollectionCard/CollectionCard";
 import CollectionCardSkeleton from "../CollectionCard/CollectionCard.Skeleton.jsx";
 
 const Collections = () => {
@@ -40,7 +41,7 @@ const Collections = () => {
   return (
     <div className={styles.collections}>
       <h2 className={styles.sectionTitle}>دسته‌بندی محصولات</h2>
-      <div className={styles.row}>
+      <div className={styles.cardsContainer}>
         {loading ? (
           Array.from({ length: 9 }).map((_, i) => (
             <CollectionCardSkeleton key={i} />
@@ -49,25 +50,10 @@ const Collections = () => {
           <div className={styles.empty}>هیچ کالکشنی یافت نشد.</div>
         ) : (
           collections.map((collection) => (
-            <Link
-            to={
-              collection.id === 3 ? '/nojavan' : 
-              collection.id === 1 ? '/bozorgsal' : 
-              collection.id === 6 ? '/madarkodak' : 
-              collection.id === 7 ? '/ebadat' : 
-              collection.id === 4 ? '/kifkafsh' : 
-              `/collections/${collection.id}`
-            }
-              key={collection.id}
-              className={styles.collectionCard}
-              style={{ backgroundImage: `url(${collection.image})` }}
-            >
-              <div className={styles.overlay}>
-                <div className={styles.description}>
-                  {collection.description || collection.title}
-                </div>
-              </div>
-            </Link>
+            <CollectionCard 
+              key={collection.id} 
+              collection={collection}
+            />
           ))
         )}
       </div>

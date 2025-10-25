@@ -12,9 +12,9 @@
 }
 
 .compactTitle {
-  color: #023047;
-  font-size: 1.2rem;
-  font-weight: 600;
+  color: var(--text-color);
+  font-size: 1.6rem;
+  font-weight: 800;
   margin-bottom: 1rem;
   text-align: right;
   padding-bottom: 10px;
@@ -67,7 +67,7 @@
   font-family: inherit;
   resize: vertical;
   min-height: 120px;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   transition: all 0.2s;
   background-color: #ffffff;
   direction: rtl;
@@ -94,7 +94,7 @@
   padding: 0.5rem 1rem;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 1.3rem;
   transition: background-color 0.3s;
 }
 

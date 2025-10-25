@@ -202,15 +202,7 @@ const ProductDetails = () => {
             />
 
             <IconsBox isLiked={like} onLikeClick={likeHandler} />
-            <ProductRating rating={product.average_rating || 4} />
-
-            <ReviewForm
-              productId={id}
-              onSubmit={async (reviewData) => {
-                console.log("Review submitted:", reviewData);
-                // await axiosInstance.post(...);
-              }}
-            />
+            
           </div>
 
           <ProductTabs
@@ -224,6 +216,15 @@ const ProductDetails = () => {
         </div>
 
         <Bestsellers />
+        <ProductRating rating={product.average_rating || 4} />
+
+            <ReviewForm
+              productId={id}
+              onSubmit={async (reviewData) => {
+                console.log("Review submitted:", reviewData);
+                // await axiosInstance.post(...);
+              }}
+            />
         <Footer />
       </div>
     </div>
