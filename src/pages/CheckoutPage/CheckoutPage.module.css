@@ -9,11 +9,12 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   direction: rtl;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: 1px solid var(--green-color);
 }
 
 .checkoutPage h2 {
-  color: #023047;
-  font-size: 28px;
+  color: var(--text-color);
+  font-size: 30px;
   margin-bottom: 30px;
   text-align: center;
   font-weight: 600;
@@ -28,14 +29,14 @@
   right: 0;
   width: 100px;
   height: 3px;
-  background-color: #40e0d0;
+  background-color: var(--green-color);
   right: 50%;
   transform: translateX(50%);
 }
 
 .checkoutPage h3 {
-  color: #023047;
-  font-size: 22px;
+  color: var(--text-color);
+  font-size: 24px;
   margin-bottom: 20px;
   font-weight: 600;
 }
@@ -51,99 +52,157 @@
   text-align: center;
 }
 
-.addressList {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 30px 0;
-  font-size: 16px;
-}
-.addressList li{
-  font-size: 16px;
-}
-.addressItem {
-  margin-bottom: 15px;
-  padding: 15px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  transition: all 0.3s;
-  direction: rtl;
-}
-
-.addressItem:hover {
-  border-color: #40e0d0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.addressItem label {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  cursor: pointer;
-  font-size: 15px;
-  color: #023047;
-}
-
-.addressItem input {
-  margin-left: 10px;
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-}
-
+/* بخش آدرس‌ها */
 .addressHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--secondary-color);
 }
 
 .addAddressButton {
-  background-color: #fff;
-  color: #40e0d0;
-  padding: 8px 16px;
-  border: 2px solid #40e0d0;
+  background-color: var(--green-color);
+  color: white;
+  padding: 12px 24px;
+  border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s;
-  font-size: 14px;
+  transition: all 0.3s ease;
+  font-size: 18px;
   font-weight: 600;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .addAddressButton:hover {
-  background-color: #40e0d0;
-  color: #fff;
+  background-color: #3a8a6f;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(73, 156, 127, 0.3);
 }
 
+.addressList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px 0;
+}
 
+.addressItem {
+  margin-bottom: 15px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
 
-.checkoutPage button {
-  background-color: #40e0d0;
-  color: #023047;
+.addressItem:hover {
+  border-color: var(--green-color);
+  box-shadow: 0 4px 15px rgba(73, 156, 127, 0.1);
+  transform: translateY(-2px);
+}
+
+.addressItem label {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  cursor: pointer;
+  gap: 15px;
+}
+
+.addressItem input[type="radio"] {
+  margin-top: 4px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--green-color);
+}
+
+.addressDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.addressText {
+  font-size: 16px;
+  color: var(--text-color);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.postalCode {
+  font-size: 14px;
+  color: #666;
+  background-color: #f0f0f0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+/* حالت بدون آدرس */
+.noAddress {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.noAddress p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.primaryButton {
+  background-color: var(--green-color);
+  color: white;
   padding: 12px 30px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s;
-  font-size: 18px;
+  text-decoration: none;
+  font-size: 16px;
   font-weight: 600;
-  width: min(250px, 100%);
-  display: block;
-  margin: 0 auto;
+  transition: all 0.3s ease;
+  display: inline-block;
 }
 
-.checkoutPage button:hover {
-  background-color: #38b2a3;
+.primaryButton:hover {
+  background-color: #3a8a6f;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(73, 156, 127, 0.3);
 }
 
-.checkoutPage button:disabled {
+/* دکمه پرداخت */
+.submitButton {
+  background-color: var(--green-color);
+  color: #ffffff;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 22px;
+  font-weight: 600;
+  width: min(300px, 100%);
+  display: block;
+  margin: 30px auto 0;
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: #3a8a6f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(73, 156, 127, 0.3);
+}
+
+.submitButton:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
   transform: none;
@@ -153,6 +212,7 @@
 /* Responsive Styles */
 @media screen and (max-width: 768px) {
   .checkoutPage {
+    margin: 50px auto;
     padding: 20px;
   }
   
@@ -161,12 +221,47 @@
     margin-bottom: 20px;
   }
   
+  .checkoutPage h3 {
+    font-size: 20px;
+  }
+  
+  .addressHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .addAddressButton {
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+  }
+  
   .addressItem {
-    padding: 12px;
+    padding: 15px;
+  }
+  
+  .addressItem label {
+    gap: 12px;
+  }
+  
+  .addressText {
+    font-size: 15px;
+  }
+  
+  .submitButton {
+    padding: 12px 30px;
+    font-size: 16px;
+    width: 100%;
   }
 }
 
 @media screen and (max-width: 480px) {
+  .checkoutPage {
+    margin: 30px auto;
+    padding: 15px;
+  }
+  
   .checkoutPage h2 {
     font-size: 22px;
   }
@@ -175,23 +270,30 @@
     width: 80px;
   }
   
-  .addressItem label {
-    font-size: 14px;
+  .addressItem {
+    padding: 12px;
   }
   
-  .checkoutPage button {
-    padding: 10px 20px;
-    font-size: 18px;
-  }
-  .addressHeader {
+  .addressItem label {
     flex-direction: column;
-    align-items: flex-start;
     gap: 10px;
   }
   
-  .addAddressButton {
+  .addressItem input[type="radio"] {
+    align-self: flex-start;
+  }
+  
+  .noAddress {
+    padding: 30px 15px;
+  }
+  
+  .noAddress p {
+    font-size: 16px;
+  }
+  
+  .primaryButton {
+    padding: 10px 20px;
+    font-size: 14px;
     width: 100%;
-    text-align: center;
-    padding: 10px;
   }
 }

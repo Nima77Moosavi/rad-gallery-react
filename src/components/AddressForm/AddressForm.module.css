@@ -9,6 +9,7 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   direction: rtl;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: 1px solid var(--green-color);
 }
 
 .addressForm h3 {
@@ -54,7 +55,7 @@
 .formGroup label {
   /* font-weight: 500; */
   color: var(--text-color);
-  font-size: 16px;
+  font-size: 22px;
 }
 
 .formGroup input,
