@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import axiosInstance from "../../utils/axiosInstance";
 import styles from "./CheckoutPage.module.css";
 
@@ -42,18 +43,15 @@ const CheckoutPage = () => {
       });
 
       // 2) Kick off ZarinPal payment
-      //    We assume `order.total_price` (or similar) is returned by your API
       const { data: payRes } = await axiosInstance.post(
         "/api/zarinpal/request/",
         {
-          amount: order.total, // e.g. 125000
-          description: `سفارش شماره ${order.id}`, // any text you like
-          // email: order.customer_email, // optional
-          // mobile: order.customer_mobile, // optional
+          amount: order.total,
+          description: `سفارش شماره ${order.id}`,
         }
       );
 
-      // 3) Redirect to ZarinPal’s payment gateway
+      // 3) Redirect to ZarinPal's payment gateway
       window.location.href = payRes.pay_url;
     } catch (err) {
       console.error(err);
@@ -69,27 +67,59 @@ const CheckoutPage = () => {
     <div className={styles.checkoutPage}>
       <h2>تأیید نهایی سفارش</h2>
       {error && <p className={styles.error}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        {/* …address selector markup… */}
-        <ul className={styles.addressList}>
-          {addresses.map((addr) => (
-            <li key={addr.id}>
-              <label>
-                <input
-                  type="radio"
-                  name="selectedAddress"
-                  value={addr.id}
-                  onChange={() => setSelected(addr.id)}
-                />
-                {addr.state}، {addr.city}، {addr.address}
-              </label>
-            </li>
-          ))}
-        </ul>
+      
+      <div className={styles.addressHeader}>
+        <h3>انتخاب آدرس ارسال</h3>
+        <Link to="/user-panel/addresses" className={styles.addAddressButton}>
+          + افزودن آدرس جدید
+        </Link>
+      </div>
 
-        <button type="submit" disabled={loading}>
-          {loading ? "در حال انتقال به درگاه…" : "پرداخت و ثبت سفارش"}
-        </button>
+      <form onSubmit={handleSubmit}>
+        {addresses.length === 0 ? (
+          <div className={styles.noAddress}>
+            <p>هیچ آدرسی ثبت نشده است</p>
+            <Link to="/addresses" className={styles.primaryButton}>
+              ثبت آدرس جدید
+            </Link>
+          </div>
+        ) : (
+          <ul className={styles.addressList}>
+            {addresses.map((addr) => (
+              <li key={addr.id} className={styles.addressItem}>
+                <label>
+                  <input
+                    type="radio"
+                    name="selectedAddress"
+                    value={addr.id}
+                    onChange={() => setSelected(addr.id)}
+                    checked={selectedAddressId === addr.id}
+                  />
+                  <div className={styles.addressDetails}>
+                    <span className={styles.addressText}>
+                      {addr.state}، {addr.city}، {addr.address}
+                    </span>
+                    {addr.postal_code && (
+                      <span className={styles.postalCode}>
+                        کد پستی: {addr.postal_code}
+                    </span>
+                    )}
+                  </div>
+                </label>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {addresses.length > 0 && (
+          <button 
+            type="submit" 
+            disabled={loading || !selectedAddressId}
+            className={styles.submitButton}
+          >
+            {loading ? "در حال انتقال به درگاه…" : "پرداخت و ثبت سفارش"}
+          </button>
+        )}
       </form>
     </div>
   );

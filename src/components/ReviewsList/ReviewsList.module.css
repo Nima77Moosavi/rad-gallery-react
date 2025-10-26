@@ -11,6 +11,7 @@
   border-radius: 12px;
   padding: 30px;
   min-height: 60vh;
+  border: 1px solid var(--green-color);
 }
 
 /* Title Styles - Consistent with other components */

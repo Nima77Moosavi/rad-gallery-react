@@ -15,6 +15,8 @@ const ShoppingCart = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  const SHIPPING_COST = 80000; // هزینه ارسال 80,000 تومان
+
   useEffect(() => {
     const fetchCart = async () => {
       try {
@@ -69,8 +71,8 @@ const ShoppingCart = () => {
     }
   };
 
-  // تابع جدید برای محاسبه جمع کل
-  const calculateTotal = () => {
+  // تابع برای محاسبه جمع کل محصولات
+  const calculateSubtotal = () => {
     if (!cartData?.items) return 0;
     return cartData.items.reduce(
       (total, item) => total + item.product_variant?.price * item.quantity,
@@ -78,7 +80,18 @@ const ShoppingCart = () => {
     );
   };
 
-  // تابع جدید برای ثبت سفارش
+  // تابع برای محاسبه جمع کل نهایی (با هزینه ارسال)
+  const calculateTotal = () => {
+    return calculateSubtotal() + SHIPPING_COST;
+  };
+
+  // تابع برای محاسبه تعداد کل آیتم‌ها
+  const calculateTotalItems = () => {
+    if (!cartData?.items) return 0;
+    return cartData.items.reduce((total, item) => total + item.quantity, 0);
+  };
+
+  // تابع برای ثبت سفارش
   const handleCheckout = async () => {
     navigate("/user-panel/checkout");
   };
@@ -90,91 +103,113 @@ const ShoppingCart = () => {
           {loading && <p>در حال بارگذاری...</p>}
           {error && <p className={styles.error}>{error}</p>}
           {cartData && cartData.items && cartData.items.length > 0 ? (
-            <div>
-              <h2 className={styles.cartTitle}>سبد خرید شما</h2>
-              <div className={styles.itemsList}>
-                {cartData.items.map((item) => {
-                  const imageUrl =
-                    item.product_variant?.product?.images &&
-                    item.product_variant.product.images.length > 0
-                      ? item.product_variant.product.images[0].image
-                      : "/placeholder.png";
+            <div className={styles.cartLayout}>
+              {/* بخش محصولات */}
+              <div className={styles.itemsSection}>
+                <h2 className={styles.cartTitle}>سبد خرید شما</h2>
+                <div className={styles.itemsList}>
+                  {cartData.items.map((item) => {
+                    const imageUrl =
+                      item.product_variant?.product?.images &&
+                      item.product_variant.product.images.length > 0
+                        ? item.product_variant.product.images[0].image
+                        : "/placeholder.png";
 
-                  return (
-                    <div key={item.id} className={styles.cartItem}>
-                      <div className={styles.itemImage}>
-                        <img
-                          src={imageUrl}
-                          alt={
-                            item.product_variant?.product?.title ||
-                            "Product Image"
-                          }
-                        />
-                      </div>
-                      <div className={styles.itemDetails}>
-                        <h3 className={styles.itemTitle}>
-                          {item.product_variant?.product?.title ||
-                            "Product Name"}
-                        </h3>
-                        <p className={styles.itemDescription}>
-                          {item.product_variant?.product?.description || ""}
-                        </p>
-                        <p className={styles.itemPrice}>
-                          {item.product_variant?.price} تومان
-                        </p>
-                        <div className={styles.quantityControl}>
-                          <div className={styles.quantityBox}>
-                            <button
-                              className={`${styles.quantityButton} ${styles.plusButton}`}
-                              onClick={() =>
-                                updateQuantity(item.id, item.quantity + 1)
-                              }
-                            >
-                              <FiPlus />
-                            </button>
-
-                            <span className={styles.quantityNumber}>
-                              {item.quantity}
-                            </span>
-
-                            {item.quantity > 1 ? (
+                    return (
+                      <div key={item.id} className={styles.cartItem}>
+                        <div className={styles.itemImage}>
+                          <img
+                            src={imageUrl}
+                            alt={
+                              item.product_variant?.product?.title ||
+                              "Product Image"
+                            }
+                          />
+                        </div>
+                        <div className={styles.itemDetails}>
+                          <h3 className={styles.itemTitle}>
+                            {item.product_variant?.product?.title ||
+                              "Product Name"}
+                          </h3>
+                          <p className={styles.itemPrice}>
+                            {item.product_variant?.price.toLocaleString()} تومان
+                          </p>
+                          <div className={styles.quantityControl}>
+                            <div className={styles.quantityBox}>
                               <button
-                                className={`${styles.quantityButton} ${styles.minusButton}`}
+                                className={`${styles.quantityButton} ${styles.plusButton}`}
                                 onClick={() =>
-                                  updateQuantity(item.id, item.quantity - 1)
+                                  updateQuantity(item.id, item.quantity + 1)
                                 }
                               >
-                                <FiMinus />
+                                <FiPlus />
                               </button>
-                            ) : (
-                              <button
-                                className={`${styles.quantityButton} ${styles.deleteButton}`}
-                                onClick={() => removeItem(item.id)}
-                              >
-                                <MdDeleteOutline />
-                              </button>
-                            )}
+
+                              <span className={styles.quantityNumber}>
+                                {item.quantity}
+                              </span>
+
+                              {item.quantity > 1 ? (
+                                <button
+                                  className={`${styles.quantityButton} ${styles.minusButton}`}
+                                  onClick={() =>
+                                    updateQuantity(item.id, item.quantity - 1)
+                                  }
+                                >
+                                  <FiMinus />
+                                </button>
+                              ) : (
+                                <button
+                                  className={`${styles.quantityButton} ${styles.deleteButton}`}
+                                  onClick={() => removeItem(item.id)}
+                                >
+                                  <MdDeleteOutline />
+                                </button>
+                              )}
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
 
-              {/* بخش جدید: جمع کل و دکمه ثبت سفارش */}
-              <div className={styles.cartSummary}>
-                <div className={styles.totalPrice}>
-                  <span>جمع کل:</span>
-                  <span>{calculateTotal().toLocaleString()} تومان</span>
+              {/* بخش خلاصه سفارش - ثابت در سمت چپ */}
+              <div className={styles.summarySection}>
+                <div className={styles.summaryCard}>
+                  <h3 className={styles.summaryTitle}>خلاصه سفارش</h3>
+                  
+                  <div className={styles.summaryRow}>
+                    <span>تعداد کالاها:</span>
+                    <span>{calculateTotalItems()} عدد</span>
+                  </div>
+                  
+                  <div className={styles.summaryRow}>
+                    <span>مبلغ کل:</span>
+                    <span>{calculateSubtotal().toLocaleString()} تومان</span>
+                  </div>
+                  
+                  <div className={styles.summaryRow}>
+                    <span>هزینه ارسال:</span>
+                    <span>{SHIPPING_COST.toLocaleString()} تومان</span>
+                  </div>
+                  
+                  <div className={`${styles.summaryRow} ${styles.totalRow}`}>
+                    <span>مبلغ قابل پرداخت:</span>
+                    <span className={styles.finalPrice}>
+                      {calculateTotal().toLocaleString()} تومان
+                    </span>
+                  </div>
+
+                  <button
+                    className={styles.checkoutButton}
+                    onClick={handleCheckout}
+                    disabled={loading}
+                  >
+                    {loading ? "در حال پردازش..." : "ثبت نهایی سفارش"}
+                  </button>
                 </div>
-                <button
-                  className={styles.checkoutButton}
-                  onClick={handleCheckout}
-                  disabled={loading}
-                >
-                  {loading ? "در حال پردازش..." : "ثبت نهایی سفارش"}
-                </button>
               </div>
             </div>
           ) : (
