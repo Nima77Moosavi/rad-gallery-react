@@ -24,14 +24,12 @@
 }
 
 .img {
-  width: 100%;
+  width: 96%;
   height: 190px;
-  padding: 0;
+  padding: 2%;
   border-radius: 20px;
   margin: 0 auto;
-  object-fit: contain;
-  object-position: center;
-  background-color: #f8f8f8;
+  object-fit: cover;
 }
 .title {
     height: 70px;
