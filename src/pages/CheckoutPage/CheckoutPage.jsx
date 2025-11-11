@@ -5,76 +5,52 @@ import styles from "./CheckoutPage.module.css";
 
 const CheckoutPage = () => {
   const [addresses, setAddresses] = useState([]);
-  const [selectedAddressId, setSelected] = useState(null);
+  const [selectedAddressId, setSelectedAddressId] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    async function fetchAddresses() {
+    const fetchAddresses = async () => {
       try {
         setLoading(true);
-        const { data } = await axiosInstance.get(
-          "/api/store/shipping-addresses/"
-        );
+        const { data } = await axiosInstance.get("/api/store/shipping-addresses/");
         setAddresses(Array.isArray(data) ? data : []);
       } catch (err) {
-        console.error(err);
+        console.error("Failed to load addresses:", err);
         setError("خطا در بارگذاری آدرس‌ها");
       } finally {
         setLoading(false);
       }
-    }
+    };
     fetchAddresses();
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+
     if (!selectedAddressId) {
       setError("لطفاً یک آدرس انتخاب کنید");
       return;
     }
+
     try {
       setLoading(true);
-      setError("");
 
-      // 1) Fetch cart to calculate total amount
-      const { data: cart } = await axiosInstance.get("/api/store/cart");
-      const amount = cart.items.reduce(
-        (total, item) =>
-          total + item.product_variant.price * item.quantity,
-        0
-      );
-
-      if (amount <= 0) {
-        setError("سبد خرید شما خالی است یا مبلغ معتبر ندارد");
-        setLoading(false);
-        return;
-      }
-
-      // 2) Create the order with required fields
-      const { data: order } = await axiosInstance.post("/api/store/orders/", {
+      // 🔹 Call the combined endpoint that creates order + payment
+      const { data } = await axiosInstance.post("/api/store/orders/create-pay/", {
         shipping_address_id: selectedAddressId,
-        amount, // backend requires this
       });
 
-      // 3) Kick off ZarinPal payment
-      const { data: payRes } = await axiosInstance.post(
-        "/api/zarinpal/request/",
-        {
-          amount: order.amount,
-          description: `سفارش شماره ${order.id}`,
-          order_id: order.id,
-        }
-      );
-
-      // 4) Redirect to ZarinPal's payment gateway
-      window.location.href = payRes.pay_url;
+      // 🔹 Redirect to ZarinPal gateway
+      window.location.href = data.pay_url;
     } catch (err) {
-      console.error(err);
+      console.error("Checkout error:", err);
       setError(
         err.response?.data?.error ||
           "خطا در شروع فرآیند پرداخت. لطفاً دوباره تلاش کنید."
       );
+    } finally {
       setLoading(false);
     }
   };
@@ -83,7 +59,7 @@ const CheckoutPage = () => {
     <div className={styles.checkoutPage}>
       <h2>تأیید نهایی سفارش</h2>
       {error && <p className={styles.error}>{error}</p>}
-      
+
       <div className={styles.addressHeader}>
         <h3>انتخاب آدرس ارسال</h3>
         <Link to="/user-panel/addresses" className={styles.addAddressButton}>
@@ -108,7 +84,7 @@ const CheckoutPage = () => {
                     type="radio"
                     name="selectedAddress"
                     value={addr.id}
-                    onChange={() => setSelected(addr.id)}
+                    onChange={() => setSelectedAddressId(addr.id)}
                     checked={selectedAddressId === addr.id}
                   />
                   <div className={styles.addressDetails}>
@@ -128,8 +104,8 @@ const CheckoutPage = () => {
         )}
 
         {addresses.length > 0 && (
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             disabled={loading || !selectedAddressId}
             className={styles.submitButton}
           >
