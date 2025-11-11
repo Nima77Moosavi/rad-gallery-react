@@ -15,7 +15,7 @@ const ShoppingCart = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const SHIPPING_COST = 80000; // هزینه ارسال 80,000 تومان
+  const SHIPPING_COST = 0; // هزینه ارسال 80,000 تومان
 
   useEffect(() => {
     const fetchCart = async () => {
