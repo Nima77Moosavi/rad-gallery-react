@@ -1,4 +1,20 @@
 # React + Vite
+# Rad Gallery - E-commerce Website
+
+## About
+Rad Gallery is a team-based e-commerce website designed to showcase and sell products online.  
+The project features product listings, shopping cart, and responsive UI for smooth user experience.
+
+### Contributors 
+- Nima Mousavi – Backend: developed APIs and server logic  
+- Zahra Mozani – Frontend & Content & Support: designed posters, uploaded products, and maintained the site
+-  Fatemeh Ghasemi – Frontend & UI/UX: implemented responsive interface and user experience using React 
+
+## Tech Stack
+- Frontend: React  
+- Backend: Node.js / Express 
+- UI Design: Tailwind CSS / Figma
+
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
