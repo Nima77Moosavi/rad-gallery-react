@@ -21,7 +21,7 @@ const HighlightMedia = () => {
     const fetchHighlightMedia = async () => {
       try {
         const response = await fetch(
-          `https://rad-gallery-api.liara.run/api/highlights/highlights/${id}/`
+          `https://api.rad-gallery-isf.ir/api/highlights/highlights/${id}/`
         );
         if (!response.ok) throw new Error("Network response was not ok");
         const data = await response.json();
@@ -49,7 +49,7 @@ const HighlightMedia = () => {
     const fetchAllHighlightMedia = async () => {
       try {
         const response = await fetch(
-          `https://rad-gallery-api.liara.run/api/highlights/highlights/`
+          `https://api.rad-gallery-isf.ir/api/highlights/highlights/`
         );
         if (!response.ok) throw new Error("Network response was not ok");
         const data = await response.json();

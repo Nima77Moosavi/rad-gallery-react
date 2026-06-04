@@ -12,7 +12,7 @@ const Highlights = () => {
     const fetchHighlights = async () => {
       try {
         const res = await fetch(
-          "https://rad-gallery-api.liara.run/api/highlights/highlights/"
+          "https://api.rad-gallery-isf.ir/api/highlights/highlights/"
         );
         if (!res.ok) throw new Error("Network response was not ok");
         const data = await res.json();

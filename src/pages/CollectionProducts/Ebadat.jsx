@@ -27,7 +27,7 @@ const Ebadat = () => {
       
       // 1. Fetch collections data
       const collectionsRes = await fetch(
-        `https://rad-gallery-api.liara.run/api/store/collections/`
+        `https://api.rad-gallery-isf.ir/api/store/collections/`
       );
       if (!collectionsRes.ok) throw new Error("Failed to fetch collections");
       
@@ -61,7 +61,7 @@ const Ebadat = () => {
       // Fetch products for each collection in parallel
       const productPromises = collectionIdsToFetch.map(async (id) => {
         const res = await fetch(
-          `https://rad-gallery-api.liara.run/api/store/products/?collection_id=${id}`
+          `https://api.rad-gallery-isf.ir/api/store/products/?collection_id=${id}`
         );
         if (!res.ok) throw new Error(`Failed to fetch products for collection ${id}`);
         const data = await res.json();

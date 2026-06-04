@@ -15,7 +15,7 @@ const BestsellersPage = () => {
     const fetchProducts = async () => {
       try {
         const response = await fetch(
-          "https://kimiatoranj-api.liara.run/api/store/products/"
+          "https://api.rad-gallery-isf.ir/api/store/products/"
         );
         if (!response.ok) throw new Error("Network response was not ok");
         const data = await response.json();
@@ -33,7 +33,7 @@ const BestsellersPage = () => {
     const fetchProducts = async () => {
       try {
         const response = await fetch(
-          "https://kimiatoranj-api.liara.run/api/store/collections/"
+          "https://api.rad-gallery-isf.ir/api/store/collections/"
         );
         if (!response.ok) throw new Error("Network response was not ok");
         const data = await response.json();

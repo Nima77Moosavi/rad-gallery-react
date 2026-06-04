@@ -26,7 +26,7 @@ const MadarKodak = () => {
         
         // دریافت تمام دسته‌بندی‌ها
         const collectionsRes = await fetch(
-          "https://rad-gallery-api.liara.run/api/store/collections/"
+          "https://api.rad-gallery-isf.ir/api/store/collections/"
         );
         const collectionsData = await collectionsRes.json();
         const allCollections = Array.isArray(collectionsData.results) 
@@ -37,7 +37,7 @@ const MadarKodak = () => {
 
         // دریافت تمام محصولات
         const productsRes = await fetch(
-          "https://rad-gallery-api.liara.run/api/store/products/"
+          "https://api.rad-gallery-isf.ir/api/store/products/"
         );
         const productsData = await productsRes.json();
         const allProducts = Array.isArray(productsData.results) 

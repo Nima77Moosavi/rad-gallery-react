@@ -13,7 +13,7 @@ const Collections = () => {
     const fetchCollections = async () => {
       try {
         const response = await fetch(
-          "https://rad-gallery-api.liara.run/api/store/collections/"
+          "https://api.rad-gallery-isf.ir/api/store/collections/"
         );
         if (!response.ok) {
           throw new Error("مشکل در دریافت اطلاعات");

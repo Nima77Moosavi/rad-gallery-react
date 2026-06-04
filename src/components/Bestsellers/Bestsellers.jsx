@@ -16,7 +16,7 @@ const Bestsellers = () => {
     async function fetchProducts() {
       try {
         const res = await fetch(
-          "https://rad-gallery-api.liara.run/api/store/products/"
+          "https://api.rad-gallery-isf.ir/api/store/products/"
         );
         if (!res.ok) throw new Error("Network error");
         const { results } = await res.json();

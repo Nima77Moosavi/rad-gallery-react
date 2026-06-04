@@ -20,7 +20,7 @@ const Home = () => {
   useEffect(() => {
     const fetchLatestProducts = async () => {
       const response = await axios.get(
-        "https://kimiatoranj-api.liara.run/api/store/products/"
+        "https://api.rad-gallery-isf.ir/api/store/products/"
       );
       setLatestProducts(response.data);
     };
