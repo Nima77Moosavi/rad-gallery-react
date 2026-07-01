@@ -1,10 +1,11 @@
-version: "3.8"
-
 services:
   frontend:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
 
-    restart: always
+    container_name: rad-gallery-frontend
+    restart: unless-stopped
 
     env_file:
       - .env.production
@@ -12,18 +13,8 @@ services:
     expose:
       - "5173"
 
-    command: ["serve", "-s", "dist", "-l", "5173"]
-
     networks:
       - web
-
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=web"
-      - "traefik.http.routers.rad-gallery-frontend.rule=Host(`rad-gallery-isf.ir`) || Host(`www.rad-gallery-isf.ir`)"
-      - "traefik.http.routers.rad-gallery-frontend.entrypoints=websecure"
-      - "traefik.http.routers.rad-gallery-frontend.tls=true"
-      - "traefik.http.services.rad-gallery-frontend.loadbalancer.server.port=5173"
 
 networks:
   web:
