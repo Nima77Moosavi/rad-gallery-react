@@ -88,7 +88,6 @@ jobs:
 
           test -f docker-compose.prod.yml
           test -f Dockerfile
-          test -f nginx.conf
 
           echo "Validating Docker Compose configuration..."
 
