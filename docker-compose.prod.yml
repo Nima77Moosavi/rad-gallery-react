@@ -7,9 +7,6 @@ services:
     container_name: rad-gallery-frontend
     restart: unless-stopped
 
-    env_file:
-      - .env.production
-
     expose:
       - "5173"
 

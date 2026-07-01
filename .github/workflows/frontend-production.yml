@@ -1,40 +1,152 @@
-name: Deploy Frontend (Production)
+name: Deploy Frontend Production
 
 on:
   push:
     branches:
       - production
 
+permissions:
+  contents: read
+
+concurrency:
+  group: rad-frontend-production
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    env:
+      SSH_HOST: ${{ secrets.RAD_FRONTEND_HOST }}
+      SSH_USER: ${{ secrets.RAD_FRONTEND_USER }}
+      APP_DIR: ${{ secrets.RAD_FRONTEND_APP_DIR }}
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup SSH
+      - name: Configure SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.RAD_FRONTEND_SSH_KEY }}
         run: |
-          mkdir -p ~/.ssh
-          printf '%s\n' "${{ secrets.RAD_FRONTEND_SSH_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.RAD_FRONTEND_HOST }} >> ~/.ssh/known_hosts
+          set -Eeuo pipefail
 
-      - name: Deploy Frontend
+          install -m 700 -d ~/.ssh
+
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+          ssh-keyscan \
+            -T 30 \
+            -p 22 \
+            -H "$SSH_HOST" \
+            >> ~/.ssh/known_hosts
+
+      - name: Create application directory
         run: |
+          set -Eeuo pipefail
+
+          ssh \
+            -i ~/.ssh/deploy_key \
+            -p 22 \
+            "$SSH_USER@$SSH_HOST" \
+            "mkdir -p '$APP_DIR'"
+
+      - name: Copy frontend files
+        run: |
+          set -Eeuo pipefail
+
           rsync -az --delete \
+            --exclude='.git' \
+            --exclude='.github' \
             --exclude='node_modules' \
             --exclude='dist' \
-            --exclude='.git' \
-            -e "ssh -i ~/.ssh/id_rsa" \
-            ./ ${{ secrets.RAD_FRONTEND_USER }}@${{ secrets.RAD_FRONTEND_HOST }}:${{ secrets.RAD_FRONTEND_APP_DIR }}
+            --exclude='.env' \
+            --exclude='.env.*' \
+            --exclude='.DS_Store' \
+            -e "ssh -i ~/.ssh/deploy_key -p 22" \
+            ./ \
+            "$SSH_USER@$SSH_HOST:$APP_DIR/"
 
-      - name: Build & Run
+      - name: Deploy frontend
         run: |
-          ssh -i ~/.ssh/id_rsa ${{ secrets.RAD_FRONTEND_USER }}@${{ secrets.RAD_FRONTEND_HOST }} << 'EOF'
-            cd ${{ secrets.RAD_FRONTEND_APP_DIR }}
-            npm install
-            npm run build
-            docker compose down
-            docker compose up -d --build
-          EOF
+          ssh \
+            -i ~/.ssh/deploy_key \
+            -p 22 \
+            "$SSH_USER@$SSH_HOST" \
+            "cd '$APP_DIR' && bash -se" <<'REMOTE_EOF'
+          set -Eeuo pipefail
+
+          compose=(
+            docker compose
+            --ansi never
+            --progress plain
+            -f docker-compose.prod.yml
+          )
+
+          echo "Checking deployment files..."
+
+          test -f docker-compose.prod.yml
+          test -f Dockerfile
+          test -f nginx.conf
+
+          echo "Validating Docker Compose configuration..."
+
+          "${compose[@]}" config > /dev/null
+
+          echo "Building frontend image..."
+
+          "${compose[@]}" build frontend
+
+          echo "Stopping previous frontend container..."
+
+          "${compose[@]}" down --remove-orphans
+
+          echo "Starting frontend container..."
+
+          "${compose[@]}" up -d frontend
+
+          echo "Waiting for frontend to start..."
+
+          sleep 5
+
+          FRONTEND_CONTAINER_ID="$("${compose[@]}" ps -q frontend)"
+
+          if [ -z "$FRONTEND_CONTAINER_ID" ]; then
+            echo "Frontend container was not created."
+            exit 1
+          fi
+
+          FRONTEND_STATUS="$(
+            docker inspect \
+              --format='{{.State.Status}}' \
+              "$FRONTEND_CONTAINER_ID"
+          )"
+
+          echo "Frontend status: $FRONTEND_STATUS"
+
+          if [ "$FRONTEND_STATUS" != "running" ]; then
+            echo "Frontend container failed to start."
+            "${compose[@]}" logs --tail=100 frontend
+            exit 1
+          fi
+
+          echo "Container status..."
+
+          "${compose[@]}" ps
+
+          echo "Recent frontend logs..."
+
+          "${compose[@]}" logs --tail=50 frontend
+
+          echo "Removing unused Docker images..."
+
+          docker image prune -f
+
+          echo "Frontend deployment completed successfully."
+          REMOTE_EOF
+
+      - name: Remove temporary files
+        if: always()
+        run: |
+          rm -f ~/.ssh/deploy_key
